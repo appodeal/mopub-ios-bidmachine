@@ -8,20 +8,20 @@ This folder contains mediation adapters used to mediate BidMachine.
 
 To initialize BidMachine set your's seller id in MPMoPubConfiguration:
 
-```
+```objc
 MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
 [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
 ```
 ### Test mode
 
 To setup test mode in BidMachine add to ***sdkConfig*** @"test_mode" : @"true". You ***sdkConfig*** will be similar to what is shown below:
-```
+```objc
 [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
 ```
 ### Logging
 
 To setup logging in BidMachine add @"logging_enabled" : @"true" flag to ***sdkConfig***:
-```
+```objc
 [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"logging_enabled" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
 ```
 ### Initialization
@@ -37,7 +37,7 @@ All parameters that are used during initialization are presented in table below:
 | logging_enabled | String|
 
 Yours implementation of initialization should look like this:
-```
+```objc
  MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
  NSDictionary *configurationParams = @{
                                        @"seller_id" : @"1",
@@ -80,7 +80,7 @@ Keys for ***localExtras*** are listed below (Banner and Interstitial):
 
 In the snippet below you can see transfering of local extra data:
 
-```
+```objc
 self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                                 size:MOPUB_BANNER_SIZE];
     self.adView.delegate = self;
@@ -121,7 +121,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
 
 But also you can receive extra data from server. It will be sent in (NSDictionary *)***info*** of requests methods and may look like this:
 
-```
+```objc
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
@@ -155,7 +155,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
 
 With local extra data:
 
-```
+```objc
     self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"AD_UNIT_ID"];
     self.interstitial.delegate = self;
     NSDictionary *localExtras = @{
@@ -191,7 +191,7 @@ With local extra data:
 
 Servers extra data:
 
-```
+```objc
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
@@ -225,7 +225,7 @@ Servers extra data:
 
 With local extra data:
 
-```
+```objc
 [MPRewardedVideo setDelegate:self forAdUnitId:@"AD_UNIT_ID"];
     NSDictionary *localExtras = @{
                                   @"seller_id": @"YOUR_SELLER_ID",
@@ -259,7 +259,7 @@ With local extra data:
 
 Extra data from server:
 
-```
+```objc
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
