@@ -141,8 +141,8 @@
     [self.view addSubview:self.adView];
 }
 
-- (void)adViewDidFailToLoadAd:(MPAdView *)view {
-    NSLog(@"Banner failed to load ad");
+- (void)adView:(MPAdView *)view didFailToLoadAdWithError:(NSError *)error {
+    NSLog(@"Banner failed to load ad with error: %@", error.localizedDescription);
 }
 
 - (void)rewardedVideoAdDidLoadForAdUnitID:(NSString *)adUnitID {
