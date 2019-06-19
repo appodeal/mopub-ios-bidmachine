@@ -1,13 +1,13 @@
 PODS:
-  - BidMachine (1.1.0)
-  - mopub-ios-sdk (5.6.0):
-    - mopub-ios-sdk/MoPubSDK (= 5.6.0)
-  - mopub-ios-sdk/Avid (5.6.0):
+  - BidMachine (1.1.1)
+  - mopub-ios-sdk (5.7.1):
+    - mopub-ios-sdk/MoPubSDK (= 5.7.1)
+  - mopub-ios-sdk/Avid (5.7.1):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (5.6.0)
-  - mopub-ios-sdk/Moat (5.6.0):
+  - mopub-ios-sdk/Core (5.7.1)
+  - mopub-ios-sdk/Moat (5.7.1):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (5.6.0):
+  - mopub-ios-sdk/MoPubSDK (5.7.1):
     - mopub-ios-sdk/Avid
     - mopub-ios-sdk/Core
     - mopub-ios-sdk/Moat
@@ -22,8 +22,8 @@ SPEC REPOS:
     - mopub-ios-sdk
 
 SPEC CHECKSUMS:
-  BidMachine: c7f2cb4e9fda7c0813abe59be836d98e2d3b0e44
-  mopub-ios-sdk: 2b13b29ed6d1b06f7e52dd0c0a01e7adb749c1a7
+  BidMachine: d4742ae6c049edba0df0397c3f6d36a768c21819
+  mopub-ios-sdk: b1167e8c86afaccd37d484828c4ad2c3c1656a32
 
 PODFILE CHECKSUM: 6fccff397baa6b72f2fa111408eb6619b5ecab9e
 
