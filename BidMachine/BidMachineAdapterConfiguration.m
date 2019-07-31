@@ -9,6 +9,8 @@
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineConstants.h"
 #import "BidMachineFactory.h"
+#import "BidMachineFactory+HeaderBidding.h"
+#import <BidMachine/BDMAdNetworkConfiguration.h>
 
 
 @implementation BidMachineAdapterConfiguration
@@ -38,6 +40,7 @@
     BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+        config.networkConfigurations = [[BidMachineFactory sharedFactory] adNetworkConfigFromDict:configuration];
         [config setTestMode:testModeEnabled];
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
