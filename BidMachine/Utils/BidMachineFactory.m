@@ -8,6 +8,7 @@
 
 #import "BidMachineFactory.h"
 #import "BidMachineConstants.h"
+#import "BidMachineFactory+HeaderBidding.h"
 
 
 #if __has_include(<MoPub/MoPub.h>)
@@ -47,6 +48,7 @@
         BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
         
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+        config.networkConfigurations = [[BidMachineFactory sharedFactory] adNetworkConfigFromDict:info];
         [config setTestMode:testModeEnabled];
         
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
