@@ -20,6 +20,7 @@
 		D997F15C222FF15F00D973C8 /* BidMachineFactory+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D997F15B222FF15F00D973C8 /* BidMachineFactory+Request.m */; };
 		D997F15F222FF20F00D973C8 /* BidMachineFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D997F15E222FF20F00D973C8 /* BidMachineFactory.m */; };
 		D997F1622230104600D973C8 /* BidMachineRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D997F1612230104600D973C8 /* BidMachineRewardedVideoCustomEvent.m */; };
+		D9F3233D22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3233C22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.m */; };
 		D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */; };
 		D9F3E428222EA92B00834D16 /* BidMachineInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3E427222EA92B00834D16 /* BidMachineInstanceMediationSettings.m */; };
 		D9F3E464222FAFBD00834D16 /* libPods-BMIntegrationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3E463222FAFBD00834D16 /* libPods-BMIntegrationSample.a */; };
@@ -72,6 +73,8 @@
 		D997F1602230104600D973C8 /* BidMachineRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
 		D997F1612230104600D973C8 /* BidMachineRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
 		D9A0A6E6228EB43E00DF63B9 /* BidMachineConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineConstants.h; sourceTree = "<group>"; };
+		D9F3233B22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BidMachineFactory+HeaderBidding.h"; sourceTree = "<group>"; };
+		D9F3233C22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BidMachineFactory+HeaderBidding.m"; sourceTree = "<group>"; };
 		D9F3E41E222D4F6200834D16 /* BidMachineInterstitialCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineInterstitialCustomEvent.h; sourceTree = "<group>"; };
 		D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineInterstitialCustomEvent.m; sourceTree = "<group>"; };
 		D9F3E426222EA92B00834D16 /* BidMachineInstanceMediationSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineInstanceMediationSettings.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				D997F15E222FF20F00D973C8 /* BidMachineFactory.m */,
 				D997F15A222FF15F00D973C8 /* BidMachineFactory+Request.h */,
 				D997F15B222FF15F00D973C8 /* BidMachineFactory+Request.m */,
+				D9F3233B22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.h */,
+				D9F3233C22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.m */,
 				D9A0A6E6228EB43E00DF63B9 /* BidMachineConstants.h */,
 			);
 			path = Utils;
@@ -343,7 +348,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample-resources.sh",
-				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Internal/Common/MPAdBrowserController.xib",
+				"${PODS_ROOT}/TapjoySDK/TapjoySDK_iOS_v12.3.1/Libraries/Tapjoy.embeddedframework/Resources/TapjoyResources.bundle",
+				"${PODS_ROOT}/TapjoySDK/TapjoySDK_iOS_v12.3.1/Libraries/Tapjoy.embeddedframework/Tapjoy.framework/Versions/A/Resources/TapjoyResources.bundle",
 				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn.png",
 				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@2x.png",
 				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@3x.png",
@@ -369,7 +375,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdBrowserController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TapjoyResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@3x.png",
@@ -484,6 +490,7 @@
 				D997F15C222FF15F00D973C8 /* BidMachineFactory+Request.m in Sources */,
 				D997F15F222FF20F00D973C8 /* BidMachineFactory.m in Sources */,
 				D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */,
+				D9F3233D22F0777E0056EFB9 /* BidMachineFactory+HeaderBidding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
