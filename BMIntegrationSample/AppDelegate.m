@@ -34,11 +34,20 @@
 }
 
 - (NSDictionary <NSString *, id> *)bidMachineConfiguration {
-    return @{
-             @"seller_id" : @"1",
+    return @{@"seller_id" : @"1",
              @"test_mode" : @"true",
-             @"logging_enabled" : @"true"
-             };
+             @"logging_enabled" : @"true",
+             @"mediation_config": @[@{
+                                    @"ad_units": @[
+                         @{
+                @"placement_id": @"95298PL39048",
+                @"format": @"interstitial_static"
+            }
+                         ],
+            @"app_id": @"5a35a75845eaab51250070a5",
+            @"network": @"vungle",
+            @"network_class": @"BDMVungleAdNetwork"
+             }]};
 }
 
 @end
