@@ -96,7 +96,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                   @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -130,7 +130,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "banner_width": "320",
     "userId": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -166,7 +166,7 @@ With local extra data:
                                   @"ad_content_type": @"All",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -200,7 +200,7 @@ Servers extra data:
     "ad_content_type": "All",
     "userId": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -234,7 +234,7 @@ With local extra data:
                                   @"test_mode": @"true",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -267,7 +267,7 @@ Extra data from server:
     "test_mode": "true",
     "userId": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -285,5 +285,27 @@ Extra data from server:
         302.006,
         1002
     ]
+}
+```
+
+### Header Bidding
+
+To pass data for Header Bidding add to yours ***sdkConfig*** array of dictionaries with key "mediation_config":
+
+```
+@{ @"seller_id" : @"1",
+   @"test_mode" : @"true",
+   @"logging_enabled" : @"true",
+   @"mediation_config": @[@{
+                            @"ad_units": @[ @{
+                                              @"placement_id": @"95298PL39048",
+                                              @"format": @"interstitial_static"
+                                              }
+                                           ],
+                            @"app_id": @"5a35a75845eaab51250070a5",
+                            @"network": @"vungle",
+                            @"network_class": @"BDMVungleAdNetwork"
+                            }
+                          ]
 }
 ```
