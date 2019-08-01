@@ -58,7 +58,7 @@ If you want to transfer targeting information you can use custom event's propert
 Keys for ***localExtras*** are listed below (Banner and Interstitial):
 
 ```
-@"userId"   --> Vendor-specific ID for the user (NSString)
+@"user_id"   --> Vendor-specific ID for the user (NSString)
 @"gender"   --> User gender refer to OpenRTB 2.5 spec (kBDMUserGenderMale, kBDMUserGenderFemale, kBDMUserGenderUnknown)
 @"yob"      --> User year of birth (NSNumber)
 @"keywords" --> Comma separated list of keywords about the app (NSString)
@@ -94,7 +94,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"banner_width": @"320",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
                                   @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -106,7 +106,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -128,7 +128,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "logging_enabled": "true",
     "test_mode": "true",
     "banner_width": "320",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
     "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -140,7 +140,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -164,7 +164,7 @@ With local extra data:
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"ad_content_type": @"All",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
                                   @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -176,7 +176,7 @@ With local extra data:
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -198,7 +198,7 @@ Servers extra data:
     "logging_enabled": "true",
     "test_mode": "true",
     "ad_content_type": "All",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
     "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -210,7 +210,7 @@ Servers extra data:
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -232,7 +232,7 @@ With local extra data:
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
                                   @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -244,7 +244,7 @@ With local extra data:
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -265,7 +265,7 @@ Extra data from server:
     "coppa": "true",
     "logging_enabled": "true",
     "test_mode": "true",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
     "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
@@ -277,7 +277,7 @@ Extra data from server:
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -385,7 +385,7 @@ Config from MoPub dashboard should look like presented below:
   "logging_enabled": "true",
   "test_mode": "true",
   "banner_width": "320",
-  "userId": "user123",
+  "user_id": "user123",
   "gender": "F",
   "yob": 2000,
   "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
