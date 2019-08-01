@@ -66,7 +66,8 @@
         [targeting setDeviceLocation:location];
     }
     if (extraInfo) {
-        (!extraInfo[@"userId"]) ?: [targeting setUserId:(NSString *)extraInfo[@"userId"]];
+        NSString *userId = extraInfo[@"userId"] ?: extraInfo[@"user_id"];
+        (!userId) ?: [targeting setUserId:(NSString *)extraInfo[@"userId"]];
         (!extraInfo[@"gender"]) ?: [targeting setGender:[self userGenderSetting:extraInfo[@"gender"]]];
         (!extraInfo[@"yob"]) ?: [targeting setYearOfBirth:extraInfo[@"yob"]];
         (!extraInfo[@"keywords"]) ?: [targeting setKeywords:extraInfo[@"keywords"]];
