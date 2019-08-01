@@ -296,16 +296,204 @@ To pass data for Header Bidding add to yours ***sdkConfig*** array of dictionari
 @{ @"seller_id" : @"1",
    @"test_mode" : @"true",
    @"logging_enabled" : @"true",
-   @"mediation_config": @[@{
-                            @"ad_units": @[ @{
-                                              @"placement_id": @"95298PL39048",
-                                              @"format": @"interstitial_static"
-                                              }
-                                           ],
-                            @"app_id": @"5a35a75845eaab51250070a5",
-                            @"network": @"vungle",
-                            @"network_class": @"BDMVungleAdNetwork"
-                            }
-                          ]
+   @"mediation_config": @[
+    {
+      @"ad_units": @[
+        {
+          @"placement_id": @"95298PL39048",
+          @"format": @"interstitial_static"
+        }
+      ],
+      @"app_id": @"5a35a75845eaab51250070a5",
+      @"network": @"vungle",
+      @"network_class": @"BDMVungleAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        {
+          @"slot_id": @"287052",
+          @"format": @"interstitial_static"
+        },
+        {
+          @"slot_id": @"262713",
+          @"format": @"banner"
+        }
+      ],
+      @"network": @"my_target",
+      @"network_class": @"BDMMyTargetAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        @{
+          @"facebook_key": @"1419966511382477_2249153695130417",
+          @"format": @"banner"
+        },
+        @{
+          @"facebook_key": @"754722298026822_1251166031715777",
+          @"format": @"interstitial_static"
+        }
+      ],
+      @"app_id": @"754722298026822",
+      @"placement_ids": @[
+        @"754722298026822_1251166031715777",
+        @"1419966511382477_2249153695130417"
+      ],
+      "network": "facebook",
+      "network_class": "BDMFacebookAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        {
+          @"placement_name": @"video_without_cap_pb",
+          @"format": @"interstitial_video"
+        }
+      ],
+      @"sdk_key": @"6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw",
+      @"network": @"tapjoy",
+      @"network_class": @"BDMTapjoyAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        @{
+          @"format": @"rewarded_video",
+          @"zone_id": @"vzf07cd496be04483cad"
+        },
+        @{
+          @"format": @"interstitial_video",
+          @"zone_id": @"vz7fdef471647c416682"
+        }
+      ],
+      @"app_id": @"app327320f8ced14e61b2",
+      @"zones": @[
+        "vzf07cd496be04483cad",
+        "vz7fdef471647c416682"
+      ],
+      @"network": @"adcolony",
+      @"network_class": @"BDMAdColonyAdNetwork"
+    }
+  ]
+}
+```
+
+Config from MoPub dashboard should look like presented below:
+
+```
+{
+  "seller_id": "1",
+  "stid": "13241536",
+  "coppa": "true",
+  "logging_enabled": "true",
+  "test_mode": "true",
+  "banner_width": "320",
+  "userId": "user123",
+  "gender": "F",
+  "yob": 2000,
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "country": "Russia",
+  "city": "Kirov",
+  "zip": "610000",
+  "sturl": "https://store_url.com",
+  "paid": "true",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "application_1,application_2,application_3",
+  "price_floors": [
+    {
+      "id_1": 0.01
+    },
+    {
+      "id_2": "1.2"
+    },
+    {
+      "id_3": "20,04"
+    },
+    {
+      "id_4": 300.06
+    },
+    {
+      "id_5": 1000
+    },
+    "2",
+    "2.2",
+    "22,04",
+    302.006,
+    1002
+  ],
+  "mediation_config": [
+    {
+      "ad_units": [
+        {
+          "placement_id": "95298PL39048",
+          "format": "interstitial_static"
+        }
+      ],
+      "app_id": "5a35a75845eaab51250070a5",
+      "network": "vungle",
+      "network_class": "BDMVungleAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "slot_id": "287052",
+          "format": "interstitial_static"
+        },
+        {
+          "slot_id": "262713",
+          "format": "banner"
+        }
+      ],
+      "network": "my_target",
+      "network_class": "BDMMyTargetAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "facebook_key": "1419966511382477_2249153695130417",
+          "format": "banner"
+        },
+        {
+          "facebook_key": "754722298026822_1251166031715777",
+          "format": "interstitial_static"
+        }
+      ],
+      "app_id": "754722298026822",
+      "placement_ids": [
+        "754722298026822_1251166031715777",
+        "1419966511382477_2249153695130417"
+      ],
+      "network": "facebook",
+      "network_class": "BDMFacebookAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "placement_name": "video_without_cap_pb",
+          "format": "interstitial_video"
+        }
+      ],
+      "sdk_key": "6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw",
+      "network": "tapjoy",
+      "network_class": "BDMTapjoyAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "format": "rewarded_video",
+          "zone_id": "vzf07cd496be04483cad"
+        },
+        {
+          "format": "interstitial_video",
+          "zone_id": "vz7fdef471647c416682"
+        }
+      ],
+      "app_id": "app327320f8ced14e61b2",
+      "zones": [
+        "vzf07cd496be04483cad",
+        "vz7fdef471647c416682"
+      ],
+      "network": "adcolony",
+      "network_class": "BDMAdColonyAdNetwork"
+    }
+  ]
 }
 ```
