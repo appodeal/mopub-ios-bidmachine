@@ -497,3 +497,15 @@ Config from MoPub dashboard should look like presented below:
   ]
 }
 ```
+
+### Available ad types for Header Bidding
+
+You can pass constants that are listed below:
+
+* banner
+* interstitial_video
+* interstitial_static
+* interstitial
+* rewarded_video
+* rewarded_static
+* rewarded
