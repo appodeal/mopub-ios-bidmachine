@@ -67,6 +67,7 @@
     BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
     [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
     [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
+    [restrictions setConsentString: extras[@"consent_string"]];
     [restrictions setCoppa:[extras[@"coppa"] boolValue]];
     [[BDMSdk sharedSdk] setEnableLogging:[extras[@"logging_enabled"] boolValue]];
     return restrictions;

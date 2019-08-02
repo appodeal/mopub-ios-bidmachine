@@ -55,12 +55,13 @@ Yours implementation of initialization should look like this:
 ### Transfer targeting data to BidMachine
 
 If you want to transfer targeting information you can use custom event's property ***localExtras*** which represents dictionary.
-Keys for ***localExtras*** are listed below (Banner and Interstitial):
+Keys for ***localExtras*** are listed below:
 
 ```
 @"userId"   --> Vendor-specific ID for the user (NSString)
 @"gender"   --> User gender refer to OpenRTB 2.5 spec (kBDMUserGenderMale, kBDMUserGenderFemale, kBDMUserGenderUnknown)
 @"yob"      --> User year of birth (NSNumber)
+@"consent_string" --> The consent string for sending the GDPR consent (NSString)
 @"keywords" --> Comma separated list of keywords about the app (NSString)
 @"bcat"     --> Blocked advertiser categories using the IAB content categories. Refer to List 5.1 (NSArray <NSString *>)
 @"badv"     --> Block list of advertisers by their domains (e.g., “ford.com”) (NSArray <NSString *>)
@@ -91,6 +92,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
     NSDictionary *localExtras = @{
                                   @"seller_id": @"YOUR_SELLER_ID",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"banner_width": @"320",
@@ -125,6 +127,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
+    "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
     "logging_enabled": "true",
     "test_mode": "true",
     "banner_width": "320",
@@ -161,6 +164,7 @@ With local extra data:
     NSDictionary *localExtras = @{
                                   @"seller_id": @"YOUR_SELLER_ID",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"ad_content_type": @"All",
@@ -195,6 +199,7 @@ Servers extra data:
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
+    "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
     "logging_enabled": "true",
     "test_mode": "true",
     "ad_content_type": "All",
@@ -230,6 +235,7 @@ With local extra data:
     NSDictionary *localExtras = @{
                                   @"seller_id": @"YOUR_SELLER_ID",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"userId": @"user123",
@@ -263,6 +269,7 @@ Extra data from server:
 {
     "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
+    "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
     "logging_enabled": "true",
     "test_mode": "true",
     "userId": "user123",
@@ -287,3 +294,9 @@ Extra data from server:
     ]
 }
 ```
+
+##  Changelog
+
+### Version 1.1.1.1
+
+Passing of ***consent_string*** parameter into BidMachine SDK via MoPub's ***localExtras*** or MoPub dashboard.

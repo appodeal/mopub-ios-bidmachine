@@ -37,6 +37,7 @@
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"banner_width": @"320",
@@ -72,6 +73,7 @@
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"ad_content_type": @"All",
@@ -106,6 +108,7 @@
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
+                                  @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"userId": @"user123",
