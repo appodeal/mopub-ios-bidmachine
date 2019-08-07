@@ -4,11 +4,11 @@
 target 'BidMachine' do
     project 'BMIntegrationSample.xcodeproj'
     pod 'BidMachine', '~> 1.1'
-    pod 'mopub-ios-sdk'
+    pod 'mopub-ios-sdk', '5.7.1'
 end
 
 target 'BMIntegrationSample' do
     project 'BMIntegrationSample.xcodeproj'
-    pod 'mopub-ios-sdk'
+    pod 'mopub-ios-sdk', '5.7.1'
     pod 'BidMachine', '~> 1.1'
 end

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
                                         completion:(void(^)(void))completion;
 - (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation * _Nullable)location;
+- (BDMUserRestrictions *)setupUserRestrictionsWithExtraInfo:(NSDictionary *)extras;
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
 - (NSString *)transfromSellerID:(id)sellerId;
 
