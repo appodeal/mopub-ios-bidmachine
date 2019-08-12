@@ -28,22 +28,20 @@
         [self.adView removeFromSuperview];
     }
     // You can use test ad unit id - 1832ce06de91424f8f81f9f5c77f7efd - to test banner ad.
-    self.adView = [[MPAdView alloc] initWithAdUnitId:@"YOUR_AD_UNIT_ID"
-                                                size:MOPUB_BANNER_SIZE];
+    self.adView = [[MPAdView alloc] initWithAdUnitId:@"YOUR_AD_UNIT_ID"];
     self.adView.delegate = self;
-    self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
-                                   (self.view.bounds.size.height - MOPUB_BANNER_SIZE.height) / 3,
-                                   MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
+    CGSize adViewSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? kMPPresetMaxAdSize90Height : kMPPresetMaxAdSize50Height;
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+                                  @"endpoint" : @"some_url_endpoint",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -63,7 +61,7 @@
                                                     ]
                                   };
     [self.adView setLocalExtras:localExtras];
-    [self.adView loadAd];
+    [self.adView loadAdWithMaxAdSize:adViewSize];
 }
 
 - (IBAction)loadInterstitialButtonTapped:(id)sender {
@@ -74,12 +72,13 @@
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+                                  @"endpoint" : @"some_url_endpoint",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"ad_content_type": @"All",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -109,11 +108,12 @@
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+                                  @"endpoint" : @"some_url_endpoint",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"userId": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -139,8 +139,8 @@
     return self;
 }
 
-- (void)adViewDidLoadAd:(MPAdView *)view {
-    NSLog(@"Banner was loaded!");
+- (void)adViewDidLoadAd:(MPAdView *)view adSize:(CGSize)adSize{
+    NSLog(@"Banner was loaded! Banner width: %f, height: %f", adSize.width, adSize.height);
     [self.view addSubview:self.adView];
 }
 

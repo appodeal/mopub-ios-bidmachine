@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation * _Nullable)location;
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
 - (NSString *)transfromSellerID:(id)sellerId;
+- (NSURL *)transformEndpointURL:(id)endpoint;
 
 @end
 

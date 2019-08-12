@@ -58,7 +58,7 @@ If you want to transfer targeting information you can use custom event's propert
 Keys for ***localExtras*** are listed below:
 
 ```
-@"userId"   --> Vendor-specific ID for the user (NSString)
+@"user_id"   --> Vendor-specific ID for the user (NSString)
 @"gender"   --> User gender refer to OpenRTB 2.5 spec (kBDMUserGenderMale, kBDMUserGenderFemale, kBDMUserGenderUnknown)
 @"yob"      --> User year of birth (NSNumber)
 @"consent_string" --> The consent string for sending the GDPR consent (NSString)
@@ -96,9 +96,9 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"banner_width": @"320",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -108,7 +108,7 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -131,9 +131,9 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "logging_enabled": "true",
     "test_mode": "true",
     "banner_width": "320",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -143,7 +143,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -168,9 +168,9 @@ With local extra data:
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
                                   @"ad_content_type": @"All",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -180,7 +180,7 @@ With local extra data:
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -203,9 +203,9 @@ Servers extra data:
     "logging_enabled": "true",
     "test_mode": "true",
     "ad_content_type": "All",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -215,7 +215,7 @@ Servers extra data:
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -238,9 +238,9 @@ With local extra data:
                                   @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
-                                  @"userId": @"user123",
+                                  @"user_id": @"user123",
                                   @"gender": @"F",
-                                  @"yob": @"2000",
+                                  @"yob": @2000,
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
                                   @"country": @"USA",
                                   @"city": @"Los Angeles",
@@ -250,7 +250,7 @@ With local extra data:
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
                                   @"badv": @"https://domain_1.com,https://domain_2.org",
                                   @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
+                                  @"price_floors": @[@{
                                                         @"id_1": @300.06
                                                         }, @{
                                                         @"id_2": @1000
@@ -272,9 +272,9 @@ Extra data from server:
     "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
     "logging_enabled": "true",
     "test_mode": "true",
-    "userId": "user123",
+    "user_id": "user123",
     "gender": "F",
-    "yob": "2000",
+    "yob": 2000,
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
     "country": "USA",
     "city": "Los Angeles",
@@ -284,7 +284,7 @@ Extra data from server:
     "bcat": "IAB-1,IAB-3,IAB-5",
     "badv": "https://domain_1.com,https://domain_2.org",
     "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-    "priceFloors": [{
+    "price_floors": [{
             "id_1": 300.06
         }, {
             "id_2": 1000
@@ -295,6 +295,227 @@ Extra data from server:
 }
 ```
 
+### Header Bidding
+
+To pass data for Header Bidding add to yours ***sdkConfig*** array of dictionaries with key "mediation_config":
+
+```
+@{ @"seller_id" : @"1",
+   @"test_mode" : @"true",
+   @"logging_enabled" : @"true",
+   @"mediation_config": @[
+    {
+      @"ad_units": @[
+        {
+          @"placement_id": @"95298PL39048",
+          @"format": @"interstitial_static"
+        }
+      ],
+      @"app_id": @"5a35a75845eaab51250070a5",
+      @"network": @"vungle",
+      @"network_class": @"BDMVungleAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        {
+          @"slot_id": @"287052",
+          @"format": @"interstitial_static"
+        },
+        {
+          @"slot_id": @"262713",
+          @"format": @"banner"
+        }
+      ],
+      @"network": @"my_target",
+      @"network_class": @"BDMMyTargetAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        @{
+          @"facebook_key": @"1419966511382477_2249153695130417",
+          @"format": @"banner"
+        },
+        @{
+          @"facebook_key": @"754722298026822_1251166031715777",
+          @"format": @"interstitial_static"
+        }
+      ],
+      @"app_id": @"754722298026822",
+      @"placement_ids": @[
+        @"754722298026822_1251166031715777",
+        @"1419966511382477_2249153695130417"
+      ],
+      "network": "facebook",
+      "network_class": "BDMFacebookAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        {
+          @"placement_name": @"video_without_cap_pb",
+          @"format": @"interstitial_video"
+        }
+      ],
+      @"sdk_key": @"6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw",
+      @"network": @"tapjoy",
+      @"network_class": @"BDMTapjoyAdNetwork"
+    },
+    @{
+      @"ad_units": @[
+        @{
+          @"format": @"rewarded_video",
+          @"zone_id": @"vzf07cd496be04483cad"
+        },
+        @{
+          @"format": @"interstitial_video",
+          @"zone_id": @"vz7fdef471647c416682"
+        }
+      ],
+      @"app_id": @"app327320f8ced14e61b2",
+      @"zones": @[
+        "vzf07cd496be04483cad",
+        "vz7fdef471647c416682"
+      ],
+      @"network": @"adcolony",
+      @"network_class": @"BDMAdColonyAdNetwork"
+    }
+  ]
+}
+```
+
+Config from MoPub dashboard should look like presented below:
+
+```
+{
+  "seller_id": "1",
+  "stid": "13241536",
+  "coppa": "true",
+  "logging_enabled": "true",
+  "test_mode": "true",
+  "banner_width": "320",
+  "user_id": "user123",
+  "gender": "F",
+  "yob": 2000,
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "country": "Russia",
+  "city": "Kirov",
+  "zip": "610000",
+  "sturl": "https://store_url.com",
+  "paid": "true",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "application_1,application_2,application_3",
+  "price_floors": [
+    {
+      "id_1": 0.01
+    },
+    {
+      "id_2": "1.2"
+    },
+    {
+      "id_3": "20,04"
+    },
+    {
+      "id_4": 300.06
+    },
+    {
+      "id_5": 1000
+    },
+    "2",
+    "2.2",
+    "22,04",
+    302.006,
+    1002
+  ],
+  "mediation_config": [
+    {
+      "ad_units": [
+        {
+          "placement_id": "95298PL39048",
+          "format": "interstitial_static"
+        }
+      ],
+      "app_id": "5a35a75845eaab51250070a5",
+      "network": "vungle",
+      "network_class": "BDMVungleAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "slot_id": "287052",
+          "format": "interstitial_static"
+        },
+        {
+          "slot_id": "262713",
+          "format": "banner"
+        }
+      ],
+      "network": "my_target",
+      "network_class": "BDMMyTargetAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "facebook_key": "1419966511382477_2249153695130417",
+          "format": "banner"
+        },
+        {
+          "facebook_key": "754722298026822_1251166031715777",
+          "format": "interstitial_static"
+        }
+      ],
+      "app_id": "754722298026822",
+      "placement_ids": [
+        "754722298026822_1251166031715777",
+        "1419966511382477_2249153695130417"
+      ],
+      "network": "facebook",
+      "network_class": "BDMFacebookAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "placement_name": "video_without_cap_pb",
+          "format": "interstitial_video"
+        }
+      ],
+      "sdk_key": "6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw",
+      "network": "tapjoy",
+      "network_class": "BDMTapjoyAdNetwork"
+    },
+    {
+      "ad_units": [
+        {
+          "format": "rewarded_video",
+          "zone_id": "vzf07cd496be04483cad"
+        },
+        {
+          "format": "interstitial_video",
+          "zone_id": "vz7fdef471647c416682"
+        }
+      ],
+      "app_id": "app327320f8ced14e61b2",
+      "zones": [
+        "vzf07cd496be04483cad",
+        "vz7fdef471647c416682"
+      ],
+      "network": "adcolony",
+      "network_class": "BDMAdColonyAdNetwork"
+    }
+  ]
+}
+```
+
+### Available ad types for Header Bidding
+
+You can pass constants that are listed below:
+
+* banner
+* interstitial_video
+* interstitial_static
+* interstitial
+* rewarded_video
+* rewarded_static
+* rewarded
 ##  Changelog
 
 ### Version 1.1.1.1

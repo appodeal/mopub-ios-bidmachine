@@ -35,7 +35,7 @@
         NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
         [extraInfo addEntriesFromDictionary:info];
         
-        NSArray *priceFloors = extraInfo[@"priceFloors"];
+        NSArray *priceFloors = extraInfo[@"priceFloors"] ?: extraInfo[@"price_floors"];
         BDMBannerRequest *request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
                                                                                         extraInfo:extraInfo
                                                                                          location:weakSelf.delegate.location

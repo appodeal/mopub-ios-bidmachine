@@ -8,6 +8,7 @@
 
 #import "BidMachineFactory.h"
 #import "BidMachineConstants.h"
+#import "BidMachineFactory+HeaderBidding.h"
 
 
 #if __has_include(<MoPub/MoPub.h>)
@@ -39,6 +40,7 @@
 - (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
                                         completion:(void(^)(void))completion {
     NSString *sellerID = [self transfromSellerID:info[kBidMachineSellerId]];
+    NSURL *endpointURL = [self transformEndpointURL:info[@"endpoint"]];
     if ([sellerID isKindOfClass:NSString.class] &&
         ![self.currentSellerId isEqualToString:sellerID]) {
         self.currentSellerId = sellerID;
@@ -47,7 +49,9 @@
         BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
         
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+        config.networkConfigurations = [[BidMachineFactory sharedFactory] adNetworkConfigFromDict:info];
         [config setTestMode:testModeEnabled];
+        [config setBaseURL:endpointURL];
         
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
         [[BDMSdk sharedSdk] startSessionWithSellerID:self.currentSellerId
@@ -64,7 +68,8 @@
         [targeting setDeviceLocation:location];
     }
     if (extraInfo) {
-        (!extraInfo[@"userId"]) ?: [targeting setUserId:(NSString *)extraInfo[@"userId"]];
+        NSString *userId = extraInfo[@"userId"] ?: extraInfo[@"user_id"];
+        (!userId) ?: [targeting setUserId:userId];
         (!extraInfo[@"gender"]) ?: [targeting setGender:[self userGenderSetting:extraInfo[@"gender"]]];
         (!extraInfo[@"yob"]) ?: [targeting setYearOfBirth:extraInfo[@"yob"]];
         (!extraInfo[@"keywords"]) ?: [targeting setKeywords:extraInfo[@"keywords"]];
@@ -124,6 +129,16 @@
         stringSellerId = [sellerId stringValue];
     }
     return stringSellerId;
+}
+
+- (NSURL *)transformEndpointURL:(id)endpoint {
+    NSURL *endpointURL;
+    if ([endpoint isKindOfClass:NSURL.class]) {
+        endpointURL = endpoint;
+    } else if ([endpoint isKindOfClass:NSString.class]) {
+        endpointURL = [NSURL URLWithString:endpoint];
+    }
+    return endpointURL;
 }
 
 @end

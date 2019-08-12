@@ -34,7 +34,7 @@
         NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
         [extraInfo addEntriesFromDictionary:info];
         
-        NSArray *priceFloors = extraInfo[@"priceFloors"];
+        NSArray *priceFloors = extraInfo[@"priceFloors"] ?: extraInfo[@"price_floors"];
         BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithExtraInfo:extraInfo
                                                                                                      location:weakSelf.delegate.location
                                                                                                   priceFloors:priceFloors];

@@ -9,6 +9,8 @@
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineConstants.h"
 #import "BidMachineFactory.h"
+#import "BidMachineFactory+HeaderBidding.h"
+#import <BidMachine/BDMAdNetworkConfiguration.h>
 
 
 @implementation BidMachineAdapterConfiguration
@@ -16,7 +18,7 @@
 #pragma mark - MPAdapterConfiguration
 
 - (NSString *)adapterVersion {
-    return @"1.1.1.1";
+    return @"1.3.0.0";
 }
 
 - (NSString *)biddingToken {
@@ -34,11 +36,14 @@
 - (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
                                   complete:(void (^)(NSError *))complete {
     NSString *sellerId = [[BidMachineFactory sharedFactory] transfromSellerID:configuration[kBidMachineSellerId]];
+    NSURL *endpointURL = [[BidMachineFactory sharedFactory] transformEndpointURL:configuration[@"endpoint"]];
     BOOL testModeEnabled = [configuration[kBidMachineTestMode] boolValue];
     BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+        config.networkConfigurations = [[BidMachineFactory sharedFactory] adNetworkConfigFromDict:configuration];
         [config setTestMode:testModeEnabled];
+        [config setBaseURL:endpointURL];
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
             MPLogInfo(@"BidMachine SDK was successfully initialized!");
