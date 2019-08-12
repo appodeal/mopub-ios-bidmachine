@@ -20,12 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // You can use test ad unit id - 1832ce06de91424f8f81f9f5c77f7efd - for application initialization.
-    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"YOUR_AD_UNIT_ID"];
+#warning Ad Unit
+    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:@"1832ce06de91424f8f81f9f5c77f7efd"]; // @"YOUR_AD_UNIT_ID"];
     [sdkConfig setNetworkConfiguration:self.bidMachineConfiguration forMediationAdapter:@"BidMachineAdapterConfiguration"];
     sdkConfig.additionalNetworks = @[ NSClassFromString(@"BidMachineAdapterConfiguration") ];
     sdkConfig.loggingLevel = MPBLogLevelDebug;
     
-    [[MoPub sharedInstance] grantConsent];
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
         NSLog(@"SDK initialization complete");
     }];
@@ -34,21 +34,12 @@
 }
 
 - (NSDictionary <NSString *, id> *)bidMachineConfiguration {
-    return @{@"seller_id" : @"1",
+    return @{
+             @"seller_id" : @"5",
              @"test_mode" : @"true",
              @"logging_enabled" : @"true",
-             @"endpoint" : @"some_url_endpoint",
-             @"mediation_config": @[@{
-                                    @"ad_units": @[
-                         @{
-                @"placement_id": @"95298PL39048",
-                @"format": @"interstitial_static"
-            }
-                         ],
-            @"app_id": @"5a35a75845eaab51250070a5",
-            @"network": @"vungle",
-            @"network_class": @"BDMVungleAdNetwork"
-             }]};
+             @"endpoint" : @"https://api.appodealx.com"
+             };
 }
 
 @end
