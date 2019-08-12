@@ -44,12 +44,11 @@
         self.currentSellerId = sellerID;
         
         BOOL testModeEnabled = [info[kBidMachineTestMode] boolValue];
-        BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
         
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
         
-        [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
+        [[BDMSdk sharedSdk] setRestrictions:[[BidMachineFactory sharedFactory] setupUserRestrictionsWithExtraInfo:info]];
         [[BDMSdk sharedSdk] startSessionWithSellerID:self.currentSellerId
                                        configuration:config
                                           completion:completion];
@@ -79,6 +78,16 @@
         (!extraInfo[@"paid"]) ?: [targeting setPaid:[extraInfo[@"paid"] boolValue]];
     }
     return targeting;
+}
+
+- (BDMUserRestrictions *)setupUserRestrictionsWithExtraInfo:(NSDictionary *)extras {
+    BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
+    [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
+    [restrictions setSubjectToGDPR:[self subjectToGDPR]];
+    [restrictions setConsentString: extras[@"consent_string"]];
+    [restrictions setCoppa:[extras[@"coppa"] boolValue]];
+    [[BDMSdk sharedSdk] setEnableLogging:[extras[@"logging_enabled"] boolValue]];
+    return restrictions;
 }
 
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors {
@@ -124,6 +133,14 @@
         stringSellerId = [sellerId stringValue];
     }
     return stringSellerId;
+}
+
+- (BOOL)subjectToGDPR {
+    MPBool gdpr = [[MoPub sharedInstance] isGDPRApplicable];
+    switch (gdpr) {
+        case MPBoolYes: return YES; break;
+        default: return NO; break;
+    }
 }
 
 @end

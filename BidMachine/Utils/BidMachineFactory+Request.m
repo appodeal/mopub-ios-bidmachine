@@ -36,7 +36,6 @@
         default: bannerAdSize = BDMBannerAdSizeUnknown;   break;
     }
     [request setAdSize:bannerAdSize];
-    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
     [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
     [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
@@ -47,7 +46,6 @@
                                                  priceFloors:(NSArray *)priceFloors {
     BDMInterstitialRequest *request = [BDMInterstitialRequest new];
     [request setType:[self setupInterstitialAdType:extraInfo[@"ad_content_type"]]];
-    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
     [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
     [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
@@ -57,20 +55,9 @@
                                             location:(CLLocation *)location
                                          priceFloors:(NSArray *)priceFloors {
     BDMRewardedRequest *request = [BDMRewardedRequest new];
-    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
     [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
     [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
-}
-
-- (BDMUserRestrictions *)setupUserRestrictionsWithExtraInfo:(NSDictionary *)extras {
-    BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
-    [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
-    [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
-    [restrictions setConsentString: extras[@"consent_string"]];
-    [restrictions setCoppa:[extras[@"coppa"] boolValue]];
-    [[BDMSdk sharedSdk] setEnableLogging:[extras[@"logging_enabled"] boolValue]];
-    return restrictions;
 }
 
 - (BDMFullscreenAdType)setupInterstitialAdType:(NSString *)string {

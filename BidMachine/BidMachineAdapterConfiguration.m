@@ -16,7 +16,7 @@
 #pragma mark - MPAdapterConfiguration
 
 - (NSString *)adapterVersion {
-    return @"1.1.1.1";
+    return @"1.1.1.2";
 }
 
 - (NSString *)biddingToken {
@@ -35,11 +35,10 @@
                                   complete:(void (^)(NSError *))complete {
     NSString *sellerId = [[BidMachineFactory sharedFactory] transfromSellerID:configuration[kBidMachineSellerId]];
     BOOL testModeEnabled = [configuration[kBidMachineTestMode] boolValue];
-    BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
-        [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
+        [[BDMSdk sharedSdk] setRestrictions:[[BidMachineFactory sharedFactory] setupUserRestrictionsWithExtraInfo:configuration]];
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
             MPLogInfo(@"BidMachine SDK was successfully initialized!");
             if (complete) {
