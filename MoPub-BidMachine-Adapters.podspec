@@ -26,7 +26,7 @@ limitations under the License.
 
   spec.source_files = 'BidMachine/**/*.{h,m}'
   spec.static_framework = true
-  spec.dependency 'BidMachine', '1.1.1'
-  spec.dependency 'mopub-ios-sdk', '5.7.1'
+  spec.dependency 'BidMachine', '1.3.0'
+  spec.dependency 'mopub-ios-sdk', '5.8.0'
 
 end
