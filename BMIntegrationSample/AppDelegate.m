@@ -20,8 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // You can use test ad unit id - 1832ce06de91424f8f81f9f5c77f7efd - for application initialization.
-#warning Ad Unit
-    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:@"1832ce06de91424f8f81f9f5c77f7efd"]; // @"YOUR_AD_UNIT_ID"];
+//    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:@"1832ce06de91424f8f81f9f5c77f7efd"];
+    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:@"YOUR_AD_UNIT_ID"];
     [sdkConfig setNetworkConfiguration:self.bidMachineConfiguration forMediationAdapter:@"BidMachineAdapterConfiguration"];
     sdkConfig.additionalNetworks = @[ NSClassFromString(@"BidMachineAdapterConfiguration") ];
     sdkConfig.loggingLevel = MPBLogLevelDebug;

@@ -26,22 +26,16 @@
 @implementation BidMachineAdapterUtils (Request)
 
 
-- (BDMBannerRequest *)bannerRequestWithSize:(CGSize)size
+- (BDMBannerRequest *)bannerRequestWithSize:(BDMBannerAdSize)size
                                   extraInfo:(NSDictionary *)extraInfo
                                    location:(CLLocation *)location
                                 priceFloors:(NSArray *)priceFloors {
     BDMBannerRequest *request = [BDMBannerRequest new];
-    BDMBannerAdSize bannerAdSize;
-    switch ((int)size.width) {
-        case 300: bannerAdSize = BDMBannerAdSize300x250;  break;
-        case 320: bannerAdSize = BDMBannerAdSize320x50;   break;
-        case 728: bannerAdSize = BDMBannerAdSize728x90;   break;
-        default: bannerAdSize = BDMBannerAdSizeUnknown;   break;
-    }
+    
     BDMTargeting *targeting = [BidMachineAdapterTransformers targetingFromExtraInfo:extraInfo location:location];
     NSArray <BDMPriceFloor *> *_priceFloors = [BidMachineAdapterTransformers priceFloorsFromArray:priceFloors];
     
-    [request setAdSize:bannerAdSize];
+    [request setAdSize:size];
     [request setTargeting:targeting];
     [request setPriceFloors:_priceFloors];
     

@@ -125,6 +125,16 @@
     return networkConfigurations;
 }
 
++ (BDMBannerAdSize)bannerSizeFromCGSize:(CGSize)size {
+    BDMBannerAdSize bannerAdSize;
+    switch ((int)size.width) {
+        case 300: bannerAdSize = BDMBannerAdSize300x250;  break;
+        case 728: bannerAdSize = BDMBannerAdSize728x90;   break;
+        default: bannerAdSize = BDMBannerAdSize320x50;   break;
+    }
+    return bannerAdSize;
+}
+
 #pragma mark - Private
 
 + (BDMUserGender *)userGenderFromValue:(NSString *)gender {

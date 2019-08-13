@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BidMachineAdapterUtils (Request)
 
-- (BDMBannerRequest *)bannerRequestWithSize:(CGSize)size
+- (BDMBannerRequest *)bannerRequestWithSize:(BDMBannerAdSize)size
                                   extraInfo:(NSDictionary *)extraInfo
                                    location:(CLLocation *)location
                                 priceFloors:(NSArray *)priceFloors;

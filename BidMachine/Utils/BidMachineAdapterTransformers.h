@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSURL *)endpointUrlFromValue:(id)value;
 + (BDMFullscreenAdType)interstitialAdTypeFromString:(NSString *)string;
 + (NSArray <BDMAdNetworkConfiguration *> *)adNetworkConfigFromDict:(NSDictionary *)dict;
++ (BDMBannerAdSize)bannerSizeFromCGSize:(CGSize)size;
 
 @end
 

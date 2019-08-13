@@ -64,7 +64,6 @@
     [config setTestMode:testModeEnabled];
     endpointURL ? [config setBaseURL:endpointURL] : nil;
     headerBiddingConfig.count ? [config setNetworkConfigurations:headerBiddingConfig] : nil;
-
     
     [sdk setEnableLogging:loggingEnabled];
     [sdk setRestrictions:restrictions];
