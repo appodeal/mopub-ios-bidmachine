@@ -1,30 +1,113 @@
 PODS:
-  - BidMachine (1.1.1)
-  - mopub-ios-sdk (5.7.1):
-    - mopub-ios-sdk/MoPubSDK (= 5.7.1)
-  - mopub-ios-sdk/Avid (5.7.1):
+  - AdColony (3.3.8.1)
+  - BidMachine (1.3.0):
+    - BidMachine/Core (= 1.3.0)
+  - BidMachine/AdColonyAdapter (1.3.0):
+    - AdColony (~> 3.3)
+    - BidMachine/Core
+  - BidMachine/Core (1.3.0):
+    - Protobuf (~> 3.9)
+    - StackIAB (~> 0.5.0)
+    - StackModules (~> 0.6.3)
+  - BidMachine/FacebookAdapter (1.3.0):
+    - BidMachine/Core
+    - FBAudienceNetwork (~> 5.4)
+  - BidMachine/MyTargetAdapter (1.3.0):
+    - BidMachine/Core
+    - myTargetSDK (~> 5.3)
+  - BidMachine/TapjoyAdapter (1.3.0):
+    - BidMachine/Core
+    - TapjoySDK (~> 12.3)
+  - BidMachine/VungleAdapter (1.3.0):
+    - BidMachine/Core
+    - VungleSDK-iOS (~> 6.3)
+  - FBAudienceNetwork (5.4.0)
+  - mopub-ios-sdk (5.8.0):
+    - mopub-ios-sdk/MoPubSDK (= 5.8.0)
+  - mopub-ios-sdk/Avid (5.8.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (5.7.1)
-  - mopub-ios-sdk/Moat (5.7.1):
+  - mopub-ios-sdk/Core (5.8.0)
+  - mopub-ios-sdk/Moat (5.8.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (5.7.1):
+  - mopub-ios-sdk/MoPubSDK (5.8.0):
     - mopub-ios-sdk/Avid
     - mopub-ios-sdk/Core
     - mopub-ios-sdk/Moat
+  - myTargetSDK (5.3.3)
+  - Protobuf (3.9.0)
+  - StackIAB (0.5.2):
+    - StackIAB/StackMRAIDKit (= 0.5.2)
+    - StackIAB/StackNASTKit (= 0.5.2)
+    - StackIAB/StackRichMedia (= 0.5.2)
+    - StackIAB/StackVASTAssets (= 0.5.2)
+    - StackIAB/StackVASTKit (= 0.5.2)
+    - StackIAB/StackVideoPlayer (= 0.5.2)
+    - StackIAB/StackXML (= 0.5.2)
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackMRAIDKit (0.5.2):
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackNASTKit (0.5.2):
+    - StackIAB/StackVASTKit
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackRichMedia (0.5.2):
+    - StackIAB/StackVASTAssets
+    - StackIAB/StackVideoPlayer
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackVASTAssets (0.5.2):
+    - StackIAB/StackXML
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackVASTKit (0.5.2):
+    - StackIAB/StackMRAIDKit
+    - StackIAB/StackVASTAssets
+    - StackIAB/StackVideoPlayer
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackVideoPlayer (0.5.2):
+    - StackModules (~> 0.6.3)
+  - StackIAB/StackXML (0.5.2):
+    - StackModules (~> 0.6.3)
+  - StackModules (0.6.6):
+    - StackModules/StackUIKit (= 0.6.6)
+  - StackModules/StackFoundation (0.6.6)
+  - StackModules/StackUIKit (0.6.6):
+    - StackModules/StackFoundation
+  - TapjoySDK (12.3.1)
+  - VungleSDK-iOS (6.3.2)
 
 DEPENDENCIES:
-  - BidMachine (~> 1.1)
+  - BidMachine (= 1.3.0)
+  - BidMachine/AdColonyAdapter (= 1.3.0)
+  - BidMachine/FacebookAdapter (= 1.3.0)
+  - BidMachine/MyTargetAdapter (= 1.3.0)
+  - BidMachine/TapjoyAdapter (= 1.3.0)
+  - BidMachine/VungleAdapter (= 1.3.0)
   - mopub-ios-sdk
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/appodeal/CocoaPods.git:
     - BidMachine
+    - FBAudienceNetwork
+    - StackIAB
+    - StackModules
+  https://github.com/cocoapods/specs.git:
+    - AdColony
     - mopub-ios-sdk
+    - myTargetSDK
+    - Protobuf
+    - TapjoySDK
+    - VungleSDK-iOS
 
 SPEC CHECKSUMS:
-  BidMachine: d4742ae6c049edba0df0397c3f6d36a768c21819
-  mopub-ios-sdk: b1167e8c86afaccd37d484828c4ad2c3c1656a32
+  AdColony: 21c9cdcc780854d406e213cb1e5ef9f2b165cca3
+  BidMachine: 824a31d77ec7256e6e1d40cf4ac30d8a7c22ce06
+  FBAudienceNetwork: d139bc387b26f018bedef8f5a75e7affae0bc77d
+  mopub-ios-sdk: b63e15803e70b92d0b51c3e1c49bbcd78cd3d1d5
+  myTargetSDK: e63e4e5be9e8dd714339df9ade73059bf3a3d385
+  Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  StackIAB: 1ed16132c93eb86e9b01cf4dae60e82eb952aaf6
+  StackModules: 1aaf237a520de33a13e151fcb467f4ed3cea3f16
+  TapjoySDK: 753e103874719a63dd37c479bd8046db3c274cd6
+  VungleSDK-iOS: 69a7f407b60281d2954ffc5eeeac349fbfed51d6
 
-PODFILE CHECKSUM: 6fccff397baa6b72f2fa111408eb6619b5ecab9e
+PODFILE CHECKSUM: 4d8bc672bc4d3a673510141d5c7c29e064ef08ab
 
 COCOAPODS: 1.6.1

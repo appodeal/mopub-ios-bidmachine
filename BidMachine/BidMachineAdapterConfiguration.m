@@ -8,7 +8,8 @@
 
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineConstants.h"
-#import "BidMachineFactory.h"
+#import "BidMachineAdapterUtils.h"
+#import <BidMachine/BDMAdNetworkConfiguration.h>
 
 
 @implementation BidMachineAdapterConfiguration
@@ -16,7 +17,7 @@
 #pragma mark - MPAdapterConfiguration
 
 - (NSString *)adapterVersion {
-    return @"1.1.1.2";
+    return @"1.3.0.0";
 }
 
 - (NSString *)biddingToken {
@@ -33,35 +34,13 @@
 
 - (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
                                   complete:(void (^)(NSError *))complete {
-    NSString *sellerId = [[BidMachineFactory sharedFactory] transfromSellerID:configuration[kBidMachineSellerId]];
-    BOOL testModeEnabled = [configuration[kBidMachineTestMode] boolValue];
-    if (sellerId) {
-        BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-        [config setTestMode:testModeEnabled];
-        [[BDMSdk sharedSdk] setRestrictions:[[BidMachineFactory sharedFactory] setupUserRestrictionsWithExtraInfo:configuration]];
-        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
+    [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:configuration completion:^(NSError *error) {
+        error ?
+            MPLogEvent([MPLogEvent error:error message:nil]) :
             MPLogInfo(@"BidMachine SDK was successfully initialized!");
-            if (complete) {
-                complete(nil);
-            }
-        }];
-    } else {
-        NSError * error = [NSError errorWithDomain:kAdapterErrorDomain
-                                              code:BidMachineAdapterErrorCodeMissingSellerId
-                                          userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
-        MPLogEvent([MPLogEvent error:error message:nil]);
-        if (complete) {
-            complete(error);
-        }
-    }
-}
-
-+ (void)updateInitializationParameters:(NSDictionary *)parameters {
-    NSString * sellerId = parameters[kBidMachineSellerId];
-    if (sellerId) {
-        NSDictionary * configuration = @{ kBidMachineSellerId: sellerId };
-        [BidMachineAdapterConfiguration setCachedInitializationParameters:configuration];
-    }
+        
+        complete ? complete(error) : nil;
+    }];
 }
 
 @end
