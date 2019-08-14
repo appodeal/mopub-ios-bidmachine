@@ -4,6 +4,31 @@ This folder contains mediation adapters used to mediate BidMachine.
 
 ## Getting Started
 
+### Installation
+
+Add following lines into your project Podfile
+
+```ruby
+target 'Target' do
+  project 'Project.xcodeproj'
+  pod 'MoPub-BidMachine-Adapters', '~> 1.3'
+end
+```
+
+> *Note* If you want to use BidMachine Header Bidding, please, also add following lines
+
+```ruby
+target 'Target' do
+  project 'Project.xcodeproj'
+  pod 'MoPub-BidMachine-Adapters', '~> 1.3'
+  pod "BidMachine/VungleAdapter"
+  pod "BidMachine/TapjoyAdapter"
+  pod "BidMachine/MyTargetAdapter"
+  pod "BidMachine/FacebookAdapter"
+  pod "BidMachine/AdColonyAdapter"
+end
+```
+
 ### Initialization parameters
 
 To initialize BidMachine set your's seller id in MPMoPubConfiguration:
