@@ -21,11 +21,7 @@ end
 target 'Target' do
   project 'Project.xcodeproj'
   pod 'MoPub-BidMachine-Adapters', '~> 1.3'
-  pod "BidMachine/VungleAdapter"
-  pod "BidMachine/TapjoyAdapter"
-  pod "BidMachine/MyTargetAdapter"
-  pod "BidMachine/FacebookAdapter"
-  pod "BidMachine/AdColonyAdapter"
+  pod "BidMachine/Adapters"
 end
 ```
 
