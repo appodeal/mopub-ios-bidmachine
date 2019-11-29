@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Base" customModule="AdMobBidMachineSample" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-BB-41w">
+                    <rect key="frame" x="0.0" y="44" width="207" height="154"/>
+                    <state key="normal" title="Load Ad"/>
+                    <connections>
+                        <action selector="loadAd:" destination="-1" eventType="touchUpInside" id="Xdv-vJ-Mvt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar7-96-az2">
+                    <rect key="frame" x="207" y="44" width="207" height="154"/>
+                    <state key="normal" title="ShowAd"/>
+                    <connections>
+                        <action selector="showAd:" destination="-1" eventType="touchUpInside" id="ZdK-wc-IJ7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ar7-96-az2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="FNE-lC-LcF"/>
+                <constraint firstItem="EGG-BB-41w" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GOo-S6-Bj8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ar7-96-az2" secondAttribute="bottom" id="I8B-U2-WUm"/>
+                <constraint firstItem="ar7-96-az2" firstAttribute="width" secondItem="EGG-BB-41w" secondAttribute="width" id="RHZ-0o-eF3"/>
+                <constraint firstItem="EGG-BB-41w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VFv-G9-K95"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ar7-96-az2" secondAttribute="trailing" id="Y9I-9m-FuA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EGG-BB-41w" secondAttribute="bottom" id="lEu-KS-ndL"/>
+                <constraint firstItem="ar7-96-az2" firstAttribute="leading" secondItem="EGG-BB-41w" secondAttribute="trailing" id="r5Q-5p-fP8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-103.125"/>
+        </view>
+    </objects>
+</document>

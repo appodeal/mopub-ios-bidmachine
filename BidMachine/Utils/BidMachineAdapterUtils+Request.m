@@ -70,4 +70,17 @@
     return request;
 }
 
+- (BDMNativeAdRequest *)nativeAdRequestWithExtraInfo:(NSDictionary *)extraInfo
+                                            location:(CLLocation *)location
+                                         priceFloors:(NSArray *)priceFloors {
+    BDMNativeAdRequest *request = [BDMNativeAdRequest new];
+    BDMTargeting *targeting = [BidMachineAdapterTransformers targetingFromExtraInfo:extraInfo location:location];
+    NSArray <BDMPriceFloor *> *_priceFloors = [BidMachineAdapterTransformers priceFloorsFromArray:priceFloors];
+    
+    [request setTargeting:targeting];
+    [request setPriceFloors:_priceFloors];
+    
+    return request;
+}
+
 @end

@@ -3,16 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1D04BFD365183CFCAC43E69F /* libPods-BidMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3E461222FAFB300834D16 /* libPods-BidMachine.a */; };
 		42B176BD23017FE8002228C5 /* BidMachineAdapterTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B176BC23017FE8002228C5 /* BidMachineAdapterTransformers.m */; };
+		6528D635238D2B0400CA4B30 /* NativeAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6528D634238D2B0400CA4B30 /* NativeAdView.m */; };
+		65693AF12390F700007B0D33 /* BaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65693AEE2390F700007B0D33 /* BaseView.xib */; };
+		65693AF22390F700007B0D33 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AEF2390F700007B0D33 /* Base.m */; };
+		65693AFB2390F740007B0D33 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AF32390F73F007B0D33 /* Native.m */; };
+		65693AFC2390F740007B0D33 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AF42390F73F007B0D33 /* Banner.m */; };
+		65693AFD2390F740007B0D33 /* Interstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AF92390F740007B0D33 /* Interstitial.m */; };
+		65693AFE2390F740007B0D33 /* Rewarded.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AFA2390F740007B0D33 /* Rewarded.m */; };
+		65693B022390F78A007B0D33 /* NativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693B002390F78A007B0D33 /* NativeAdRenderer.m */; };
+		65BA8E4223856FD60007F298 /* BidMachineNativeAdCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E4123856FD60007F298 /* BidMachineNativeAdCustomEvent.m */; };
+		65BA8E45238574CB0007F298 /* BidMachineNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E44238574CB0007F298 /* BidMachineNativeAdAdapter.m */; };
+		65BA8E4823857C6D0007F298 /* BidMachineNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E4723857C6D0007F298 /* BidMachineNativeAdRenderer.m */; };
+		65EE3D26238E73ED00F105A0 /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65EE3D25238E73ED00F105A0 /* NativeAdView.xib */; };
 		D92C0BAF2229627B00481C79 /* libBidMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D961910D2229588E0057C11A /* libBidMachine.a */; };
 		D92C0BB222297B7400481C79 /* BidMachineBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0BB122297B7400481C79 /* BidMachineBannerCustomEvent.m */; };
 		D96190F5222957C50057C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D96190F4222957C50057C11A /* AppDelegate.m */; };
-		D96190F8222957C50057C11A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96190F7222957C50057C11A /* ViewController.m */; };
 		D96190FB222957C50057C11A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96190F9222957C50057C11A /* Main.storyboard */; };
 		D96190FD222957C60057C11A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96190FC222957C60057C11A /* Assets.xcassets */; };
 		D9619100222957C60057C11A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96190FE222957C60057C11A /* LaunchScreen.storyboard */; };
@@ -47,6 +58,28 @@
 		42B176BB23017FE8002228C5 /* BidMachineAdapterTransformers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineAdapterTransformers.h; sourceTree = "<group>"; };
 		42B176BC23017FE8002228C5 /* BidMachineAdapterTransformers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineAdapterTransformers.m; sourceTree = "<group>"; };
 		64ECC43E987F38AEC3CC41CF /* Pods-BMIntegrationSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMIntegrationSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample.release.xcconfig"; sourceTree = "<group>"; };
+		6528D633238D2B0400CA4B30 /* NativeAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeAdView.h; sourceTree = "<group>"; };
+		6528D634238D2B0400CA4B30 /* NativeAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeAdView.m; sourceTree = "<group>"; };
+		65693AEE2390F700007B0D33 /* BaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseView.xib; sourceTree = "<group>"; };
+		65693AEF2390F700007B0D33 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = "<group>"; };
+		65693AF02390F700007B0D33 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
+		65693AF32390F73F007B0D33 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
+		65693AF42390F73F007B0D33 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		65693AF52390F740007B0D33 /* Rewarded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rewarded.h; sourceTree = "<group>"; };
+		65693AF62390F740007B0D33 /* Interstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interstitial.h; sourceTree = "<group>"; };
+		65693AF72390F740007B0D33 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		65693AF82390F740007B0D33 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		65693AF92390F740007B0D33 /* Interstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interstitial.m; sourceTree = "<group>"; };
+		65693AFA2390F740007B0D33 /* Rewarded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rewarded.m; sourceTree = "<group>"; };
+		65693B002390F78A007B0D33 /* NativeAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeAdRenderer.m; sourceTree = "<group>"; };
+		65693B012390F78A007B0D33 /* NativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeAdRenderer.h; sourceTree = "<group>"; };
+		65BA8E4023856FD60007F298 /* BidMachineNativeAdCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdCustomEvent.h; sourceTree = "<group>"; };
+		65BA8E4123856FD60007F298 /* BidMachineNativeAdCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdCustomEvent.m; sourceTree = "<group>"; };
+		65BA8E43238574CB0007F298 /* BidMachineNativeAdAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdAdapter.h; sourceTree = "<group>"; };
+		65BA8E44238574CB0007F298 /* BidMachineNativeAdAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdAdapter.m; sourceTree = "<group>"; };
+		65BA8E4623857C6D0007F298 /* BidMachineNativeAdRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdRenderer.h; sourceTree = "<group>"; };
+		65BA8E4723857C6D0007F298 /* BidMachineNativeAdRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdRenderer.m; sourceTree = "<group>"; };
+		65EE3D25238E73ED00F105A0 /* NativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NativeAdView.xib; sourceTree = "<group>"; };
 		6A3C6C99BED0DF9002A79C36 /* Pods-BidMachine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BidMachine/Pods-BidMachine.debug.xcconfig"; sourceTree = "<group>"; };
 		9F7477E628F244763DA39A66 /* Pods-AdMob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdMob.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdMob/Pods-AdMob.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC3487E30D2A69710FD291C /* libPods-BMIntegrationSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BMIntegrationSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +91,6 @@
 		D96190F0222957C50057C11A /* BMIntegrationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMIntegrationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96190F3222957C50057C11A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D96190F4222957C50057C11A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D96190F6222957C50057C11A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D96190F7222957C50057C11A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D96190FA222957C50057C11A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D96190FC222957C60057C11A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D96190FF222957C60057C11A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,6 +152,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		65693AEC2390F6BA007B0D33 /* AdControllers */ = {
+			isa = PBXGroup;
+			children = (
+				65693AED2390F6D3007B0D33 /* Base */,
+				65693AF62390F740007B0D33 /* Interstitial.h */,
+				65693AF92390F740007B0D33 /* Interstitial.m */,
+				65693AF52390F740007B0D33 /* Rewarded.h */,
+				65693AFA2390F740007B0D33 /* Rewarded.m */,
+				65693AF72390F740007B0D33 /* Banner.h */,
+				65693AF42390F73F007B0D33 /* Banner.m */,
+				65693AF82390F740007B0D33 /* Native.h */,
+				65693AF32390F73F007B0D33 /* Native.m */,
+			);
+			name = AdControllers;
+			sourceTree = "<group>";
+		};
+		65693AED2390F6D3007B0D33 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				65693AF02390F700007B0D33 /* Base.h */,
+				65693AEF2390F700007B0D33 /* Base.m */,
+				65693AEE2390F700007B0D33 /* BaseView.xib */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		65693AFF2390F761007B0D33 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				6528D633238D2B0400CA4B30 /* NativeAdView.h */,
+				6528D634238D2B0400CA4B30 /* NativeAdView.m */,
+				65693B012390F78A007B0D33 /* NativeAdRenderer.h */,
+				65693B002390F78A007B0D33 /* NativeAdRenderer.m */,
+				65EE3D25238E73ED00F105A0 /* NativeAdView.xib */,
+			);
+			name = Presenters;
+			sourceTree = "<group>";
+		};
+		65693B042390F7F2007B0D33 /* ApplicationSupport */ = {
+			isa = PBXGroup;
+			children = (
+				D96190F9222957C50057C11A /* Main.storyboard */,
+				D96190FC222957C60057C11A /* Assets.xcassets */,
+				D96190FE222957C60057C11A /* LaunchScreen.storyboard */,
+				D9619101222957C60057C11A /* Info.plist */,
+				D9619102222957C60057C11A /* main.m */,
+			);
+			name = ApplicationSupport;
+			sourceTree = "<group>";
+		};
 		9F0FE6DDC606BF0DA191F3EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,13 +242,9 @@
 			children = (
 				D96190F3222957C50057C11A /* AppDelegate.h */,
 				D96190F4222957C50057C11A /* AppDelegate.m */,
-				D96190F6222957C50057C11A /* ViewController.h */,
-				D96190F7222957C50057C11A /* ViewController.m */,
-				D96190F9222957C50057C11A /* Main.storyboard */,
-				D96190FC222957C60057C11A /* Assets.xcassets */,
-				D96190FE222957C60057C11A /* LaunchScreen.storyboard */,
-				D9619101222957C60057C11A /* Info.plist */,
-				D9619102222957C60057C11A /* main.m */,
+				65693AFF2390F761007B0D33 /* Presenters */,
+				65693AEC2390F6BA007B0D33 /* AdControllers */,
+				65693B042390F7F2007B0D33 /* ApplicationSupport */,
 			);
 			path = BMIntegrationSample;
 			sourceTree = "<group>";
@@ -182,6 +259,12 @@
 				D92C0BB122297B7400481C79 /* BidMachineBannerCustomEvent.m */,
 				D9F3E41E222D4F6200834D16 /* BidMachineInterstitialCustomEvent.h */,
 				D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */,
+				65BA8E4023856FD60007F298 /* BidMachineNativeAdCustomEvent.h */,
+				65BA8E4123856FD60007F298 /* BidMachineNativeAdCustomEvent.m */,
+				65BA8E43238574CB0007F298 /* BidMachineNativeAdAdapter.h */,
+				65BA8E44238574CB0007F298 /* BidMachineNativeAdAdapter.m */,
+				65BA8E4623857C6D0007F298 /* BidMachineNativeAdRenderer.h */,
+				65BA8E4723857C6D0007F298 /* BidMachineNativeAdRenderer.m */,
 				D997F1602230104600D973C8 /* BidMachineRewardedVideoCustomEvent.h */,
 				D997F1612230104600D973C8 /* BidMachineRewardedVideoCustomEvent.m */,
 				D9F3E426222EA92B00834D16 /* BidMachineInstanceMediationSettings.h */,
@@ -288,6 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9619100222957C60057C11A /* LaunchScreen.storyboard in Resources */,
+				65EE3D26238E73ED00F105A0 /* NativeAdView.xib in Resources */,
+				65693AF12390F700007B0D33 /* BaseView.xib in Resources */,
 				D96190FD222957C60057C11A /* Assets.xcassets in Resources */,
 				D96190FB222957C50057C11A /* Main.storyboard in Resources */,
 			);
@@ -445,8 +530,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D96190F8222957C50057C11A /* ViewController.m in Sources */,
+				65693B022390F78A007B0D33 /* NativeAdRenderer.m in Sources */,
+				65693AF22390F700007B0D33 /* Base.m in Sources */,
+				6528D635238D2B0400CA4B30 /* NativeAdView.m in Sources */,
+				65693AFC2390F740007B0D33 /* Banner.m in Sources */,
 				D9619103222957C60057C11A /* main.m in Sources */,
+				65693AFD2390F740007B0D33 /* Interstitial.m in Sources */,
+				65693AFE2390F740007B0D33 /* Rewarded.m in Sources */,
+				65693AFB2390F740007B0D33 /* Native.m in Sources */,
 				D96190F5222957C50057C11A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,10 +548,13 @@
 			files = (
 				D997F1622230104600D973C8 /* BidMachineRewardedVideoCustomEvent.m in Sources */,
 				D9F3E428222EA92B00834D16 /* BidMachineInstanceMediationSettings.m in Sources */,
+				65BA8E4823857C6D0007F298 /* BidMachineNativeAdRenderer.m in Sources */,
 				D96191112229588E0057C11A /* BidMachineAdapterConfiguration.m in Sources */,
 				D92C0BB222297B7400481C79 /* BidMachineBannerCustomEvent.m in Sources */,
 				D997F15C222FF15F00D973C8 /* BidMachineAdapterUtils+Request.m in Sources */,
+				65BA8E4223856FD60007F298 /* BidMachineNativeAdCustomEvent.m in Sources */,
 				D997F15F222FF20F00D973C8 /* BidMachineAdapterUtils.m in Sources */,
+				65BA8E45238574CB0007F298 /* BidMachineNativeAdAdapter.m in Sources */,
 				42B176BD23017FE8002228C5 /* BidMachineAdapterTransformers.m in Sources */,
 				D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */,
 			);
