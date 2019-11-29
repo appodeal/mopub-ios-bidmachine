@@ -14,15 +14,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BDMBannerRequest *)bannerRequestWithSize:(BDMBannerAdSize)size
                                   extraInfo:(NSDictionary *)extraInfo
-                                   location:(CLLocation *)location
+                                   location:(nullable CLLocation *)location
                                 priceFloors:(NSArray *)priceFloors;
 
 - (BDMInterstitialRequest *)interstitialRequestWithExtraInfo:(NSDictionary *)extraInfo
-                                                    location:(CLLocation *)location
+                                                    location:(nullable CLLocation *)location
                                                  priceFloors:(NSArray *)priceFloors;
 
 - (BDMRewardedRequest *)rewardedRequestWithExtraInfo:(NSDictionary *)extraInfo
-                                            location:(CLLocation *)location
+                                            location:(nullable CLLocation *)location
+                                         priceFloors:(NSArray *)priceFloors;
+
+- (BDMNativeAdRequest *)nativeAdRequestWithExtraInfo:(NSDictionary *)extraInfo
+                                            location:(nullable CLLocation *)location
                                          priceFloors:(NSArray *)priceFloors;
 
 @end

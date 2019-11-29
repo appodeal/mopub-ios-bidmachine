@@ -343,6 +343,105 @@ Extra data from server:
 }
 ```
 
+### Native ad implementation
+
+With local extra data:
+
+```objc
+- (void)loadAd:(id)sender {
+    self.nativeAdRequest = [self request];
+    __weak typeof(self) weakSelf = self;
+    [self.nativeAdRequest startWithCompletionHandler:^(MPNativeAdRequest *request, MPNativeAd *response, NSError *error) {
+        if (!error) {
+            weakSelf.nativeAd = response;
+        } 
+    }];
+}
+
+- (void)showAd:(id)sender {
+    self.nativeAd.delegate = self;
+    [NativeAdRenderer renderAd:self.nativeAd onView:self.container];
+}
+
+- (MPStaticNativeAdRendererSettings *)rendererSettings {
+    MPStaticNativeAdRendererSettings *rendererSettings = MPStaticNativeAdRendererSettings.new;
+    rendererSettings.renderingViewClass = NativeAdView.class;
+    return rendererSettings;
+}
+
+- (MPNativeAdRendererConfiguration *)rendererConfiguration {
+    return [BidMachineNativeAdRenderer rendererConfigurationWithRendererSettings:self.rendererSettings];
+}
+
+- (MPNativeAdRequest *)request {
+   NSDictionary *localExtras = @{
+                              @"seller_id":         @"YOUR_SELLER_ID",
+                              @"coppa":             @"true",
+                              @"consent_string":    @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+                              @"logging_enabled":   @"true",
+                              @"test_mode":         @"true",
+                              @"user_id":           @"user123",
+                              @"gender":            @"F",
+                              @"yob":               @2000,
+                              @"keywords":          @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+                              @"country":           @"USA",
+                              @"city":              @"Los Angeles",
+                              @"zip":               @"90001–90084",
+                              @"sturl":             @"https://store_url.com",
+                              @"paid":              @"true",
+                              @"bcat":              @"IAB-1,IAB-3,IAB-5",
+                              @"badv":              @"https://domain_1.com,https://domain_2.org",
+                              @"bapps":             @"com.test.application_1,com.test.application_2,com.test.application_3",
+                              @"price_floors":      @[
+                                      @{ @"id_1": @300.06 },
+                                      @{ @"id_2": @1000 },
+                                      @302.006,
+                                      @1002
+                                      ]
+                              };
+
+    MPNativeAdRequest *request = [MPNativeAdRequest requestWithAdUnitIdentifier:@UNIT_ID rendererConfigurations:@[self.rendererConfiguration]];
+    MPNativeAdRequestTargeting *targeting = MPNativeAdRequestTargeting.targeting;
+    targeting.localExtras = localExtras;
+    return request;
+}
+```
+
+Servers extra data:
+
+```json
+{
+  "ad_content_type": "All",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "city": "Los Angeles",
+  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+  "coppa": "true",
+  "country": "USA",
+  "gender": "F",
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "logging_enabled": "true",
+  "paid": "true",
+  "price_floors": [
+    {
+      "id_1": 300.06
+    },
+    {
+      "id_2": 1000
+    },
+    302.006,
+    1002
+  ],
+  "seller_id": "YOUR_SELLER_ID",
+  "sturl": "https://store_url.com",
+  "test_mode": "true",
+  "user_id": "user123",
+  "yob": 2000,
+  "zip": "90001–90084"
+}
+```
+
 ### Header Bidding
 
 To pass data for Header Bidding add to yours ***sdkConfig*** array of dictionaries with key "mediation_config":
@@ -485,6 +584,11 @@ You can pass constants that are listed below:
 * rewarded
 
 ##  Changelog
+
+### Version 1.4.0.0
+
+* Update BidMachine to 1.4.0
+* Add Native Ad supports
 
 ### Version 1.3.0.0
 
