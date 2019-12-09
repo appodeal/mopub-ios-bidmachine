@@ -559,7 +559,7 @@ Config from MoPub dashboard should look like presented below:
 }
 ```
 
-All network required fileds and values types are described in BidMachine doc. If ad network has initialisation parameters, it should be added in root of mediation config object. Ad network ad unit specific paramters should be added in root of ad unit object.
+All network required fileds and values types are described in BidMachine doc. ([[https://wiki.appodeal.com/display/BID/BidMachine+iOS+SDK+Documentation#BidMachineiOSSDKDocumentation-AdNetworksConfigurationsParameters]]) If ad network has initialisation parameters, it should be added in root of mediation config object. Ad network ad unit specific paramters should be added in root of ad unit object. 
 
 | Parameter | Description | Required |
 | --- | --- | --- |
