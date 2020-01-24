@@ -8,6 +8,8 @@
 
 #import "BidMachineRewardedVideoCustomEvent.h"
 #import "BidMachineAdapterUtils+Request.h"
+#import "BidMachineFetcher.h"
+#import "BidMachineConstants.h"
 
 
 @interface BidMachineRewardedVideoCustomEvent() <BDMRewardedDelegate>
@@ -28,18 +30,37 @@
 }
 
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info {
-    __weak typeof(self) weakSelf = self;
-    [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
-        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
-        [extraInfo addEntriesFromDictionary:info];
-        
-        NSArray *priceFloors = extraInfo[@"priceFloors"] ?: extraInfo[@"price_floors"];
-        CLLocation *location = extraInfo[@"location"];
-        BDMRewardedRequest *request = [BidMachineAdapterUtils.sharedUtils rewardedRequestWithExtraInfo:extraInfo
-                                                                                              location:location
-                                                                                           priceFloors:priceFloors];
-        [weakSelf.rewarded populateWithRequest:request];
-    }];
+    NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
+    
+    if ([extraInfo.allKeys containsObject:kBidMachineBidId]) {
+        id request = [BidMachineFetcher.sharedFetcher requestForBidId:extraInfo[kBidMachineBidId]];
+        if ([request isKindOfClass:BDMRewardedRequest.self]) {
+            [self.rewarded populateWithRequest:request];
+        } else {
+            NSDictionary *userInfo =
+            @{
+                NSLocalizedFailureReasonErrorKey: @"BidMachine request type not satisfying",
+                NSLocalizedDescriptionKey: @"BidMachineRewardedVideoCustomEvent requires to use BDMRewardedRequest",
+                NSLocalizedRecoverySuggestionErrorKey: @"Check that you pass keywords and extras to MPInterstitialAdController from BDMRewardedRequest"
+            };
+            NSError *error =  [NSError errorWithDomain:kAdapterErrorDomain
+                                                  code:BidMachineAdapterErrorCodeMissingSellerId
+                                              userInfo:userInfo];
+            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+            [self.delegate rewardedVideoDidFailToLoadAdForCustomEvent:self error:error];
+        }
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+            NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
+            CLLocation *location = extraInfo[@"location"];
+            BDMRewardedRequest *request = [BidMachineAdapterUtils.sharedUtils rewardedRequestWithExtraInfo:extraInfo
+                                                                                                  location:location
+                                                                                               priceFloors:priceFloors];
+            [weakSelf.rewarded populateWithRequest:request];
+        }];
+    }
 }
 
 - (BOOL)hasAdAvailable {

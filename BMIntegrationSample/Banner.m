@@ -37,8 +37,7 @@
     if (!_bannerView) {
         _bannerView = [[MPAdView alloc] initWithAdUnitId:@UNIT_ID];
         _bannerView.delegate = self;
-        _bannerView.translatesAutoresizingMaskIntoConstraints = YES;
-        _bannerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _bannerView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _bannerView;
 }
@@ -46,6 +45,13 @@
 - (void)addBannerInContainer {
     [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.container addSubview:self.bannerView];
+    [NSLayoutConstraint activateConstraints:
+    @[
+      [self.bannerView.centerXAnchor constraintEqualToAnchor:self.container.centerXAnchor],
+      [self.bannerView.centerYAnchor constraintEqualToAnchor:self.container.centerYAnchor],
+      [self.bannerView.widthAnchor constraintEqualToAnchor:self.container.widthAnchor],
+      [self.bannerView.heightAnchor constraintEqualToConstant:50]
+      ]];
 }
 
 #pragma mark - Extras

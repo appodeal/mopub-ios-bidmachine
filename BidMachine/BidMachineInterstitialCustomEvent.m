@@ -8,6 +8,8 @@
 
 #import "BidMachineInterstitialCustomEvent.h"
 #import "BidMachineAdapterUtils+Request.h"
+#import "BidMachineFetcher.h"
+#import "BidMachineConstants.h"
 
 
 @interface BidMachineInterstitialCustomEvent() <BDMInterstitialDelegate>
@@ -28,17 +30,36 @@
 }
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info {
-    __weak typeof(self) weakSelf = self;
-    [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
-        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
-        [extraInfo addEntriesFromDictionary:info];
-        
-        NSArray *priceFloors = extraInfo[@"priceFloors"] ?: extraInfo[@"price_floors"];
-        BDMInterstitialRequest *request = [[BidMachineAdapterUtils sharedUtils] interstitialRequestWithExtraInfo:extraInfo
-                                                                                                        location:weakSelf.delegate.location
-                                                                                                     priceFloors:priceFloors];
-        [weakSelf.interstitial populateWithRequest:request];
-    }];
+    NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
+    
+    if ([extraInfo.allKeys containsObject:kBidMachineBidId]) {
+        id request = [BidMachineFetcher.sharedFetcher requestForBidId:extraInfo[kBidMachineBidId]];
+        if ([request isKindOfClass:BDMInterstitialRequest.self]) {
+            [self.interstitial populateWithRequest:request];
+        } else {
+            NSDictionary *userInfo =
+            @{
+                NSLocalizedFailureReasonErrorKey: @"BidMachine request type not satisfying",
+                NSLocalizedDescriptionKey: @"BidMachineInterstitialCustomEvent requires to use BDMInterstitialRequest",
+                NSLocalizedRecoverySuggestionErrorKey: @"Check that you pass keywords and extras to MPInterstitialAdController from BDMInterstitialRequest"
+            };
+            NSError *error =  [NSError errorWithDomain:kAdapterErrorDomain
+                                                  code:BidMachineAdapterErrorCodeMissingSellerId
+                                              userInfo:userInfo];
+            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+            [self.delegate interstitialCustomEvent:self didFailToLoadAdWithError:error];
+        }
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+            NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
+            BDMInterstitialRequest *request = [BidMachineAdapterUtils.sharedUtils interstitialRequestWithExtraInfo:extraInfo
+                                                                                                          location:weakSelf.delegate.location
+                                                                                                       priceFloors:priceFloors];
+            [weakSelf.interstitial populateWithRequest:request];
+        }];
+    }
 }
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController {

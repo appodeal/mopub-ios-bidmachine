@@ -21,9 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BidMachineAdapterConfiguration : MPBaseAdapterConfiguration
 
-- (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *, id> * _Nullable)configuration
-                                  complete:(void(^ _Nullable)(NSError * _Nullable))complete;
-
 @end
 
 NS_ASSUME_NONNULL_END

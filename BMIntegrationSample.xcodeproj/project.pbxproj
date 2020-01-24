@@ -17,6 +17,8 @@
 		65693AFD2390F740007B0D33 /* Interstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AF92390F740007B0D33 /* Interstitial.m */; };
 		65693AFE2390F740007B0D33 /* Rewarded.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693AFA2390F740007B0D33 /* Rewarded.m */; };
 		65693B022390F78A007B0D33 /* NativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65693B002390F78A007B0D33 /* NativeAdRenderer.m */; };
+		659EB5F523DAFF04004F4550 /* BidMachineFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 659EB5F323DAFF04004F4550 /* BidMachineFetcher.m */; };
+		659EB5F823DB0312004F4550 /* BidMachineKeywordsTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 659EB5F723DB0312004F4550 /* BidMachineKeywordsTransformer.m */; };
 		65BA8E4223856FD60007F298 /* BidMachineNativeAdCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E4123856FD60007F298 /* BidMachineNativeAdCustomEvent.m */; };
 		65BA8E45238574CB0007F298 /* BidMachineNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E44238574CB0007F298 /* BidMachineNativeAdAdapter.m */; };
 		65BA8E4823857C6D0007F298 /* BidMachineNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8E4723857C6D0007F298 /* BidMachineNativeAdRenderer.m */; };
@@ -73,6 +75,10 @@
 		65693AFA2390F740007B0D33 /* Rewarded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rewarded.m; sourceTree = "<group>"; };
 		65693B002390F78A007B0D33 /* NativeAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeAdRenderer.m; sourceTree = "<group>"; };
 		65693B012390F78A007B0D33 /* NativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeAdRenderer.h; sourceTree = "<group>"; };
+		659EB5F323DAFF04004F4550 /* BidMachineFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineFetcher.m; sourceTree = "<group>"; };
+		659EB5F423DAFF04004F4550 /* BidMachineFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineFetcher.h; sourceTree = "<group>"; };
+		659EB5F623DB0312004F4550 /* BidMachineKeywordsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineKeywordsTransformer.h; sourceTree = "<group>"; };
+		659EB5F723DB0312004F4550 /* BidMachineKeywordsTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineKeywordsTransformer.m; sourceTree = "<group>"; };
 		65BA8E4023856FD60007F298 /* BidMachineNativeAdCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdCustomEvent.h; sourceTree = "<group>"; };
 		65BA8E4123856FD60007F298 /* BidMachineNativeAdCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdCustomEvent.m; sourceTree = "<group>"; };
 		65BA8E43238574CB0007F298 /* BidMachineNativeAdAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdAdapter.h; sourceTree = "<group>"; };
@@ -202,6 +208,15 @@
 			name = ApplicationSupport;
 			sourceTree = "<group>";
 		};
+		659EB5F223DAFE45004F4550 /* BidMachineFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				659EB5F423DAFF04004F4550 /* BidMachineFetcher.h */,
+				659EB5F323DAFF04004F4550 /* BidMachineFetcher.m */,
+			);
+			path = BidMachineFetcher;
+			sourceTree = "<group>";
+		};
 		9F0FE6DDC606BF0DA191F3EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +267,7 @@
 		D961910E2229588E0057C11A /* BidMachine */ = {
 			isa = PBXGroup;
 			children = (
+				659EB5F223DAFE45004F4550 /* BidMachineFetcher */,
 				D9A0A6E5228EB41500DF63B9 /* Utils */,
 				D961911622295D710057C11A /* BidMachineAdapterConfiguration.h */,
 				D96191102229588E0057C11A /* BidMachineAdapterConfiguration.m */,
@@ -283,6 +299,8 @@
 				D9A0A6E6228EB43E00DF63B9 /* BidMachineConstants.h */,
 				42B176BB23017FE8002228C5 /* BidMachineAdapterTransformers.h */,
 				42B176BC23017FE8002228C5 /* BidMachineAdapterTransformers.m */,
+				659EB5F623DB0312004F4550 /* BidMachineKeywordsTransformer.h */,
+				659EB5F723DB0312004F4550 /* BidMachineKeywordsTransformer.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -553,9 +571,11 @@
 				D92C0BB222297B7400481C79 /* BidMachineBannerCustomEvent.m in Sources */,
 				D997F15C222FF15F00D973C8 /* BidMachineAdapterUtils+Request.m in Sources */,
 				65BA8E4223856FD60007F298 /* BidMachineNativeAdCustomEvent.m in Sources */,
+				659EB5F523DAFF04004F4550 /* BidMachineFetcher.m in Sources */,
 				D997F15F222FF20F00D973C8 /* BidMachineAdapterUtils.m in Sources */,
 				65BA8E45238574CB0007F298 /* BidMachineNativeAdAdapter.m in Sources */,
 				42B176BD23017FE8002228C5 /* BidMachineAdapterTransformers.m in Sources */,
+				659EB5F823DB0312004F4550 /* BidMachineKeywordsTransformer.m in Sources */,
 				D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
