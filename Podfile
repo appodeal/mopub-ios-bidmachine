@@ -26,3 +26,9 @@ target 'BMIntegrationSample' do
     bidmachine_header_bidding
     mopub
 end
+
+target 'BMHBIntegrationSample' do
+    project 'BMHBIntegrationSample.xcodeproj'
+    bidmachine_header_bidding
+    mopub
+end

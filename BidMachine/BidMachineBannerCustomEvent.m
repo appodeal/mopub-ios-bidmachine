@@ -10,6 +10,8 @@
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineAdapterUtils+Request.h"
 #import "BidMachineAdapterTransformers.h"
+#import "BidMachineFetcher.h"
+#import "BidMachineConstants.h"
 
 
 @interface BidMachineBannerCustomEvent() <BDMBannerDelegate, BDMAdEventProducerDelegate>
@@ -37,21 +39,45 @@
 
 - (void)requestAdWithSize:(CGSize)size
           customEventInfo:(NSDictionary *)info {
-    __weak typeof(self) weakSelf = self;
-    [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error){
-        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
-        [extraInfo addEntriesFromDictionary:info];
+    NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
+    BDMBannerAdSize adSize = [BidMachineAdapterTransformers bannerSizeFromCGSize:size];
+    
+    if ([extraInfo.allKeys containsObject:kBidMachineBidId]) {
+        id request = [BidMachineFetcher.sharedFetcher requestForBidId:extraInfo[kBidMachineBidId]];
+        if ([request isKindOfClass:BDMBannerRequest.self]) {
+            [self populate:request adSize:adSize];
+        } else {
+            NSDictionary *userInfo =
+            @{
+                NSLocalizedFailureReasonErrorKey: @"BidMachine request type not satisfying",
+                NSLocalizedDescriptionKey: @"BidMachineBannerCustomEvent requires to use BDMBannerRequest",
+                NSLocalizedRecoverySuggestionErrorKey: @"Check that you pass keywords and extras to MPAdView from BDMBannerRequest"
+            };
+            NSError *error =  [NSError errorWithDomain:kAdapterErrorDomain
+                                                  code:BidMachineAdapterErrorCodeMissingSellerId
+                                              userInfo:userInfo];
+            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+            [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
+        }
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+            NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
+            BDMBannerRequest *request = [BidMachineAdapterUtils.sharedUtils bannerRequestWithSize:adSize
+                                                                                        extraInfo:extraInfo
+                                                                                         location:weakSelf.delegate.location
+                                                                                      priceFloors:priceFloors];
+            [weakSelf populate:request adSize:adSize];
+        }];
+    }
+}
 
-        BDMBannerAdSize adSize = [BidMachineAdapterTransformers bannerSizeFromCGSize:size];
-        NSArray *priceFloors = extraInfo[@"priceFloors"] ?: extraInfo[@"price_floors"];
-        BDMBannerRequest *request = [[BidMachineAdapterUtils sharedUtils] bannerRequestWithSize:adSize
-                                                                                      extraInfo:extraInfo
-                                                                                       location:weakSelf.delegate.location
-                                                                                    priceFloors:priceFloors];
-        // Transform size 2 times to avoid fluid sizes with 0 width
-        [weakSelf.bannerView setFrame:(CGRect){.size = CGSizeFromBDMSize(adSize)}];
-        [weakSelf.bannerView populateWithRequest:request];
-    }];
+- (void)populate:(BDMBannerRequest *)request
+          adSize:(BDMBannerAdSize)adSize {
+    // Transform size 2 times to avoid fluid sizes with 0 width
+    [self.bannerView setFrame:(CGRect){.size = CGSizeFromBDMSize(adSize)}];
+    [self.bannerView populateWithRequest:request];
 }
 
 #pragma mark - Lazy

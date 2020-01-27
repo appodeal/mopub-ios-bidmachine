@@ -32,15 +32,4 @@
     return kBDMVersion;
 }
 
-- (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
-                                  complete:(void (^)(NSError *))complete {
-    [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:configuration completion:^(NSError *error) {
-        error ?
-            MPLogEvent([MPLogEvent error:error message:nil]) :
-            MPLogInfo(@"BidMachine SDK was successfully initialized!");
-        
-        complete ? complete(error) : nil;
-    }];
-}
-
 @end
