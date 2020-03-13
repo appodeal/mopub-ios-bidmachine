@@ -148,24 +148,16 @@
 		659EB61E23DB287C004F4550 /* BidMachine */ = {
 			isa = PBXGroup;
 			children = (
-				659EB61F23DB287C004F4550 /* BidMachineNativeAdRenderer.m */,
-				659EB62023DB287C004F4550 /* BidMachineNativeAdCustomEvent.m */,
-				659EB62123DB287C004F4550 /* BidMachineBannerCustomEvent.h */,
-				659EB62223DB287C004F4550 /* BidMachineInstanceMediationSettings.m */,
-				659EB62323DB287C004F4550 /* BidMachineInterstitialCustomEvent.m */,
-				659EB62423DB287C004F4550 /* BidMachineAdapterConfiguration.m */,
-				659EB62523DB287C004F4550 /* BidMachineRewardedVideoCustomEvent.h */,
-				659EB62623DB287C004F4550 /* BidMachineNativeAdAdapter.m */,
 				659EB62723DB287C004F4550 /* Utils */,
 				659EB63123DB287C004F4550 /* BidMachineFetcher */,
-				659EB63423DB287C004F4550 /* BidMachineNativeAdRenderer.h */,
-				659EB63523DB287C004F4550 /* BidMachineInstanceMediationSettings.h */,
-				659EB63623DB287C004F4550 /* BidMachineBannerCustomEvent.m */,
-				659EB63723DB287C004F4550 /* BidMachineNativeAdCustomEvent.h */,
-				659EB63823DB287C004F4550 /* BidMachineNativeAdAdapter.h */,
-				659EB63923DB287C004F4550 /* BidMachineRewardedVideoCustomEvent.m */,
 				659EB63A23DB287C004F4550 /* BidMachineAdapterConfiguration.h */,
-				659EB63B23DB287C004F4550 /* BidMachineInterstitialCustomEvent.h */,
+				659EB62423DB287C004F4550 /* BidMachineAdapterConfiguration.m */,
+				659EB63523DB287C004F4550 /* BidMachineInstanceMediationSettings.h */,
+				659EB62223DB287C004F4550 /* BidMachineInstanceMediationSettings.m */,
+				65CD8364241B787E00FCD4DB /* Banner */,
+				65CD8365241B788500FCD4DB /* NativeAd */,
+				65CD8366241B788D00FCD4DB /* Interstitial */,
+				65CD8368241B789A00FCD4DB /* Rewarded */,
 			);
 			path = BidMachine;
 			sourceTree = "<group>";
@@ -243,6 +235,46 @@
 				659EB65623DB2B1E004F4550 /* BaseView.xib */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		65CD8364241B787E00FCD4DB /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				659EB62123DB287C004F4550 /* BidMachineBannerCustomEvent.h */,
+				659EB63623DB287C004F4550 /* BidMachineBannerCustomEvent.m */,
+			);
+			name = Banner;
+			sourceTree = "<group>";
+		};
+		65CD8365241B788500FCD4DB /* NativeAd */ = {
+			isa = PBXGroup;
+			children = (
+				659EB63423DB287C004F4550 /* BidMachineNativeAdRenderer.h */,
+				659EB61F23DB287C004F4550 /* BidMachineNativeAdRenderer.m */,
+				659EB63723DB287C004F4550 /* BidMachineNativeAdCustomEvent.h */,
+				659EB62023DB287C004F4550 /* BidMachineNativeAdCustomEvent.m */,
+				659EB63823DB287C004F4550 /* BidMachineNativeAdAdapter.h */,
+				659EB62623DB287C004F4550 /* BidMachineNativeAdAdapter.m */,
+			);
+			name = NativeAd;
+			sourceTree = "<group>";
+		};
+		65CD8366241B788D00FCD4DB /* Interstitial */ = {
+			isa = PBXGroup;
+			children = (
+				659EB63B23DB287C004F4550 /* BidMachineInterstitialCustomEvent.h */,
+				659EB62323DB287C004F4550 /* BidMachineInterstitialCustomEvent.m */,
+			);
+			name = Interstitial;
+			sourceTree = "<group>";
+		};
+		65CD8368241B789A00FCD4DB /* Rewarded */ = {
+			isa = PBXGroup;
+			children = (
+				659EB62523DB287C004F4550 /* BidMachineRewardedVideoCustomEvent.h */,
+				659EB63923DB287C004F4550 /* BidMachineRewardedVideoCustomEvent.m */,
+			);
+			name = Rewarded;
 			sourceTree = "<group>";
 		};
 		B300DF7D9905C669F8BAB85D /* Pods */ = {

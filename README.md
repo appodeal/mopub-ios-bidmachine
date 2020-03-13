@@ -864,6 +864,10 @@ BidMachineFetcher.sharedFetcher.format = @"0.00";
 
 ##  Changelog
 
+### Version 1.4.2.1
+
+* Update MopubSDK 5.11.0
+
 ### Version 1.4.2.0
 
 * Update BidMachine sdk 1.4.2

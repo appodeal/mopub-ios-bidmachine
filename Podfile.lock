@@ -45,23 +45,26 @@ PODS:
     - VungleSDK-iOS (= 6.4.6)
   - FBAudienceNetwork (5.6.0):
     - FBSDKCoreKit/Basics (>= 5.2.1)
-  - FBSDKCoreKit/Basics (6.0.0)
+  - FBSDKCoreKit/Basics (6.2.0)
   - MintegralAdSDK/BidInterstitialVideoAd (5.8.4.0):
     - MintegralAdSDK/BidNativeAd
   - MintegralAdSDK/BidNativeAd (5.8.4.0)
   - MintegralAdSDK/BidRewardVideoAd (5.8.4.0):
     - MintegralAdSDK/BidNativeAd
-  - mopub-ios-sdk (5.9.0):
-    - mopub-ios-sdk/MoPubSDK (= 5.9.0)
-  - mopub-ios-sdk/Avid (5.9.0):
+  - mopub-ios-sdk (5.11.0):
+    - mopub-ios-sdk/MoPubSDK (= 5.11.0)
+  - mopub-ios-sdk/Avid (5.11.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (5.9.0)
-  - mopub-ios-sdk/Moat (5.9.0):
+  - mopub-ios-sdk/Core (5.11.0)
+  - mopub-ios-sdk/Moat (5.11.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (5.9.0):
+  - mopub-ios-sdk/MoPubSDK (5.11.0):
     - mopub-ios-sdk/Avid
     - mopub-ios-sdk/Core
     - mopub-ios-sdk/Moat
+    - mopub-ios-sdk/NativeAds
+  - mopub-ios-sdk/NativeAds (5.11.0):
+    - mopub-ios-sdk/Core
   - myTargetSDK (5.4.2)
   - Protobuf (3.11.4)
   - smaato-ios-sdk (21.2.2):
@@ -98,35 +101,35 @@ PODS:
   - smaato-ios-sdk/RewardedAds (21.2.2):
     - smaato-ios-sdk/Modules/RewardedAds
     - smaato-ios-sdk/Modules/Video
-  - StackIAB (0.5.12):
-    - StackIAB/StackMRAIDKit (= 0.5.12)
-    - StackIAB/StackNASTKit (= 0.5.12)
-    - StackIAB/StackRichMedia (= 0.5.12)
-    - StackIAB/StackVASTAssets (= 0.5.12)
-    - StackIAB/StackVASTKit (= 0.5.12)
-    - StackIAB/StackVideoPlayer (= 0.5.12)
-    - StackIAB/StackXML (= 0.5.12)
+  - StackIAB (0.5.13):
+    - StackIAB/StackMRAIDKit (= 0.5.13)
+    - StackIAB/StackNASTKit (= 0.5.13)
+    - StackIAB/StackRichMedia (= 0.5.13)
+    - StackIAB/StackVASTAssets (= 0.5.13)
+    - StackIAB/StackVASTKit (= 0.5.13)
+    - StackIAB/StackVideoPlayer (= 0.5.13)
+    - StackIAB/StackXML (= 0.5.13)
     - StackModules (~> 0.6.3)
-  - StackIAB/StackMRAIDKit (0.5.12):
+  - StackIAB/StackMRAIDKit (0.5.13):
     - StackModules (~> 0.6.3)
-  - StackIAB/StackNASTKit (0.5.12):
+  - StackIAB/StackNASTKit (0.5.13):
     - StackIAB/StackVASTKit
     - StackModules (~> 0.6.3)
-  - StackIAB/StackRichMedia (0.5.12):
+  - StackIAB/StackRichMedia (0.5.13):
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
     - StackModules (~> 0.6.3)
-  - StackIAB/StackVASTAssets (0.5.12):
+  - StackIAB/StackVASTAssets (0.5.13):
     - StackIAB/StackXML
     - StackModules (~> 0.6.3)
-  - StackIAB/StackVASTKit (0.5.12):
+  - StackIAB/StackVASTKit (0.5.13):
     - StackIAB/StackMRAIDKit
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
     - StackModules (~> 0.6.3)
-  - StackIAB/StackVideoPlayer (0.5.12):
+  - StackIAB/StackVideoPlayer (0.5.13):
     - StackModules (~> 0.6.3)
-  - StackIAB/StackXML (0.5.12):
+  - StackIAB/StackXML (0.5.13):
     - StackModules (~> 0.6.3)
   - StackModules (0.6.10):
     - StackModules/StackUIKit (= 0.6.10)
@@ -139,7 +142,7 @@ PODS:
 DEPENDENCIES:
   - BidMachine (= 1.4.2)
   - BidMachine/Adapters
-  - mopub-ios-sdk (~> 5.9.0)
+  - mopub-ios-sdk (= 5.11.0)
 
 SPEC REPOS:
   https://github.com/appodeal/CocoaPods.git:
@@ -162,17 +165,17 @@ SPEC CHECKSUMS:
   AdColony: 0a1e13349ce430ce29374c665611013fd78f792c
   BidMachine: 22f2e374c3a4a5684e5cfd180f7570d34ab99126
   FBAudienceNetwork: b608516b0a24459b7ebcd09516493d8bf303ee9e
-  FBSDKCoreKit: fe738b172590e622c86735b45e20d196848b54df
+  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
   MintegralAdSDK: f26898e40a1676b53508ea4aa145ce70a897fc46
-  mopub-ios-sdk: 7a5d264dc92c3e6c791bdcd476a2602f71acf331
+  mopub-ios-sdk: 292b8e9a55a2e72a34afc04ec01e85486af46240
   myTargetSDK: ca4a115fb76143f0934e06763c5b02e284af74ec
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   smaato-ios-sdk: fad41f668ceefe75ece6d46f729bea3ca26471ea
-  StackIAB: 86b36b3b769ee8cf595968e9f07a577b3f934cc0
+  StackIAB: 02bac8c41f0252525ad1e1f1f9eb8841d112b413
   StackModules: a829067eec6aa4be8bdc9515141b89f3d06bdb55
   TapjoySDK: 4325bc3c42ae91fed30929792a71d380c63a3c6c
   VungleSDK-iOS: 6bf8b4fef32afc169acbc1291485560c81ceb293
 
-PODFILE CHECKSUM: 2f17530927f34ddb5de167f9c44e549ffdc82cdd
+PODFILE CHECKSUM: 68a28b8a06243ab9c53c96da69b989e76dba5cf8
 
 COCOAPODS: 1.8.0

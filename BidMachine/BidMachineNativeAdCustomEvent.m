@@ -29,7 +29,7 @@
     return self;
 }
 
-- (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
+- (void)requestAdWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     

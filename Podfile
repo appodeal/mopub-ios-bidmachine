@@ -12,7 +12,7 @@ def bidmachine_header_bidding
 end
 
 def mopub 
-  pod 'mopub-ios-sdk', '~> 5.9.0'
+  pod 'mopub-ios-sdk', '5.11.0'
 end
 
 target 'BidMachine' do

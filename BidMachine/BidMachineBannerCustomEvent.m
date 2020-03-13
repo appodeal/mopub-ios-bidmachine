@@ -37,8 +37,7 @@
     return NO;
 }
 
-- (void)requestAdWithSize:(CGSize)size
-          customEventInfo:(NSDictionary *)info {
+- (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     BDMBannerAdSize adSize = [BidMachineAdapterTransformers bannerSizeFromCGSize:size];
