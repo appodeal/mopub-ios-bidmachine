@@ -17,7 +17,7 @@
 #pragma mark - MPAdapterConfiguration
 
 - (NSString *)adapterVersion {
-    return @"1.4.3.0";
+    return @"1.5.0.0";
 }
 
 - (NSString *)biddingToken {
