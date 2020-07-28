@@ -1,8 +1,8 @@
 PODS:
   - AdColony (4.1.4)
-  - BidMachine (1.4.3):
-    - BidMachine/Core (= 1.4.3)
-  - BidMachine/Adapters (1.4.3):
+  - BidMachine (1.5.1):
+    - BidMachine/Core (= 1.5.1)
+  - BidMachine/Adapters (1.5.1):
     - BidMachine/AdColonyAdapter
     - BidMachine/AmazonAdapter
     - BidMachine/CriteoAdapter
@@ -12,63 +12,57 @@ PODS:
     - BidMachine/SmaatoAdapter
     - BidMachine/TapjoyAdapter
     - BidMachine/VungleAdapter
-  - BidMachine/AdColonyAdapter (1.4.3):
+  - BidMachine/AdColonyAdapter (1.5.1):
     - AdColony (= 4.1.4)
     - BidMachine/Core
-  - BidMachine/AmazonAdapter (1.4.3):
+  - BidMachine/AmazonAdapter (1.5.1):
     - BidMachine/Core
-  - BidMachine/Core (1.4.3):
+  - BidMachine/Core (1.5.1):
     - Protobuf (~> 3.9)
     - StackIAB (~> 0.5.0)
-    - StackModules (~> 0.6.3)
-  - BidMachine/CriteoAdapter (1.4.3):
+    - StackModules (~> 0.7)
+  - BidMachine/CriteoAdapter (1.5.1):
     - BidMachine/Core
     - CriteoPublisherSdk (= 3.4.1)
-  - BidMachine/FacebookAdapter (1.4.3):
+  - BidMachine/FacebookAdapter (1.5.1):
     - BidMachine/Core
     - FBAudienceNetwork (= 5.7.1)
-  - BidMachine/MintegralAdapter (1.4.3):
+  - BidMachine/MintegralAdapter (1.5.1):
     - BidMachine/Core
     - MintegralAdSDK/BidInterstitialVideoAd (= 6.0.0.0)
     - MintegralAdSDK/BidRewardVideoAd (= 6.0.0.0)
-  - BidMachine/MyTargetAdapter (1.4.3):
+  - BidMachine/MyTargetAdapter (1.5.1):
     - BidMachine/Core
     - myTargetSDK (= 5.4.2)
-  - BidMachine/SmaatoAdapter (1.4.3):
+  - BidMachine/SmaatoAdapter (1.5.1):
     - BidMachine/Core
     - smaato-ios-sdk (= 21.2.2)
     - smaato-ios-sdk/Modules/UnifiedBidding (= 21.2.2)
-  - BidMachine/TapjoyAdapter (1.4.3):
+  - BidMachine/TapjoyAdapter (1.5.1):
     - BidMachine/Core
     - TapjoySDK (= 12.4.2)
-  - BidMachine/VungleAdapter (1.4.3):
+  - BidMachine/VungleAdapter (1.5.1):
     - BidMachine/Core
     - VungleSDK-iOS (= 6.5.2)
   - CriteoPublisherSdk (3.4.1)
   - FBAudienceNetwork (5.7.1):
     - FBSDKCoreKit/Basics (>= 5.6.0)
-  - FBSDKCoreKit/Basics (6.2.0)
+  - FBSDKCoreKit/Basics (7.1.1)
   - MintegralAdSDK/BidInterstitialVideoAd (6.0.0.0):
     - MintegralAdSDK/BidNativeAd
   - MintegralAdSDK/BidNativeAd (6.0.0.0)
   - MintegralAdSDK/BidRewardVideoAd (6.0.0.0):
     - MintegralAdSDK/BidNativeAd
-  - mopub-ios-sdk (5.11.0):
-    - mopub-ios-sdk/MoPubSDK (= 5.11.0)
-  - mopub-ios-sdk/Avid (5.11.0):
+  - mopub-ios-sdk (5.13.1):
+    - mopub-ios-sdk/MoPubSDK (= 5.13.1)
+  - mopub-ios-sdk/Core (5.13.1)
+  - mopub-ios-sdk/MoPubSDK (5.13.1):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (5.11.0)
-  - mopub-ios-sdk/Moat (5.11.0):
-    - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (5.11.0):
-    - mopub-ios-sdk/Avid
-    - mopub-ios-sdk/Core
-    - mopub-ios-sdk/Moat
     - mopub-ios-sdk/NativeAds
-  - mopub-ios-sdk/NativeAds (5.11.0):
+  - mopub-ios-sdk/NativeAds (5.13.1):
     - mopub-ios-sdk/Core
   - myTargetSDK (5.4.2)
-  - Protobuf (3.11.4)
+  - Protobuf (3.12.0)
   - smaato-ios-sdk (21.2.2):
     - smaato-ios-sdk/Full (= 21.2.2)
   - smaato-ios-sdk/Banner (21.2.2):
@@ -103,48 +97,48 @@ PODS:
   - smaato-ios-sdk/RewardedAds (21.2.2):
     - smaato-ios-sdk/Modules/RewardedAds
     - smaato-ios-sdk/Modules/Video
-  - StackIAB (0.5.13):
-    - StackIAB/StackMRAIDKit (= 0.5.13)
-    - StackIAB/StackNASTKit (= 0.5.13)
-    - StackIAB/StackRichMedia (= 0.5.13)
-    - StackIAB/StackVASTAssets (= 0.5.13)
-    - StackIAB/StackVASTKit (= 0.5.13)
-    - StackIAB/StackVideoPlayer (= 0.5.13)
-    - StackIAB/StackXML (= 0.5.13)
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackMRAIDKit (0.5.13):
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackNASTKit (0.5.13):
+  - StackIAB (0.5.17):
+    - StackIAB/StackMRAIDKit (= 0.5.17)
+    - StackIAB/StackNASTKit (= 0.5.17)
+    - StackIAB/StackRichMedia (= 0.5.17)
+    - StackIAB/StackVASTAssets (= 0.5.17)
+    - StackIAB/StackVASTKit (= 0.5.17)
+    - StackIAB/StackVideoPlayer (= 0.5.17)
+    - StackIAB/StackXML (= 0.5.17)
+    - StackModules (~> 0.6)
+  - StackIAB/StackMRAIDKit (0.5.17):
+    - StackModules (~> 0.6)
+  - StackIAB/StackNASTKit (0.5.17):
     - StackIAB/StackVASTKit
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackRichMedia (0.5.13):
+    - StackModules (~> 0.6)
+  - StackIAB/StackRichMedia (0.5.17):
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackVASTAssets (0.5.13):
+    - StackModules (~> 0.6)
+  - StackIAB/StackVASTAssets (0.5.17):
     - StackIAB/StackXML
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackVASTKit (0.5.13):
+    - StackModules (~> 0.6)
+  - StackIAB/StackVASTKit (0.5.17):
     - StackIAB/StackMRAIDKit
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackVideoPlayer (0.5.13):
-    - StackModules (~> 0.6.3)
-  - StackIAB/StackXML (0.5.13):
-    - StackModules (~> 0.6.3)
-  - StackModules (0.6.10):
-    - StackModules/StackUIKit (= 0.6.10)
-  - StackModules/StackFoundation (0.6.10)
-  - StackModules/StackUIKit (0.6.10):
+    - StackModules (~> 0.6)
+  - StackIAB/StackVideoPlayer (0.5.17):
+    - StackModules (~> 0.6)
+  - StackIAB/StackXML (0.5.17):
+    - StackModules (~> 0.6)
+  - StackModules (0.7.6):
+    - StackModules/StackUIKit (= 0.7.6)
+  - StackModules/StackFoundation (0.7.6)
+  - StackModules/StackUIKit (0.7.6):
     - StackModules/StackFoundation
   - TapjoySDK (12.4.2)
   - VungleSDK-iOS (6.5.2)
 
 DEPENDENCIES:
-  - BidMachine (= 1.4.3)
+  - BidMachine (= 1.5.1)
   - BidMachine/Adapters
-  - mopub-ios-sdk (= 5.11.0)
+  - mopub-ios-sdk (= 5.13.1)
 
 SPEC REPOS:
   https://github.com/appodeal/CocoaPods.git:
@@ -161,25 +155,26 @@ SPEC REPOS:
     - myTargetSDK
     - Protobuf
     - smaato-ios-sdk
+    - StackModules
     - TapjoySDK
     - VungleSDK-iOS
 
 SPEC CHECKSUMS:
   AdColony: fc02f429d6c4591567c7ae1426ebfcecb704b11f
-  BidMachine: 32cc6cf05d390917560508126f762367063f5aa6
+  BidMachine: cb108c351e0b4394438419bfddad7a78c100e3ce
   CriteoPublisherSdk: 9ea61c4f6facafd5bc003258d569e6510e06614c
   FBAudienceNetwork: 33fc8c8c07c1cdbf5279784b73729c6410809daa
-  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   MintegralAdSDK: 00e3c264c3f1c9f9a2fe0ac830e0f185b7ef87e2
-  mopub-ios-sdk: 292b8e9a55a2e72a34afc04ec01e85486af46240
+  mopub-ios-sdk: 18af57aaf79d0ea3d0232b43b2d603ae8ea8e826
   myTargetSDK: ca4a115fb76143f0934e06763c5b02e284af74ec
-  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   smaato-ios-sdk: fad41f668ceefe75ece6d46f729bea3ca26471ea
-  StackIAB: 02bac8c41f0252525ad1e1f1f9eb8841d112b413
-  StackModules: a829067eec6aa4be8bdc9515141b89f3d06bdb55
+  StackIAB: e30a4523f384d02fcfda16b8e593b7dd0f9c83a2
+  StackModules: 988028d1de906074cf5f1b12c662a5859eb7f0ca
   TapjoySDK: c8d73f291cfe922cb8bb2c3ae09b5af0b2863841
   VungleSDK-iOS: b39f80d93c342cb07f9d83ab1105817ddcb61b72
 
-PODFILE CHECKSUM: cb53565644556cea1c88949b32ba86ac567ef8cc
+PODFILE CHECKSUM: 9cba3d6d26d35dd9260192102cb811c3eb080d98
 
-COCOAPODS: 1.8.0
+COCOAPODS: 1.9.1

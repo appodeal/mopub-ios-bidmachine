@@ -7,9 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "BidMachineFetcher.h"
+#import "BMMFetcher.h"
 #import "BidMachineAdapterConfiguration.h"
-#import "BidMachineInstanceMediationSettings.h"
 
 #import <mopub-ios-sdk/MoPub.h>
 #import <BidMachine/BidMachine.h>
@@ -38,9 +37,26 @@
 
 /// Setup bm_pf format and roundin mode
 - (void)configureBidMachinePricefloorRounding {
-    BidMachineFetcher.sharedFetcher.roundingMode = NSNumberFormatterRoundDown;
     // Formats described in https://unicode.org/reports/tr35/tr35-10.html#Number_Format_Patterns
-    BidMachineFetcher.sharedFetcher.format = @"0.00";
+    BMMFetcher *interstitial1= ({
+        BMMFetcher *fetcher = BMMFetcher.new;
+        fetcher.format = @"0.04";
+        fetcher.roundingMode = kCFNumberFormatterRoundUp;
+        fetcher.type = BDMInternalPlacementTypeInterstitial;
+        fetcher.range = BDMFetcherRangeMake(0.00, 0.50); // [0.00] - (0.50)
+        fetcher;
+    });
+    [BDMFetcher.shared registerPresset:interstitial1];
+    
+    BMMFetcher *interstitial2= ({
+        BMMFetcher *fetcher = BMMFetcher.new;
+        fetcher.format = @"0.01";
+        fetcher.roundingMode = NSNumberFormatterRoundDown;
+        fetcher.type = BDMInternalPlacementTypeInterstitial;
+        fetcher.range = BDMFetcherRangeMake(0.50, 0.50); // [0.50] - (1.00)
+        fetcher;
+    });
+    [BDMFetcher.shared registerPresset:interstitial2];
 }
 
 /// Start BidMachine session, should be called before MoPub initialisation

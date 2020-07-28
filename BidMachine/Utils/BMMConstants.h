@@ -1,5 +1,5 @@
 //
-//  BidMachineConstants.h
+//  BMMConstants.h
 //  BidMachine
 //
 //  Created by Yaroslav Skachkov on 5/17/19.

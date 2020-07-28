@@ -1,16 +1,16 @@
 //
-//  BidMachineKeywordsTransformer.m
+//  BMMKeywordsTransformer.m
 //  BidMachine
 //
 //  Created by Stas Kochkin on 29/08/2019.
 //  Copyright © 2019 BidMachine. All rights reserved.
 //
 
-#import "BidMachineKeywordsTransformer.h"
+#import "BMMKeywordsTransformer.h"
 #import <StackFoundation/StackFoundation.h>
 
 
-@implementation BidMachineKeywordsTransformer
+@implementation BMMKeywordsTransformer
 
 + (Class)transformedValueClass {
     return [NSString class];

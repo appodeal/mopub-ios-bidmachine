@@ -1,14 +1,15 @@
 //
-//  BidMachineAdapterUtils.m
-//  BidMachine
+//  BMMUtils.m
+//  BMHBIntegrationSample
 //
-//  Created by Yaroslav Skachkov on 3/6/19.
-//  Copyright © 2019 BidMachine. All rights reserved.
+//  Created by Ilia Lozhkin on 27.07.2020.
+//  Copyright © 2020 Appodeal. All rights reserved.
 //
 
-#import "BidMachineAdapterUtils.h"
-#import "BidMachineConstants.h"
-#import "BidMachineAdapterTransformers.h"
+#import "BMMUtils.h"
+#import "BMMConstants.h"
+#import "BMMTransformer.h"
+#import "BMMFactory+BMTargeting.h"
 
 #if __has_include(<MoPub/MoPub.h>)
 #import <MoPub/MoPub.h>
@@ -18,26 +19,20 @@
 #import <MoPubSDKFramework/MoPub.h>
 #endif
 
+@implementation BMMUtils
 
-@interface BidMachineAdapterUtils ()
-
-@end
-
-
-@implementation BidMachineAdapterUtils
-
-+ (instancetype)sharedUtils {
-    static BidMachineAdapterUtils * _sharedFactory;
++ (instancetype)shared {
+    static BMMUtils * _sharedFactory;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedFactory = BidMachineAdapterUtils.new;
+        _sharedFactory = BMMUtils.new;
     });
     return _sharedFactory;
 }
 
 - (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
                                         completion:(void(^)(NSError *))completion {
-    NSString *sellerID = [BidMachineAdapterTransformers sellerIdFromValue:info[kBidMachineSellerId]];
+    NSString *sellerID = [BMMTransformer sellerIdFromValue:info[kBidMachineSellerId]];
     if (![sellerID isKindOfClass:NSString.class]) {
         NSDictionary *userInfo =
         @{
@@ -56,9 +51,9 @@
     
     BOOL loggingEnabled = [info[@"logging_enabled"] boolValue];
     BOOL testModeEnabled = [info[kBidMachineTestMode] boolValue];
-    NSURL *endpointURL = [BidMachineAdapterTransformers endpointUrlFromValue:info[@"endpoint"]];
-    BDMUserRestrictions *restrictions = [BidMachineAdapterTransformers userRestrictionsFromExtraInfo:info];
-    NSArray <BDMAdNetworkConfiguration *> *headerBiddingConfig = [BidMachineAdapterTransformers adNetworkConfigFromDict:info];
+    NSURL *endpointURL = [BMMTransformer endpointUrlFromValue:info[@"endpoint"]];
+    BDMUserRestrictions *restrictions = [BMMFactory.sharedFactory userRestrictionsFromExtraInfo:info];
+    NSArray <BDMAdNetworkConfiguration *> *headerBiddingConfig = [BMMTransformer adNetworkConfigFromDict:info];
     
     BDMSdkConfiguration *config = [BDMSdkConfiguration new];
     [config setTestMode:testModeEnabled];

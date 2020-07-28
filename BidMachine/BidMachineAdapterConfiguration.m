@@ -7,8 +7,6 @@
 //
 
 #import "BidMachineAdapterConfiguration.h"
-#import "BidMachineConstants.h"
-#import "BidMachineAdapterUtils.h"
 #import <BidMachine/BDMAdNetworkConfiguration.h>
 
 

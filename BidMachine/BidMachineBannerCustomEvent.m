@@ -7,23 +7,23 @@
 //
 
 #import "BidMachineBannerCustomEvent.h"
-#import "BidMachineAdapterConfiguration.h"
-#import "BidMachineAdapterUtils+Request.h"
-#import "BidMachineAdapterTransformers.h"
-#import "BidMachineFetcher.h"
-#import "BidMachineConstants.h"
+#import "BMMFactory+BMRequest.h"
+#import "BMMTransformer.h"
+#import "BMMConstants.h"
+#import "BMMError.h"
+#import "BMMUtils.h"
 
 
 @interface BidMachineBannerCustomEvent() <BDMBannerDelegate, BDMAdEventProducerDelegate>
 
 @property (nonatomic, strong) BDMBannerView *bannerView;
 @property (nonatomic, strong) NSString *networkId;
-@property (nonatomic, assign) BOOL hasTrackedImpression;
-@property (nonatomic, assign) BOOL hasTrackedClick;
 
 @end
 
 @implementation BidMachineBannerCustomEvent
+
+@dynamic delegate, localExtras;
 
 - (instancetype)init {
     self = [super init];
@@ -37,36 +37,30 @@
     return NO;
 }
 
-- (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
+- (void)requestAdWithSize:(CGSize)size adapterInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup {
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
-    BDMBannerAdSize adSize = [BidMachineAdapterTransformers bannerSizeFromCGSize:size];
+    BDMBannerAdSize adSize = [BMMTransformer bannerSizeFromCGSize:size];
     
-    if ([extraInfo.allKeys containsObject:kBidMachineBidId]) {
-        id request = [BidMachineFetcher.sharedFetcher requestForBidId:extraInfo[kBidMachineBidId]];
-        if ([request isKindOfClass:BDMBannerRequest.self]) {
-            [self populate:request adSize:adSize];
+    NSString *price = ANY(extraInfo).from(kBidMachinePrice).string;
+    BOOL isPrebid = [BDMRequestStorage.shared isPrebidRequestsForType:BDMInternalPlacementTypeBanner];
+    
+    if (isPrebid && price) {
+        BDMRequest *auctionRequest = [BDMRequestStorage.shared requestForPrice:price type:BDMInternalPlacementTypeBanner];
+        if ([auctionRequest isKindOfClass:BDMBannerRequest.self]) {
+            [self populate:(BDMBannerRequest *)auctionRequest adSize:adSize];
         } else {
-            NSDictionary *userInfo =
-            @{
-                NSLocalizedFailureReasonErrorKey: @"BidMachine request type not satisfying",
-                NSLocalizedDescriptionKey: @"BidMachineBannerCustomEvent requires to use BDMBannerRequest",
-                NSLocalizedRecoverySuggestionErrorKey: @"Check that you pass keywords and extras to MPAdView from BDMBannerRequest"
-            };
-            NSError *error =  [NSError errorWithDomain:kAdapterErrorDomain
-                                                  code:BidMachineAdapterErrorCodeMissingSellerId
-                                              userInfo:userInfo];
+            NSError *error = [BMMError errorWithCode:BidMachineAdapterErrorCodeMissingSellerId description:@"Bidmachine can't fint prebid request"];
             MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-            [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
+            [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
         }
     } else {
         __weak typeof(self) weakSelf = self;
-        [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+        [BMMUtils.shared initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
             NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
-            BDMBannerRequest *request = [BidMachineAdapterUtils.sharedUtils bannerRequestWithSize:adSize
-                                                                                        extraInfo:extraInfo
-                                                                                         location:weakSelf.delegate.location
-                                                                                      priceFloors:priceFloors];
+            BDMBannerRequest *request = [BMMFactory.sharedFactory bannerRequestWithSize:adSize
+                                                                              extraInfo:extraInfo
+                                                                            priceFloors:priceFloors];
             [weakSelf populate:request adSize:adSize];
         }];
     }
@@ -96,51 +90,46 @@
     MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], self.networkId);
     MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], self.networkId);
     MPLogAdEvent([MPLogEvent adShowAttemptForAdapter:NSStringFromClass(self.class)], self.networkId);
-    [self.delegate bannerCustomEvent:self didLoadAd:bannerView];
+    [self.delegate inlineAdAdapter:self didLoadAdWithAdView:bannerView];
 }
 
 - (void)bannerView:(BDMBannerView *)bannerView failedWithError:(NSError *)error {
     MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-    [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
+    [self.delegate inlineAdAdapter:self didFailToLoadAdWithError:error];
 }
 
 - (void)bannerViewRecieveUserInteraction:(BDMBannerView *)bannerView {
     MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], self.networkId);
+    [self.delegate inlineAdAdapterWillBeginUserAction:self];
+    [self.delegate inlineAdAdapterDidEndUserAction:self];
 }
 
 - (void)bannerViewWillLeaveApplication:(BDMBannerView *)bannerView {
     MPLogAdEvent([MPLogEvent adWillLeaveApplication], self.networkId);
-    [self.delegate bannerCustomEventWillLeaveApplication:self];
+    [self.delegate inlineAdAdapterWillLeaveApplication:self];
 }
 
 - (void)bannerViewWillPresentScreen:(BDMBannerView *)bannerView {
     MPLogInfo(@"Banner with id:%@ - Will present internal view.", self.networkId);
     MPLogAdEvent([MPLogEvent adWillPresentModalForAdapter:NSStringFromClass(self.class)], self.networkId);
-    [self.delegate bannerCustomEventWillBeginAction:self];
 }
 
 - (void)bannerViewDidDismissScreen:(BDMBannerView *)bannerView {
     MPLogInfo(@"Banner with id:%@ - Will dismiss internal view.", self.networkId);
     MPLogAdEvent([MPLogEvent adDidDismissModalForAdapter:NSStringFromClass(self.class)], self.networkId);
-    [self.delegate bannerCustomEventDidFinishAction:self];
 }
 
 #pragma mark - BDMAdEventProducerDelegate
 
 - (void)didProduceImpression:(id<BDMAdEventProducer>)producer {
-    if (!self.hasTrackedImpression) {
-        MPLogInfo(@"BidMachine banner ad did log impression");
-        self.hasTrackedImpression = YES;
-        [self.delegate trackImpression];
-    }
+    MPLogInfo(@"BidMachine banner ad did log impression");
+    [self.delegate inlineAdAdapterDidTrackImpression:self];
 }
 
 - (void)didProduceUserAction:(id<BDMAdEventProducer>)producer {
-    if (!self.hasTrackedClick) {
-        MPLogInfo(@"BidMachine banner ad did log click");
-        self.hasTrackedClick = YES;
-        [self.delegate trackClick];
-    }
+    MPLogInfo(@"BidMachine banner ad did log click");
+    [self.delegate inlineAdAdapterDidTrackClick:self];
 }
 
 @end
+

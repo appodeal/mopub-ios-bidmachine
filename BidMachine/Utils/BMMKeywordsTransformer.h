@@ -1,5 +1,5 @@
 //
-//  BidMachineKeywordsTransformer.h
+//  BMMKeywordsTransformer.h
 //  BidMachine
 //
 //  Created by Stas Kochkin on 29/08/2019.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BidMachineKeywordsTransformer : NSValueTransformer
+@interface BMMKeywordsTransformer : NSValueTransformer
 
 @end
 

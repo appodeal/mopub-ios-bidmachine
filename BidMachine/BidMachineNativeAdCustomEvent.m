@@ -7,10 +7,13 @@
 //
 
 #import "BidMachineNativeAdCustomEvent.h"
-#import "BidMachineAdapterUtils+Request.h"
 #import "BidMachineNativeAdAdapter.h"
-#import "BidMachineFetcher.h"
-#import "BidMachineConstants.h"
+#import "BMMFactory+BMRequest.h"
+#import "BMMTransformer.h"
+#import "BMMConstants.h"
+#import "BMMError.h"
+#import "BMMUtils.h"
+
 
 @interface BidMachineNativeAdCustomEvent ()<BDMNativeAdDelegate>
 
@@ -33,36 +36,27 @@
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     
-    if ([extraInfo.allKeys containsObject:kBidMachineBidId]) {
-          id request = [BidMachineFetcher.sharedFetcher requestForBidId:extraInfo[kBidMachineBidId]];
-          if ([request isKindOfClass:BDMRewardedRequest.self]) {
-              [self.nativeAd makeRequest:request];
-          } else {
-              NSDictionary *userInfo =
-              @{
-                NSLocalizedFailureReasonErrorKey: @"BidMachine request type not satisfying",
-                NSLocalizedDescriptionKey: @"BidMachineRewardedVideoCustomEvent requires to use BDMRewardedRequest",
-                NSLocalizedRecoverySuggestionErrorKey: @"Check that you pass keywords and extras to MPInterstitialAdController from BDMRewardedRequest"
-                };
-              NSError *error =  [NSError errorWithDomain:kAdapterErrorDomain
-                                                    code:BidMachineAdapterErrorCodeMissingSellerId
-                                                userInfo:userInfo];
-              MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-              [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
-          }
-      } else {
-          __weak typeof(self) weakSelf = self;
-          [BidMachineAdapterUtils.sharedUtils initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
-              NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
-              [extraInfo addEntriesFromDictionary:info];
-              
-              NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
-              BDMNativeAdRequest *request = [[BidMachineAdapterUtils sharedUtils] nativeAdRequestWithExtraInfo:extraInfo
-                                                                                                      location:nil
-                                                                                                   priceFloors:priceFloors];
-              [weakSelf.nativeAd makeRequest:request];
-          }];
-      }
+    NSString *price = ANY(extraInfo).from(kBidMachinePrice).string;
+    BOOL isPrebid = [BDMRequestStorage.shared isPrebidRequestsForType:BDMInternalPlacementTypeNative];
+    
+    if (isPrebid && price) {
+        BDMRequest *auctionRequest = [BDMRequestStorage.shared requestForPrice:price type:BDMInternalPlacementTypeNative];
+        if ([auctionRequest isKindOfClass:BDMNativeAdRequest.self]) {
+            [self.nativeAd makeRequest:(BDMNativeAdRequest *)auctionRequest];
+        } else {
+            NSError *error = [BMMError errorWithCode:BidMachineAdapterErrorCodeMissingSellerId description:@"Bidmachine can't fint prebid request"];
+            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+            [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
+        }
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [BMMUtils.shared initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+            NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
+            BDMNativeAdRequest *request = [BMMFactory.sharedFactory nativeAdRequestWithExtraInfo:extraInfo
+                                                                                     priceFloors:priceFloors];
+            [weakSelf.nativeAd makeRequest:request];
+        }];
+    }
 }
 
 - (BDMNativeAd *)nativeAd {

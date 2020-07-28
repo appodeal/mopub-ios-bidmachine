@@ -13,11 +13,13 @@
 #elif __has_include(<MoPubSDKFramework/MoPub.h>)
 #import <MoPubSDKFramework/MoPub.h>
 #else
-#import "MPInterstitialCustomEvent.h"
+#import "MPFullscreenAdAdapter.h"
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
 
-@interface BidMachineInterstitialCustomEvent : MPInterstitialCustomEvent
+@interface BidMachineInterstitialCustomEvent : MPFullscreenAdAdapter <MPThirdPartyFullscreenAdAdapter>
 
 @end
 
+NS_ASSUME_NONNULL_END

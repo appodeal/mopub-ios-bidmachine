@@ -22,7 +22,6 @@
     [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@UNIT_ID
                                             keywords:nil
                                     userDataKeywords:nil
-                                            location:nil
                                           customerId:nil
                                    mediationSettings:nil
                                          localExtras:self.extras];
