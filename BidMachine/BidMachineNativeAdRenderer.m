@@ -113,9 +113,7 @@
         }
         if ([rendering respondsToSelector:@selector(nativeMainImageView)]) {
             _mediaContainerView = rendering.nativeMainImageView;
-        } else if ([rendering respondsToSelector:@selector(nativeVideoView)]) {
-             _mediaContainerView = rendering.nativeVideoView;
-        }
+        } 
         
         if ([rendering respondsToSelector:@selector(nativePrivacyInformationIconImageView)]) {
             _adChoiceView = rendering.nativePrivacyInformationIconImageView;

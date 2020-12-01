@@ -7,12 +7,12 @@ source 'https://github.com/appodeal/CocoaPods.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 def bidmachine_header_bidding
-  pod "BidMachine", "1.5.3"
+  pod "BidMachine", "1.6.3"
   pod "BidMachine/Adapters"
 end
 
 def mopub 
-  pod 'mopub-ios-sdk', '5.13.1'
+  pod 'mopub-ios-sdk', '5.15.0'
 end
 
 target 'BidMachine' do

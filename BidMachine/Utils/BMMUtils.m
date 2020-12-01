@@ -49,19 +49,25 @@
     
     BDMSdk *sdk = [BDMSdk sharedSdk];
     
-    BOOL loggingEnabled = [info[@"logging_enabled"] boolValue];
+    BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
     BOOL testModeEnabled = [info[kBidMachineTestMode] boolValue];
     NSURL *endpointURL = [BMMTransformer endpointUrlFromValue:info[@"endpoint"]];
+    BDMTargeting *targeting = [BMMFactory.sharedFactory targetingFromExtraInfo:info];
     BDMUserRestrictions *restrictions = [BMMFactory.sharedFactory userRestrictionsFromExtraInfo:info];
     NSArray <BDMAdNetworkConfiguration *> *headerBiddingConfig = [BMMTransformer adNetworkConfigFromDict:info];
     
     BDMSdkConfiguration *config = [BDMSdkConfiguration new];
     [config setTestMode:testModeEnabled];
+    [config setTargeting:targeting];
     endpointURL ? [config setBaseURL:endpointURL] : nil;
     headerBiddingConfig.count ? [config setNetworkConfigurations:headerBiddingConfig] : nil;
     
+    sdk.restrictions.hasConsent = restrictions.hasConsent;
+    sdk.restrictions.subjectToGDPR = restrictions.subjectToGDPR;
+    sdk.restrictions.consentString = restrictions.consentString;
+    sdk.restrictions.coppa = restrictions.coppa;
+    
     [sdk setEnableLogging:loggingEnabled];
-    [sdk setRestrictions:restrictions];
     [sdk startSessionWithSellerID:sellerID
                     configuration:config
                        completion:^{ completion ? completion(nil) : nil; }];

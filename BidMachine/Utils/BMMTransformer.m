@@ -122,7 +122,7 @@
                     BDMAdUnitFormatUnknown;
                     NSMutableDictionary *params = adUnit.mutableCopy;
                     [params removeObjectForKey:@"format"];
-                    builder.appendAdUnit(fmt, params);
+                    builder.appendAdUnit(fmt, params, nil);
                 }
             }];
         }

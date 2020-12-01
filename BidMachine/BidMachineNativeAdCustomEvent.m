@@ -50,7 +50,7 @@
         }
     } else {
         __weak typeof(self) weakSelf = self;
-        [BMMUtils.shared initializeBidMachineSDKWithCustomEventInfo:info completion:^(NSError *error) {
+        [BMMUtils.shared initializeBidMachineSDKWithCustomEventInfo:extraInfo completion:^(NSError *error) {
             NSArray *priceFloors = extraInfo[@"priceFloors"] ?: @[];
             BDMNativeAdRequest *request = [BMMFactory.sharedFactory nativeAdRequestWithExtraInfo:extraInfo
                                                                                      priceFloors:priceFloors];

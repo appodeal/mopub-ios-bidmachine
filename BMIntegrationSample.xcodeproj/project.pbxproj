@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D04BFD365183CFCAC43E69F /* libPods-BidMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F3E461222FAFB300834D16 /* libPods-BidMachine.a */; };
+		371BBD932576499B00FB8FAA /* BMEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371BBD922576499B00FB8FAA /* BMEmpty.swift */; };
 		37319DCC24D0223D00765FE5 /* BMMTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DBB24D0223C00765FE5 /* BMMTransformer.m */; };
 		37319DCD24D0223D00765FE5 /* BMMError.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DBC24D0223C00765FE5 /* BMMError.m */; };
 		37319DCE24D0223D00765FE5 /* BMMFactory+BMTargeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DBD24D0223C00765FE5 /* BMMFactory+BMTargeting.m */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		2416F01252B90DBC291AC7F8 /* libPods-AdMob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdMob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244903395DCEB987A511045D /* Pods-AdMob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdMob.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdMob/Pods-AdMob.release.xcconfig"; sourceTree = "<group>"; };
+		371BBD922576499B00FB8FAA /* BMEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMEmpty.swift; sourceTree = "<group>"; };
 		37319DBB24D0223C00765FE5 /* BMMTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMTransformer.m; sourceTree = "<group>"; };
 		37319DBC24D0223C00765FE5 /* BMMError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMError.m; sourceTree = "<group>"; };
 		37319DBD24D0223C00765FE5 /* BMMFactory+BMTargeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BMMFactory+BMTargeting.m"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		D9A0A6E5228EB41500DF63B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				371BBD922576499B00FB8FAA /* BMEmpty.swift */,
 				37319DC024D0223D00765FE5 /* BMMConstants.h */,
 				37319DC624D0223D00765FE5 /* BMMError.h */,
 				37319DBC24D0223C00765FE5 /* BMMError.m */,
@@ -365,6 +368,7 @@
 				TargetAttributes = {
 					D96190EF222957C50057C11A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1220;
 					};
 					D961910C2229588E0057C11A = {
 						CreatedOnToolsVersion = 10.1;
@@ -555,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371BBD932576499B00FB8FAA /* BMEmpty.swift in Sources */,
 				65693B022390F78A007B0D33 /* NativeAdRenderer.m in Sources */,
 				65693AF22390F700007B0D33 /* Base.m in Sources */,
 				6528D635238D2B0400CA4B30 /* NativeAdView.m in Sources */,
@@ -729,6 +734,7 @@
 			baseConfigurationReference = A2ED3012BD487627BCD216B6 /* Pods-BMIntegrationSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
 				INFOPLIST_FILE = BMIntegrationSample/Info.plist;
@@ -739,6 +745,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.BMIntegrationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -748,6 +756,7 @@
 			baseConfigurationReference = 64ECC43E987F38AEC3CC41CF /* Pods-BMIntegrationSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
 				INFOPLIST_FILE = BMIntegrationSample/Info.plist;
@@ -758,6 +767,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.BMIntegrationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

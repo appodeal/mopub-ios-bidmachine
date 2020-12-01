@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371BBD8F2576468000FB8FAA /* BMEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371BBD8E2576468000FB8FAA /* BMEmpty.swift */; };
 		37319DB124CF079300765FE5 /* BMMFactory+BMRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DB024CF079300765FE5 /* BMMFactory+BMRequest.m */; };
 		37319DB424CF084300765FE5 /* BMMFactory+BMTargeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DB324CF084300765FE5 /* BMMFactory+BMTargeting.m */; };
 		37319DB724CF0AA900765FE5 /* BMMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319DB624CF0AA900765FE5 /* BMMUtils.m */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		371BBD8E2576468000FB8FAA /* BMEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMEmpty.swift; sourceTree = "<group>"; };
 		37319DAF24CF079300765FE5 /* BMMFactory+BMRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BMMFactory+BMRequest.h"; sourceTree = "<group>"; };
 		37319DB024CF079300765FE5 /* BMMFactory+BMRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BMMFactory+BMRequest.m"; sourceTree = "<group>"; };
 		37319DB224CF084300765FE5 /* BMMFactory+BMTargeting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BMMFactory+BMTargeting.h"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		659EB62723DB287C004F4550 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				371BBD8E2576468000FB8FAA /* BMEmpty.swift */,
 				659EB62C23DB287C004F4550 /* BMMConstants.h */,
 				3781990024CEC6D900E97FED /* BMMError.h */,
 				3781990124CEC6D900E97FED /* BMMError.m */,
@@ -295,6 +298,7 @@
 				TargetAttributes = {
 					659EB60123DB2710004F4550 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -397,6 +401,7 @@
 			files = (
 				659EB65323DB2AE9004F4550 /* NativeAdRenderer.m in Sources */,
 				659EB66423DB2B2F004F4550 /* Interstitial.m in Sources */,
+				371BBD8F2576468000FB8FAA /* BMEmpty.swift in Sources */,
 				3781990224CEC6D900E97FED /* BMMError.m in Sources */,
 				659EB64323DB287C004F4550 /* BMMKeywordsTransformer.m in Sources */,
 				659EB65423DB2AE9004F4550 /* NativeAdView.m in Sources */,
@@ -560,6 +565,7 @@
 			baseConfigurationReference = 714D7B0351194A0EF785B6D2 /* Pods-BMHBIntegrationSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
 				INFOPLIST_FILE = BMHBIntegrationSample/Info.plist;
@@ -570,6 +576,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -579,6 +587,7 @@
 			baseConfigurationReference = 4C6F13D57B35474E66F622ED /* Pods-BMHBIntegrationSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
 				INFOPLIST_FILE = BMHBIntegrationSample/Info.plist;
@@ -589,6 +598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
