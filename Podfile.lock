@@ -1,8 +1,8 @@
 PODS:
   - AdColony (4.3.1)
-  - BidMachine (1.6.3):
-    - BidMachine/Core (= 1.6.3)
-  - BidMachine/Adapters (1.6.3):
+  - BidMachine (1.6.4):
+    - BidMachine/Core (= 1.6.4)
+  - BidMachine/Adapters (1.6.4):
     - BidMachine/AdColonyAdapter
     - BidMachine/AmazonAdapter
     - BidMachine/CriteoAdapter
@@ -11,32 +11,32 @@ PODS:
     - BidMachine/SmaatoAdapter
     - BidMachine/TapjoyAdapter
     - BidMachine/VungleAdapter
-  - BidMachine/AdColonyAdapter (1.6.3):
+  - BidMachine/AdColonyAdapter (1.6.4):
     - AdColony (= 4.3.1)
     - BidMachine/Core
-  - BidMachine/AmazonAdapter (1.6.3):
+  - BidMachine/AmazonAdapter (1.6.4):
     - BidMachine/Core
-  - BidMachine/Core (1.6.3):
+  - BidMachine/Core (1.6.4):
     - Protobuf (~> 3.9)
     - StackIAB (~> 0.6.0)
     - StackModules (~> 1.0.0)
-  - BidMachine/CriteoAdapter (1.6.3):
+  - BidMachine/CriteoAdapter (1.6.4):
     - BidMachine/Core
     - CriteoPublisherSdk (= 4.0.1)
-  - BidMachine/FacebookAdapter (1.6.3):
+  - BidMachine/FacebookAdapter (1.6.4):
     - BidMachine/Core
     - FBAudienceNetwork (= 6.0.0)
-  - BidMachine/MyTargetAdapter (1.6.3):
+  - BidMachine/MyTargetAdapter (1.6.4):
     - BidMachine/Core
     - myTargetSDK (= 5.8.0)
-  - BidMachine/SmaatoAdapter (1.6.3):
+  - BidMachine/SmaatoAdapter (1.6.4):
     - BidMachine/Core
     - smaato-ios-sdk (= 21.6.1)
     - smaato-ios-sdk/Modules/UnifiedBidding (= 21.6.1)
-  - BidMachine/TapjoyAdapter (1.6.3):
+  - BidMachine/TapjoyAdapter (1.6.4):
     - BidMachine/Core
     - TapjoySDK (= 12.6.1)
-  - BidMachine/VungleAdapter (1.6.3):
+  - BidMachine/VungleAdapter (1.6.4):
     - BidMachine/Core
     - VungleSDK-iOS (= 6.7.1)
   - CriteoPublisherSdk (4.0.1):
@@ -54,7 +54,7 @@ PODS:
   - mopub-ios-sdk/NativeAds (5.15.0):
     - mopub-ios-sdk/Core
   - myTargetSDK (5.8.0)
-  - Protobuf (3.13.0)
+  - Protobuf (3.14.0)
   - smaato-ios-sdk (21.6.1):
     - smaato-ios-sdk/Full (= 21.6.1)
   - smaato-ios-sdk/Banner (21.6.1):
@@ -134,7 +134,7 @@ PODS:
   - VungleSDK-iOS (6.7.1)
 
 DEPENDENCIES:
-  - BidMachine (= 1.6.3)
+  - BidMachine (= 1.6.4)
   - BidMachine/Adapters
   - mopub-ios-sdk (= 5.15.0)
 
@@ -157,19 +157,19 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AdColony: 526a7bfe223dea50b9193d215d4b6fcbfc1515d1
-  BidMachine: 2abf89f7fd8e74f4f481b5a990e56044f8a21bd8
+  BidMachine: 0a2769b7f5c48ef144f629aa1ec3f5f88add3118
   CriteoPublisherSdk: a7551daf9235203a040703504ae549e842b5eebf
   FBAudienceNetwork: 39c76716acc24686fbef267d926bd9f278a55dbf
   FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4
   mopub-ios-sdk: a21098174b9420a291aca9fcdae832d0f2e2a368
   myTargetSDK: e142b182317f4a0a376754619cfcc633150b827d
-  Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
+  Protobuf: 0cde852566359049847168e51bd1c690e0f70056
   smaato-ios-sdk: 081e29d0f55e48d6d65f445e036899a5f97b9aca
   StackIAB: 54d14c902e3c2b5ffa985d1bf73d4151f30eb1d6
   StackModules: 89704d5145477c7c37513d9dfbdf1bfe4722c59e
   TapjoySDK: ab02725a55e84c2fdd6fafc872cb00bd58e8adb2
   VungleSDK-iOS: e9d4f16042b14a24a5bee290c1eb21452e9a81cf
 
-PODFILE CHECKSUM: da4936daba2e64bf55296ced5be5f5a9e731c997
+PODFILE CHECKSUM: f0876679c548dbe577d165655455d8bd29ddc1eb
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

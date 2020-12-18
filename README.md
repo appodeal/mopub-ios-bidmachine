@@ -25,7 +25,7 @@ Add following lines into your project Podfile
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'MoPub-BidMachine-Adapters', '~> 1.5'
+  pod 'MoPub-BidMachine-Adapters', '~> 1.6'
 end
 ```
 
@@ -34,7 +34,7 @@ end
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'MoPub-BidMachine-Adapters', '~> 1.5'
+  pod 'MoPub-BidMachine-Adapters', '~> 1.6'
   pod "BidMachine/Adapters"
 end
 ```
@@ -863,6 +863,10 @@ BidMachineFetcher.sharedFetcher.format = @"0.00";
 ```
 
 ##  Changelog
+
+### Version 1.6.3.0
+
+* Update BidMachine sdk 1.6.4
 
 ### Version 1.6.3.0
 
