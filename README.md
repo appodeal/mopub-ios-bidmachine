@@ -864,7 +864,7 @@ BidMachineFetcher.sharedFetcher.format = @"0.00";
 
 ##  Changelog
 
-### Version 1.6.3.0
+### Version 1.6.4.0
 
 * Update BidMachine sdk 1.6.4
 
