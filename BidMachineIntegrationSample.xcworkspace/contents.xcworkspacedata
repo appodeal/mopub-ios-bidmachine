@@ -5,10 +5,10 @@
       location = "group:BidMachineMopubAdapter/BidMachineMopubAdapter.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BidMachineMopubClassicSample/BidMachineMopubClassicSample.xcodeproj">
+      location = "group:/Users/assassinsc/Desktop/BidMachine-MoPub-iOS-Adapters/BidMachineMopubPreBidSample/BidMachineMopubPreBidSample.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BidMachineMopubPreBidSample/BidMachineMopubPreBidSample.xcodeproj">
+      location = "group:/Users/assassinsc/Desktop/BidMachine-MoPub-iOS-Adapters/BidMachineMopubClassicSample/BidMachineMopubClassicSample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -7,28 +7,36 @@ source 'https://github.com/appodeal/CocoaPods.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 def bidmachine_header_bidding
-  pod "BidMachine", "1.6.4"
-  pod "BidMachine/Adapters"
+  pod "BDMAdColonyAdapter", "1.7.0.2.0-Beta"
+  pod "BDMAmazonAdapter", "1.7.0.2.0-Beta"
+  pod "BDMAppRollAdapter", "1.7.0.2.0-Beta"
+  pod "BDMCriteoAdapter", "1.7.0.2.0-Beta"
+  pod "BDMFacebookAdapter", "1.7.0.2.0-Beta"
+  pod "BDMMyTargetAdapter", "1.7.0.2.0-Beta"
+  pod "BDMSmaatoAdapter", "1.7.0.2.0-Beta"
+  pod "BDMTapjoyAdapter", "1.7.0.2.0-Beta"
+  pod "BDMVungleAdapter", "1.7.0.2.0-Beta"
+  pod "BDMIABAdapter", "1.7.0.2.0-Beta"
 end
 
 def mopub 
   pod 'mopub-ios-sdk', '5.15.0'
 end
 
-target 'BidMachine' do
-    project 'BMIntegrationSample.xcodeproj'
+target 'BidMachineMopubAdapter' do
+    project 'BidMachineMopubAdapter/BidMachineMopubAdapter.xcodeproj'
     bidmachine_header_bidding
     mopub
 end
 
-target 'BMIntegrationSample' do
-    project 'BMIntegrationSample.xcodeproj'
+target 'BidMachineMopubClassicSample' do
+    project 'BidMachineMopubClassicSample/BidMachineMopubClassicSample.xcodeproj'
     bidmachine_header_bidding
     mopub
 end
 
-target 'BMHBIntegrationSample' do
-    project 'BMHBIntegrationSample.xcodeproj'
+target 'BidMachineMopubPreBidSample' do
+    project 'BidMachineMopubPreBidSample/BidMachineMopubPreBidSample.xcodeproj'
     bidmachine_header_bidding
     mopub
 end
