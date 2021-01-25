@@ -62,6 +62,7 @@
         [BidMachineAdapterConfiguration initializeBidMachineSDKWithConfig:config completion:^(NSError *error) {
             BDMRewardedRequest *request = [BDMRewardedRequest new];
             [request setPriceFloors:config.priceFloor];
+            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
             [weakSelf.rewarded populateWithRequest:request];
         }];
     }

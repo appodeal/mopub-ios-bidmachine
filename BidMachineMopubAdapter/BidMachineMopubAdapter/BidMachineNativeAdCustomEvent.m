@@ -49,6 +49,7 @@
             BDMNativeAdRequest *request = [BDMNativeAdRequest new];
             [request setPriceFloors:config.priceFloor];
             [request setType:config.nativeType];
+            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
             [weakSelf.nativeAd makeRequest:request];
         }];
     }

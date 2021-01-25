@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (NSDictionary *)localExtras;
+
 @end
 

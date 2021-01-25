@@ -57,6 +57,7 @@
             BDMBannerRequest *request = [BDMBannerRequest new];
             [request setAdSize:adSize];
             [request setPriceFloors:config.priceFloor];
+            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
             [weakSelf populate:request adSize:adSize];
         }];
     }

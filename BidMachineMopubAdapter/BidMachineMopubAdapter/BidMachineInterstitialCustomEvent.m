@@ -63,6 +63,7 @@
             BDMInterstitialRequest *request = [BDMInterstitialRequest new];
             [request setType:config.fullscreenType];
             [request setPriceFloors:config.priceFloor];
+            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
             [weakSelf.interstitial populateWithRequest:request];
         }];
     }

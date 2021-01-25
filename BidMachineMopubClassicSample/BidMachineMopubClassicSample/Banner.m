@@ -25,7 +25,7 @@
     kMPPresetMaxAdSize90Height :
     kMPPresetMaxAdSize50Height;
     
-    [self.bannerView setLocalExtras:self.extras];
+    [self.bannerView setLocalExtras:AppDelegate.localExtras];
     [self.bannerView loadAdWithMaxAdSize:adViewSize];
 }
 
@@ -52,40 +52,6 @@
       [self.bannerView.widthAnchor constraintEqualToAnchor:self.container.widthAnchor],
       [self.bannerView.heightAnchor constraintEqualToConstant:50]
       ]];
-}
-
-#pragma mark - Extras
-
-- (NSDictionary *)extras {
-    NSDictionary *localExtras = @{};
-//    NSDictionary *localExtras = @{
-//        @"seller_id": @"1",
-//        @"coppa": @"true",
-//        @"consent_string": @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-//        @"endpoint" : @"some_url_endpoint",
-//        @"logging_enabled": @"true",
-//        @"test_mode": @"true",
-//        @"banner_width": @"320",
-//        @"userId": @"user123",
-//        @"gender": @"F",
-//        @"yob": @2000,
-//        @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-//        @"country": @"USA",
-//        @"city": @"Los Angeles",
-//        @"zip": @"90001–90084",
-//        @"sturl": @"https://store_url.com",
-//        @"paid": @"true",
-//        @"bcat": @"IAB-1,IAB-3,IAB-5",
-//        @"badv": @"https://domain_1.com,https://domain_2.org",
-//        @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-//        @"priceFloors": @[
-//                @{ @"id_1": @300.06 },
-//                @{ @"id_2": @1000 },
-//                @302.006,
-//                @1002
-//        ]
-//    };
-    return localExtras;
 }
 
 #pragma mark - MPAdViewDelegate

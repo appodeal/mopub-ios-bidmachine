@@ -15,7 +15,6 @@
   - [Interstitial implementation](#user-content-interstitial-implementation-1)
   - [Rewarded implementation](#user-content-rewarded-implementation-1)
   - [Native ad implementation](#user-content-native-ad-implementation-1)
-  - [Fetching options](#user-content-fetching-options)
 - [Changelog](#user-content-changelog)
 
 ## Getting Started
@@ -25,7 +24,7 @@ Add following lines into your project Podfile
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'MoPub-BidMachine-Adapters', '~> 1.6'
+  pod 'MoPub-BidMachine-Adapters', '~> 1.7.0.0'
 end
 ```
 
@@ -34,57 +33,389 @@ end
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'MoPub-BidMachine-Adapters', '~> 1.6'
-  pod "BidMachine/Adapters"
+  pod 'MoPub-BidMachine-Adapters', '~> 1.7.0.0'
+  pod "BDMAdColonyAdapter", "~> 1.7.0.0"
+  pod "BDMAmazonAdapter", "~> 1.7.0.0"
+  pod "BDMAppRollAdapter", "~> 1.7.0.0"
+  pod "BDMCriteoAdapter", "~> 1.7.0.0"
+  pod "BDMFacebookAdapter", "~> 1.7.0.0"
+  pod "BDMMyTargetAdapter", "~> 1.7.0.0"
+  pod "BDMSmaatoAdapter", "~> 1.7.0.0"
+  pod "BDMTapjoyAdapter", "~> 1.7.0.0"
+  pod "BDMVungleAdapter", "~> 1.7.0.0"
+  pod "BDMIABAdapter", "~> 1.7.0.0"
 end
+```
+
+## Configuration Parameters
+
+### All configuration parameters
+
+| Key | Parameter| Type | Required | 
+| --- | --- |  --- | --- |
+| kBDMExtSellerKey | seller_id | String | Required |
+| kBDMExtTestModeKey | test_mode | String | Optional |
+| kBDMExtLoggingKey | logging_enabled | String | Optional |
+| kBDMExtBaseURLKey | endpoint | String | Optional |
+| kBDMExtUserIdKey | userId | String | Optional |
+| kBDMExtGenderKey | gender | String | Optional |
+| kBDMExtYearOfBirthKey | yob | Number | Optional |
+| kBDMExtKeywordsKey | keywords | String | Optional |
+| kBDMExtBCatKey | bcat | String | Optional |
+| kBDMExtBAdvKey | badv | String | Optional |
+| kBDMExtBAppKey | bapps | String | Optional |
+| kBDMExtCountryKey | country | String | Optional |
+| kBDMExtCityKey | city | String | Optional |
+| kBDMExtZipKey | zip | String | Optional |
+| kBDMExtStoreUrlKey | sturl | String | Optional |
+| kBDMExtStoreIdKey | stid | String | Optional |
+| kBDMExtPaidKey | paid | String | Optional |
+| kBDMExtStoreCatKey | store_cat | String | Optional |
+| kBDMExtStoreSubCatKey | store_subcat | String | Optional |
+| kBDMExtFrameworkNameKey | fmw_name | String | Optional |
+| kBDMExtCoppaKey | coppa | String | Optional |
+| kBDMExtConsentKey | consent | String | Optional |
+| kBDMExtGDPRKey | gdpr | String | Optional |
+| kBDMExtConsentStringKey | consent_string | String | Optional |
+| kBDMExtCCPAStringKey | ccpa_string | String | Optional |
+| kBDMExtPublisherIdKey | pubid | String | Optional |
+| kBDMExtPublisherNameKey | pubname | String | Optional |
+| kBDMExtPublisherDomainKey | pubdomain | String | Optional |
+| kBDMExtPublisherCatKey | pubcat | String | Optional |
+| kBDMExtNetworkConfigKey | mediation_config | Array | Optional |
+| kBDMExtSSPKey | ssp | String | Optional |
+| kBDMExtWidthKey | banner_width | Number | Optional |
+| kBDMExtHeightKey | banner_height | Number | Optional |
+| kBDMExtFullscreenTypeKey | ad_content_type | String | Optional |
+| kBDMExtNativeTypeKey | adunit_native_format | String | Optional |
+| kBDMExtPriceFloorKey | priceFloors | Array | Optional |
+
+```
+@"seller_id"                  --> Your Seller ID
+@"test_mode"                  --> Enable Test Mode. @"true" or @"false"
+@"logging_enabled"            --> Enable Bidmachine Log. @"true" or @"false"
+@"endpoint"                   --> String URL that should be used as base URL for sdk
+@"user_id"                    --> Vendor-specific ID for the user
+@"gender"                     --> User gender refer to OpenRTB 2.5 spec (@"F", @"M", @"0")
+@"yob"                        --> User year of birth
+@"keywords"                   --> Comma separated list of keywords about the app
+@"bcat"                       --> Blocked advertiser categories using the IAB content categories. Comma separated list
+@"badv"                       --> Block list of advertisers by their domains. Comma separated list
+@"bapps"                      --> Block list of applications by their platform-specific exchange- independent application identifiers. Comma separated list
+@"country"                    --> User country 
+@"city"                       --> User city 
+@"zip"                        --> User zip code 
+@"sturl"                      --> Store URL. @"12356"
+@"stid"                       --> Numeric store id identifier 
+@"paid"                       --> Paid version of app. @"true" or @"false"
+@"store_cat"                  --> Store category
+@"store_subcat"               --> Store subcategories. Comma separated list
+@"fmw_name"                   --> Name of framework. @"unity" or @"native"
+@"coppa"                      --> Child app value. @"true" or @"false"
+@"consent"                    --> User consent. @"true" or @"false"
+@"gdpr"                       --> GDPR. @"true" or @"false"
+@"consent_string"             --> User consent string
+@"ccpa_string"                --> CCPA string: @"y---"
+@"pubid"                      --> Publisher Id
+@"pubname"                    --> Publisher name
+@"pubdomain"                  --> Publisher domain
+@"pubcat"                     --> Publisher category. Comma separated list
+@"ssp"                        --> SSP name
+@"banner_width"               --> Banner width
+@"banner_height"              --> Banner height
+@"ad_content_type"            --> Fullscreen type - Video, Banner, All
+@"adunit_native_format"       --> Native type - Video, Icon, Image, All
+@"priceFloors"                --> Array of price floors 
+@"mediation_config"           --> Array of header bidding network configuration 
+```
+
+### Example configuration parameters
+
+***"seller_id"*** field is required for initialization.
+
+***"mediation_config"*** field is required for initialization if you use header bidding network
+
+***"price_floors"*** field is used only in ad request parameters
+
+The rest of the fields can be passed both to the initialization and to the request
+
+```json
+{
+  "seller_id": "YOUR_SELLER_ID",
+  "test_mode": "true",
+  "logging_enabled": "true",
+  "endpoint": "https://same_url",
+  "user_id": "user123",
+  "gender": "F",
+  "yob": 2000,
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "country": "USA",
+  "city": "Los Angeles",
+  "zip": "90001–90084",
+  "sturl": "https://store_url.com",
+  "stid": "12345",
+  "paid": "true",
+  "store_cat": "cat_1",
+  "store_subcat": "cat_2,cat_3,cat_4",
+  "fmw_name": "native",
+  "coppa": "true",
+  "consent": "true",
+  "gdpr": "true",
+  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
+  "ccpa_string": "y---",
+  "pubid": "PUB_ID",
+  "pubname": "PUB_NAME",
+  "pubdomain": "PUB_DOMAIN",
+  "pubcat": "PUB_CAT,PUB_CUT_2",
+  "ssp": "Appodeal",
+  "banner_width": 320,
+  "banner_height": 50,
+  "ad_content_type": "All",
+  "adunit_native_format": "All",
+  "priceFloors": [
+    {
+      "id_1": 300.06
+    },
+    {
+      "id_2": 1000
+    },
+    302.006,
+    1002
+  ],
+  "mediation_config" : []
+}
+```
+
+### Mediation config parameters
+
+```json
+{
+  "mediation_config" : 
+  [
+    {
+        "network": "approll",
+        "network_class": "BDMAppRollAdNetwork",
+        "params" :
+        {
+            "approll_id": "40f6d541-b128-4015-9a93-767bb8995669"
+        }
+    },
+    {
+        "network": "vungle",
+        "network_class": "BDMVungleAdNetwork",
+        "params" :
+        {
+            "app_id": "5a35a75845eaab51250070a5"
+        },
+        "ad_units": [
+            {
+                "format": "interstitial",
+                "params" :
+                {
+                    "placement_id": "95298PL39048"
+                },
+                "custom_params" :
+                {
+                    "custom_field": "unknown"
+                }
+            }
+        ]
+    },
+    {
+        "network": "my_target",
+        "network_class": "BDMMyTargetAdNetwork",
+        "ad_units": [
+            {
+                "format": "banner_300x250",
+                "params" :
+                {
+                    "slot_id": "576962"
+                }
+            }
+        ]
+    },
+    {
+        "network": "facebook",
+        "network_class": "BDMFacebookAdNetwork",
+        "params" :
+        {
+            "app_id": "1525692904128549"
+        },
+        "ad_units": [
+            {
+                "format": "rewarded_video",
+                "params" :
+                {
+                    "facebook_key": "1525692904128549_2395742753790222"
+                }
+            },
+            {
+                "format": "interstitial_static",
+                "params" :
+                {
+                    "facebook_key": "1525692904128549_2395740550457109"
+                }
+            },
+            {
+                "format": "banner_320x50",
+                "params" :
+                {
+                    "facebook_key": "1525692904128549_2395736947124136"
+                }
+            }
+        ]
+    },
+    {
+        "network": "tapjoy",
+        "network_class": "BDMTapjoyAdNetwork",
+        "params" :
+        {
+            "sdk_key": "6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw"
+        },
+        "ad_units": [
+            {
+                "format": "interstitial_video",
+                "params" :
+                {
+                    "placement_name": "video_without_cap_pb"
+                }
+            }
+        ]
+    },
+    {
+        "network": "adcolony",
+        "network_class": "BDMAdColonyAdNetwork",
+        "params" :
+        {
+            "app_id": "app327320f8ced14e61b2"
+        },
+        "ad_units": [
+            {
+                "format": "rewarded_video",
+                "params" :
+                {
+                    "zone_id": "vzf07cd496be04483cad"
+                }
+            },
+            {
+                "format": "interstitial_video",
+                "params" :
+                {
+                    "zone_id": "vz7fdef471647c416682"
+                }
+            }
+        ]
+    },
+    {
+        "network": "amazon",
+        "network_class": "BDMAmazonNetwork",
+        "params" :
+        {
+            "app_key": "c5f20fe6e37146b08749d09bb2b6a4dd"
+        },
+        "ad_units": [
+            {
+                "format": "banner_320x50",
+                "params" :
+                {
+                    "slot_uuid": "88e6293b-0bf0-43fc-947b-925babe7bf3f"
+                }
+            },
+            {
+                "format": "interstitial_static",
+                "params" :
+                {
+                    "slot_uuid": "424c37b6-38e0-4076-94e6-0933a6213496"
+                }
+            }
+        ]
+    },
+    {
+        "network": "criteo",
+        "network_class": "BDMCriteoAdNetwork",
+        "params" :
+        {
+            "publisher_id": "B-057601"
+        },
+        "ad_units": [
+            {
+                "format": "banner_320x50",
+                "params" :
+                {
+                    "ad_unit_id": "30s6zt3ayypfyemwjvmp"
+                }
+            },
+            {
+                "format": "interstitial_static",
+                "params" :
+                {
+                    "orientation": "portrait",
+                    "ad_unit_id": "6yws53jyfjgoq1ghnuqb"
+                }
+            },
+            {
+                "format": "interstitial_static",
+                "params" :
+                {
+                    "orientation": "landscape",
+                    "ad_unit_id": "6yws53jyfjgoq1ghnuqb"
+                }
+            }
+        ]
+    },
+    {
+        "network": "smaato",
+        "network_class": "BDMSmaatoAdNetwork",
+        "params" :
+        {
+            "publisher_id": "1100042525"
+        },
+        "ad_units": [
+            {
+                "format": "banner_320x50",
+                "params" :
+                {
+                    "ad_space_id": "130563103"
+                }
+            },
+            {
+                "format": "interstitial_static",
+                "params" :
+                {
+                    "ad_space_id": "130626426"
+                }
+            },
+            {
+                "format": "rewarded",
+                "params" :
+                {
+                    "ad_space_id": "130626428"
+                }
+            }
+        ]
+    }
+]
+}
 ```
 
 ## BidMachine adapter
 
 ### Initialize SDK
 
-To initialize BidMachine set your's seller id in MPMoPubConfiguration:
+To initialize BidMachine use Mopub configuration method at start application
 
-```objc
-MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
-[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
-```
-
-#### Test mode
-
-To setup test mode in BidMachine add to ***sdkConfig*** @"test_mode" : @"true". You ***sdkConfig*** will be similar to what is shown below:
-
-```objc
-[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
-```
-
-#### Logging
-
-To setup logging in BidMachine add @"logging_enabled" : @"true" flag to ***sdkConfig***:
-
-```objc
-[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"logging_enabled" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
-```
-
-#### Initialization
-
-All parameters that are used during initialization are presented in table below:
-
-| Parameter | Type | Required |
-| --- | --- | --- |
-| seller_id | String | Required |
-| test_mode | String | Optional |
-| logging_enabled | String | Optional |
-
-Yours implementation of initialization should look like this:
+A list of all parameters can be found here [(configuration params)](#user-content-example-configuration-parameters)
 
 ```objc
 - (void)initializeMoPub {
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
     NSDictionary *configurationParams = @{
-                                          @"seller_id":         @"1",
-                                          @"test_mode":         @"true",
-                                          @"logging_enabled":   @"true"
+                                          kBDMExtTestModeKey  :   @"1",
+                                          kBDMExtSellerKey    :   @"true",
+                                          kBDMExtLoggingKey   :   @"true"
                                           };
     [sdkConfig setNetworkConfiguration:configurationParams
                    forMediationAdapter:@"BidMachineAdapterConfiguration"];
@@ -101,267 +432,62 @@ Yours implementation of initialization should look like this:
 ### Transfer targeting data to BidMachine
 
 If you want to transfer targeting information you can use custom event's property ***localExtras*** which represents dictionary.
-Keys for ***localExtras*** are listed below:
 
-```
-@"user_id"  --> Vendor-specific ID for the user (NSString)
-@"gender"   --> User gender refer to OpenRTB 2.5 spec (kBDMUserGenderMale, kBDMUserGenderFemale, kBDMUserGenderUnknown)
-@"yob"      --> User year of birth (NSNumber)
-@"consent_string" --> The consent string for sending the GDPR consent (NSString)
-@"keywords" --> Comma separated list of keywords about the app (NSString)
-@"bcat"     --> Blocked advertiser categories using the IAB content categories. Refer to List 5.1 (NSArray <NSString *>)
-@"badv"     --> Block list of advertisers by their domains (e.g., “ford.com”) (NSArray <NSString *>)
-@"bapps"    --> Block list of applications by their platform-specific exchange- independent application identifiers (NSArray <NSString *>)
-@"country"  --> User country (NSString)
-@"city"     --> User city (NSString)
-@"zip"      --> User zip code (NSString)
-@"sturl"    --> Store URL (NSURL)
-@"stid"     --> Numeric store id identifier (NSString)
-@"paid"     --> Paid version of app (NSNumber: 0-free, 1-paid)
-@"endpoint" --> String URL that should be used as base URL for sdk
-```
-***localExtras*** for rewarded video custom event should include one more key:
-```
-@"location" - User's location (CLLocation)
-```
-Also all targeting data can be passed throug MoPub backend and can be configured as JSON in MoPub UI
+Keys for ***localExtras*** [(here)](#user-content-all-configuration-parameters)
+
+***Also all targeting data can be passed throug MoPub backend and can be configured as JSON in MoPub UI***
 
 ### Banners implementation
 
-In the snippet below you can see transfering of local extra data:
+In the snippet below you can see transfering of local extra data: [(configuration params)](#user-content-example-configuration-parameters)
 
 ```objc
 - (void)loadBannerAd {
     self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"];
     self.adView.delegate = self;
-    self.adView.frame = CGRectMake((self.view.bounds.size.width - 320) / 2,
-                                   self.view.bounds.size.height - 50,
-                                   320,
-                                   50);
+    self.adView.frame = CGRectMake(0, 0, 320, 50);
     [self.view addSubview:self.adView];
-    NSDictionary *localExtras = @{
-                                  @"seller_id":         @"YOUR_SELLER_ID",
-                                  @"coppa":             @"true",
-                                  @"consent_string":    @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-                                  @"logging_enabled":   @"true",
-                                  @"test_mode":         @"true",
-                                  @"banner_width":      @"320",
-                                  @"user_id":           @"user123",
-                                  @"gender":            @"F",
-                                  @"yob":               @2000,
-                                  @"keywords":          @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country":           @"USA",
-                                  @"city":              @"Los Angeles",
-                                  @"zip":               @"90001–90084",
-                                  @"sturl":             @"https://store_url.com",
-                                  @"paid":              @"true",
-                                  @"bcat":              @"IAB-1,IAB-3,IAB-5",
-                                  @"badv":              @"https://domain_1.com,https://domain_2.org",
-                                  @"bapps":             @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"price_floors":      @[
-                                          @{ @"id_1": @300.06 },
-                                          @{ @"id_2": @1000 },
-                                          @302.006,
-                                          @1002
-                                          ]
-                                  };
+    NSDictionary *localExtras = @{ @"here" : @"params" } ;
     [self.adView setLocalExtras:localExtras];
     [self.adView loadAd];
 }
 ```
 
-But also you can receive extra data from server. It will be sent in (NSDictionary *)***info*** of requests methods and may look like this:
-
-```json
-{
-  "badv": "https://domain_1.com,https://domain_2.org",
-  "banner_width": "320",
-  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-  "bcat": "IAB-1,IAB-3,IAB-5",
-  "city": "Los Angeles",
-  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-  "coppa": "true",
-  "country": "USA",
-  "gender": "F",
-  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-  "logging_enabled": "true",
-  "paid": "true",
-  "price_floors": [
-    {
-      "id_1": 300.06
-    },
-    {
-      "id_2": 1000
-    },
-    302.006,
-    1002
-  ],
-  "seller_id": "YOUR_SELLER_ID",
-  "sturl": "https://store_url.com",
-  "test_mode": "true",
-  "user_id": "user123",
-  "yob": 2000,
-  "zip": "90001–90084"
-}
-```
-
 ### Interstitial implementation
 
-With local extra data:
+In the snippet below you can see transfering of local extra data: [(configuration params)](#user-content-example-configuration-parameters)
 
 ```objc
 - (void)loadInterstitialAds {
     self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"AD_UNIT_ID"];
     self.interstitial.delegate = self;
-    NSDictionary *localExtras = @{
-                                  @"seller_id":         @"YOUR_SELLER_ID",
-                                  @"coppa":             @"true",
-                                  @"consent_string":    @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-                                  @"logging_enabled":   @"true",
-                                  @"test_mode":         @"true",
-                                  @"ad_content_type":   @"All",
-                                  @"user_id":           @"user123",
-                                  @"gender":            @"F",
-                                  @"yob":               @2000,
-                                  @"keywords":          @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country":           @"USA",
-                                  @"city":              @"Los Angeles",
-                                  @"zip":               @"90001–90084",
-                                  @"sturl":             @"https://store_url.com",
-                                  @"paid":              @"true",
-                                  @"bcat":              @"IAB-1,IAB-3,IAB-5",
-                                  @"badv":              @"https://domain_1.com,https://domain_2.org",
-                                  @"bapps":             @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"price_floors":      @[
-                                          @{ @"id_1": @300.06 },
-                                          @{ @"id_2": @1000 },
-                                          @302.006,
-                                          @1002
-                                          ]
-                                  };
+    NSDictionary *localExtras = @{ @"here" : @"params" } ;
     [self.interstitial setLocalExtras:localExtras];
     [self.interstitial loadAd];
 }
 ```
 
-Servers extra data:
-
-```json
-{
-  "ad_content_type": "All",
-  "badv": "https://domain_1.com,https://domain_2.org",
-  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-  "bcat": "IAB-1,IAB-3,IAB-5",
-  "city": "Los Angeles",
-  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-  "coppa": "true",
-  "country": "USA",
-  "gender": "F",
-  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-  "logging_enabled": "true",
-  "paid": "true",
-  "price_floors": [
-    {
-      "id_1": 300.06
-    },
-    {
-      "id_2": 1000
-    },
-    302.006,
-    1002
-  ],
-  "seller_id": "YOUR_SELLER_ID",
-  "sturl": "https://store_url.com",
-  "test_mode": "true",
-  "user_id": "user123",
-  "yob": 2000,
-  "zip": "90001–90084"
-}
-```
-
 ### Rewarded implementation
 
-With local extra data:
+In the snippet below you can see transfering of local extra data: [(configuration params)](#user-content-example-configuration-parameters)
 
 ```objc
 - (void)loadRewardedVideo {
     [MPRewardedVideo setDelegate:self forAdUnitId:@"AD_UNIT_ID"];
-    NSDictionary *localExtras = @{
-                                  @"seller_id":         @"YOUR_SELLER_ID",
-                                  @"coppa":             @"true",
-                                  @"consent_string":    @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-                                  @"logging_enabled":   @"true",
-                                  @"test_mode":         @"true",
-                                  @"user_id":           @"user123",
-                                  @"gender":            @"F",
-                                  @"yob":               @2000,
-                                  @"keywords":          @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country":           @"USA",
-                                  @"city":              @"Los Angeles",
-                                  @"zip":               @"90001–90084",
-                                  @"sturl":             @"https://store_url.com",
-                                  @"paid":              @"true",
-                                  @"bcat":              @"IAB-1,IAB-3,IAB-5",
-                                  @"badv":              @"https://domain_1.com,https://domain_2.org",
-                                  @"bapps":             @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"price_floors":      @[
-                                          @{ @"id_1": @300.06 },
-                                          @{ @"id_2": @1000 },
-                                          @302.006,
-                                          @1002
-                                          ]
-                                  };
+    NSDictionary *localExtras = @{ @"here" : @"params" } ;
     [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"AD_UNIT_ID"
                                             keywords:nil
                                     userDataKeywords:nil
-                                            location:nil
                                           customerId:nil
                                    mediationSettings:nil
                                          localExtras:localExtras];
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"AD_UNIT_ID"
-                                    fromViewController:self
-                                            withReward:nil];
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"AD_UNIT_ID" fromViewController:self withReward:nil];
 }
 
 ```
-
-Extra data from server:
-
-```json
-{
-  "badv": "https://domain_1.com,https://domain_2.org",
-  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-  "bcat": "IAB-1,IAB-3,IAB-5",
-  "city": "Los Angeles",
-  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-  "coppa": "true",
-  "country": "USA",
-  "gender": "F",
-  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-  "logging_enabled": "true",
-  "paid": "true",
-  "price_floors": [
-    {
-      "id_1": 300.06
-    },
-    {
-      "id_2": 1000
-    },
-    302.006,
-    1002
-  ],
-  "seller_id": "YOUR_SELLER_ID",
-  "sturl": "https://store_url.com",
-  "test_mode": "true",
-  "user_id": "user123",
-  "yob": 2000,
-  "zip": "90001–90084"
-}
-```
-
 ### Native ad implementation
 
-With local extra data:
+In the snippet below you can see transfering of local extra data: [(configuration params)](#user-content-example-configuration-parameters)
 
 ```objc
 - (void)loadAd:(id)sender {
@@ -390,199 +516,29 @@ With local extra data:
 }
 
 - (MPNativeAdRequest *)request {
-   NSDictionary *localExtras = @{
-                              @"seller_id":         @"YOUR_SELLER_ID",
-                              @"coppa":             @"true",
-                              @"consent_string":    @"BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-                              @"logging_enabled":   @"true",
-                              @"test_mode":         @"true",
-                              @"user_id":           @"user123",
-                              @"gender":            @"F",
-                              @"yob":               @2000,
-                              @"keywords":          @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                              @"country":           @"USA",
-                              @"city":              @"Los Angeles",
-                              @"zip":               @"90001–90084",
-                              @"sturl":             @"https://store_url.com",
-                              @"paid":              @"true",
-                              @"bcat":              @"IAB-1,IAB-3,IAB-5",
-                              @"badv":              @"https://domain_1.com,https://domain_2.org",
-                              @"bapps":             @"com.test.application_1,com.test.application_2,com.test.application_3",
-                              @"price_floors":      @[
-                                      @{ @"id_1": @300.06 },
-                                      @{ @"id_2": @1000 },
-                                      @302.006,
-                                      @1002
-                                      ]
-                              };
-
     MPNativeAdRequest *request = [MPNativeAdRequest requestWithAdUnitIdentifier:@UNIT_ID rendererConfigurations:@[self.rendererConfiguration]];
     MPNativeAdRequestTargeting *targeting = MPNativeAdRequestTargeting.targeting;
-    targeting.localExtras = localExtras;
+    targeting.localExtras = @{ @"here" : @"params" } ;;
     return request;
-}
-```
-
-Servers extra data:
-
-```json
-{
-  "ad_content_type": "All",
-  "badv": "https://domain_1.com,https://domain_2.org",
-  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
-  "bcat": "IAB-1,IAB-3,IAB-5",
-  "city": "Los Angeles",
-  "consent_string": "BOEFEAyOEFEAyAHABDENAI4AAAB9vABAASA",
-  "coppa": "true",
-  "country": "USA",
-  "gender": "F",
-  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-  "logging_enabled": "true",
-  "paid": "true",
-  "price_floors": [
-    {
-      "id_1": 300.06
-    },
-    {
-      "id_2": 1000
-    },
-    302.006,
-    1002
-  ],
-  "seller_id": "YOUR_SELLER_ID",
-  "sturl": "https://store_url.com",
-  "test_mode": "true",
-  "user_id": "user123",
-  "yob": 2000,
-  "zip": "90001–90084"
 }
 ```
 
 ### Header Bidding
 
-To pass data for Header Bidding add to yours ***sdkConfig*** array of dictionaries with key "mediation_config":
+To pass data for Header Bidding add to your local extras "mediation_config": [(configuration params)](#user-content-mediation-config-parameters)
+
+All network required fileds and values types are described in BidMachine doc. ([WIKI](https://wiki.appodeal.com/display/BID/BidMachine+iOS+SDK+Documentation#BidMachineiOSSDKDocumentation-AdNetworksConfigurationsParameters))
+
+***Also all Header Bidding data can be passed throug MoPub backend and can be configured as JSON in MoPub UI***
 
 ```objc
-- (NSArray *)headerBiddingConfig {
-    NSDictionary *someNetworkConfig = @{
-                                        @"network" :                @"some network name",
-                                        @"network_class":           @"SomeNetworkClass",
-                                        @"some network init param": @"value",
-                                        @"ad_units":                @[@{
-                                                                          @"format":                        @"interstitial_static",
-                                                                          @"some network ad unit param":    @"value"
-                                                                          }]
-                                        };
-    return @[someNetworkConfig];
-}
 
 - (NSDictionary *)localExtras {
     NSMutableDictionary *localExtras = [NSMutableDictionary new];
-    localExtras[@"mediation_config"] = [self headerBiddingConfig];
+    localExtras[@"mediation_config"] = ["HEADER_BIDDING_CONFIG"];
     return localExtras;
 }
 ```
-
-Config from MoPub dashboard should look like presented below:
-
-```json
-{
-  "logging_enabled": "true",
-  "mediation_config": [
-    {
-      "ad_units": [
-        {
-          "format": "interstitial_static",
-          "placement_id": "95298PL39048"
-        }
-      ],
-      "app_id": "5a35a75845eaab51250070a5",
-      "network": "vungle",
-      "network_class": "BDMVungleAdNetwork"
-    },
-    {
-      "ad_units": [
-        {
-          "format": "interstitial_static",
-          "slot_id": "287052"
-        },
-        {
-          "format": "banner",
-          "slot_id": "262713"
-        }
-      ],
-      "network": "my_target",
-      "network_class": "BDMMyTargetAdNetwork"
-    },
-    {
-      "ad_units": [
-        {
-          "facebook_key": "1419966511382477_2249153695130417",
-          "format": "banner"
-        },
-        {
-          "facebook_key": "754722298026822_1251166031715777",
-          "format": "interstitial_static"
-        }
-      ],
-      "app_id": "754722298026822",
-      "network": "facebook",
-      "network_class": "BDMFacebookAdNetwork",
-      "placement_ids": [
-        "754722298026822_1251166031715777",
-        "1419966511382477_2249153695130417"
-      ]
-    },
-    {
-      "ad_units": [
-        {
-          "format": "interstitial_video",
-          "placement_name": "video_without_cap_pb"
-        }
-      ],
-      "network": "tapjoy",
-      "network_class": "BDMTapjoyAdNetwork",
-      "sdk_key": "6gwG-HstT_aLMpZXUXlhNgEBja6Q5bq7i4GtdFMJoarOufnp36PaVlG2OBmw"
-    },
-    {
-      "ad_units": [
-        {
-          "format": "rewarded_video",
-          "zone_id": "vzf07cd496be04483cad"
-        },
-        {
-          "format": "interstitial_video",
-          "zone_id": "vz7fdef471647c416682"
-        }
-      ],
-      "app_id": "app327320f8ced14e61b2",
-      "network": "adcolony",
-      "network_class": "BDMAdColonyAdNetwork",
-      "zones": [
-        "vzf07cd496be04483cad",
-        "vz7fdef471647c416682"
-      ]
-    }
-  ],
-  "paid": "true",
-  "seller_id": "1",
-  "stid": "13241536",
-  "sturl": "https://store_url.com",
-  "test_mode": "true",
-  "user_id": "user123",
-  "yob": 2000,
-  "zip": "610000"
-}
-```
-
-All network required fileds and values types are described in BidMachine doc. ([WIKI](https://wiki.appodeal.com/display/BID/BidMachine+iOS+SDK+Documentation#BidMachineiOSSDKDocumentation-AdNetworksConfigurationsParameters)) If ad network has initialisation parameters, it should be added in root of mediation config object. Ad network ad unit specific paramters should be added in root of ad unit object. 
-
-| Parameter | Description | Required |
-| --- | --- | --- |
-| network | Registered network name | Required | 
-| network_class | Linked network class, should conform BDMNetwork represented as string | Required |
-| ad_units | Array of ad units that contains info about format and network specific params | Required |
-| - | Any params that needed for initialisation | Optional |
 
 #### Available ad units formats for Header Bidding
 
@@ -624,32 +580,7 @@ sdkConfig.additionalNetworks = @[ BidMachineAdapterConfiguration.class ];
 [MoPub.sharedInstance initializeSdkWithConfiguration:sdkConfig completion:nil];
 ```
 
-#### Test mode
-
-To setup test mode in BidMachine before initialization set up
-
-```objc
-BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-config.testMode = YES;
-```
-
-#### Logging
-
-To setup logging in BidMachine before initialization set up
-
-```objc
-BDMSdk.sharedSdk.enableLogging = true
-```
-
 #### Initialization
-
-All parameters that are used during initialization are presented in table below:
-
-| Parameter | Type | Required |
-| --- | --- | --- |
-| seller_id | String | Required |
-| test_mode | String | Optional |
-| logging_enabled | String | Optional |
 
 Yours implementation of initialization should look like this:
 
@@ -707,10 +638,25 @@ Load ad object
     self.request = nil;
     // Get extras from fetcher
     // After whith call fetcher will has strong ref on request
-    NSDictionary *extras = [BidMachineFetcher.sharedFetcher fetchParamsFromRequest:request];
+    // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
+    // If you want to use your own rounding, then use the method (For Example:)
+    // BidMachineMopubFetcher *customFetcher;
+    // if (info.price > 0.5) {
+    //      customFetcher = ({
+    //          BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+    //          fetcher.format = @"0.01";
+    //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
+    //          fetcher;
+    //      });
+    // }
+    // NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request fetcher:customFetcher];
+    //
+    // In the future, only server rounding will be used, so it is predominantly better to use it
+    // and not use customFetcher and fetcher pressets
+    NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
     // Extras can be transformer into keywords for line item matching
     // by use BidMachineKeywordsTransformer
-    BidMachineKeywordsTransformer *transformer = [BidMachineKeywordsTransformer new];
+    BidMachineMopubKeywordsTransformer *transformer = [BidMachineMopubKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded
     [self loadMoPubAdWithKeywords:keywords extras:extras];
@@ -749,10 +695,25 @@ Load ad object
     self.request = nil;
     // Get extras from fetcher
     // After whith call fetcher will has strong ref on request
-    NSDictionary *extras = [BidMachineFetcher.sharedFetcher fetchParamsFromRequest:request];
+    // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
+    // If you want to use your own rounding, then use the method (For Example:)
+    // BidMachineMopubFetcher *customFetcher;
+    // if (info.price > 0.5) {
+    //      customFetcher = ({
+    //          BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+    //          fetcher.format = @"0.01";
+    //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
+    //          fetcher;
+    //      });
+    // }
+    // NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request fetcher:customFetcher];
+    //
+    // In the future, only server rounding will be used, so it is predominantly better to use it
+    // and not use customFetcher and fetcher pressets
+    NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
     // Extras can be transformer into keywords for line item matching
     // by use BidMachineKeywordsTransformer
-    BidMachineKeywordsTransformer *transformer = [BidMachineKeywordsTransformer new];
+    BidMachineMopubKeywordsTransformer *transformer = [BidMachineMopubKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded
     [self loadMoPubAdWithKeywords:keywords extras:extras];
@@ -792,10 +753,25 @@ Load ad object
     self.request = nil;
     // Get extras from fetcher
     // After whith call fetcher will has strong ref on request
-    NSDictionary *extras = [BidMachineFetcher.sharedFetcher fetchParamsFromRequest:request];
+    // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
+    // If you want to use your own rounding, then use the method (For Example:)
+    // BidMachineMopubFetcher *customFetcher;
+    // if (info.price > 0.5) {
+    //      customFetcher = ({
+    //          BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+    //          fetcher.format = @"0.01";
+    //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
+    //          fetcher;
+    //      });
+    // }
+    // NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request fetcher:customFetcher];
+    //
+    // In the future, only server rounding will be used, so it is predominantly better to use it
+    // and not use customFetcher and fetcher pressets
+    NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
     // Extras can be transformer into keywords for line item matching
     // by use BidMachineKeywordsTransformer
-    BidMachineKeywordsTransformer *transformer = [BidMachineKeywordsTransformer new];
+    BidMachineMopubKeywordsTransformer *transformer = [BidMachineMopubKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded
     [self loadMoPubAdWithKeywords:keywords extras:extras];
@@ -841,28 +817,36 @@ Load ad object
     self.request = nil;
     // Get extras from fetcher
     // After whith call fetcher will has strong ref on request
-    NSDictionary *extras = [BidMachineFetcher.sharedFetcher fetchParamsFromRequest:request];
+    // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
+    // If you want to use your own rounding, then use the method (For Example:)
+    // BidMachineMopubFetcher *customFetcher;
+    // if (info.price > 0.5) {
+    //      customFetcher = ({
+    //          BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+    //          fetcher.format = @"0.01";
+    //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
+    //          fetcher;
+    //      });
+    // }
+    // NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request fetcher:customFetcher];
+    //
+    // In the future, only server rounding will be used, so it is predominantly better to use it
+    // and not use customFetcher and fetcher pressets
+    NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
     // Extras can be transformer into keywords for line item matching
     // by use BidMachineKeywordsTransformer
-    BidMachineKeywordsTransformer *transformer = [BidMachineKeywordsTransformer new];
+    BidMachineMopubKeywordsTransformer *transformer = [BidMachineMopubKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded
     [self loadMoPubAdWithKeywords:keywords extras:extras];
 }
 ```
 
-### Fetching options
-
-Setup bm_pf format and rounding mode
-Formats described in [link](https://unicode.org/reports/tr35/tr35-10.html#Number_Format_Patterns)
-
-``` objc
-BidMachineFetcher.sharedFetcher.roundingMode = NSNumberFormatterRoundDown;
-BidMachineFetcher.sharedFetcher.format = @"0.00";
-
-```
-
 ##  Changelog
+
+### Version 1.7.0.0
+
+* Update BidMachine sdk 1.7.0
 
 ### Version 1.6.4.0
 
