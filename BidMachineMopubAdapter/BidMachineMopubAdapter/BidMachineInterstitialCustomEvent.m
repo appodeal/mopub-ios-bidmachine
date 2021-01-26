@@ -10,10 +10,11 @@
 #import "BidMachineAdapterConfiguration.h"
 
 
-@interface BidMachineInterstitialCustomEvent() <BDMInterstitialDelegate, BDMAdEventProducerDelegate>
+@interface BidMachineInterstitialCustomEvent() <BDMInterstitialDelegate, BDMAdEventProducerDelegate, BDMExternalAdapterRequestControllerDelegate>
 
 @property (nonatomic, strong) BDMInterstitial *interstitial;
 @property (nonatomic, strong) NSString *networkId;
+@property (nonatomic, strong) BDMExternalAdapterRequestController *requestController;
 
 @end
 
@@ -45,28 +46,10 @@
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     
-    BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
-    BOOL isPrebid = [BDMRequestStorage.shared isPrebidRequestsForType:BDMInternalPlacementTypeInterstitial];
-    
-    if (isPrebid && config.price) {
-        BDMRequest *auctionRequest = [BDMRequestStorage.shared requestForPrice:config.price type:BDMInternalPlacementTypeInterstitial];
-        if ([auctionRequest isKindOfClass:BDMInterstitialRequest.self]) {
-            [self.interstitial populateWithRequest:(BDMInterstitialRequest *)auctionRequest];
-        } else {
-            NSError *error = [STKError errorWithDescription:@"Bidmachine can't fint prebid request"];
-            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-            [self.delegate fullscreenAdAdapter:self didFailToLoadAdWithError:error];
-        }
-    } else {
-        __weak typeof(self) weakSelf = self;
-        [BidMachineAdapterConfiguration initializeBidMachineSDKWithConfig:config completion:^(NSError *error) {
-            BDMInterstitialRequest *request = [BDMInterstitialRequest new];
-            [request setType:config.fullscreenType];
-            [request setPriceFloors:config.priceFloor];
-            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
-            [weakSelf.interstitial populateWithRequest:request];
-        }];
-    }
+    [self.requestController prepareRequestWithConfiguration:({
+        BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
+        config;
+    })];
 }
 
 - (void)presentAdFromViewController:(UIViewController *)viewController {
@@ -82,6 +65,26 @@
         _interstitial.producerDelegate = self;
     }
     return _interstitial;
+}
+
+- (BDMExternalAdapterRequestController *)requestController {
+    if (!_requestController) {
+        _requestController = [[BDMExternalAdapterRequestController alloc] initWithType:BDMInternalPlacementTypeInterstitial
+                                                                              delegate:self];
+    }
+    return _requestController;
+}
+
+#pragma mark - BDMExternalAdapterRequestControllerDelegate
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didPrepareRequest:(BDMRequest *)request {
+    BDMInterstitialRequest *adRequest = (BDMInterstitialRequest *)request;
+    [self.interstitial populateWithRequest:adRequest];
+}
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didFailPrepareRequest:(NSError *)error {
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+    [self.delegate fullscreenAdAdapter:self didFailToLoadAdWithError:error];
 }
 
 #pragma mark - BDMInterstitialDelegate

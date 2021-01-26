@@ -10,10 +10,11 @@
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineNativeAdAdapter.h"
 
-@interface BidMachineNativeAdCustomEvent ()<BDMNativeAdDelegate>
+@interface BidMachineNativeAdCustomEvent ()<BDMNativeAdDelegate, BDMExternalAdapterRequestControllerDelegate>
 
 @property (nonatomic, strong) BDMNativeAd *nativeAd;
 @property (nonatomic, strong) NSString *networkId;
+@property (nonatomic, strong) BDMExternalAdapterRequestController *requestController;
 
 @end
 
@@ -31,28 +32,10 @@
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     
-    BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
-    BOOL isPrebid = [BDMRequestStorage.shared isPrebidRequestsForType:BDMInternalPlacementTypeNative];
-    
-    if (isPrebid && config.price) {
-        BDMRequest *auctionRequest = [BDMRequestStorage.shared requestForPrice:config.price type:BDMInternalPlacementTypeNative];
-        if ([auctionRequest isKindOfClass:BDMNativeAdRequest.self]) {
-            [self.nativeAd makeRequest:(BDMNativeAdRequest *)auctionRequest];
-        } else {
-            NSError *error = [STKError errorWithDescription:@"Bidmachine can't fint prebid request"];
-            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-            [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
-        }
-    } else {
-        __weak typeof(self) weakSelf = self;
-        [BidMachineAdapterConfiguration initializeBidMachineSDKWithConfig:config completion:^(NSError *error) {
-            BDMNativeAdRequest *request = [BDMNativeAdRequest new];
-            [request setPriceFloors:config.priceFloor];
-            [request setType:config.nativeType];
-            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
-            [weakSelf.nativeAd makeRequest:request];
-        }];
-    }
+    [self.requestController prepareRequestWithConfiguration:({
+        BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
+        config;
+    })];
 }
 
 - (BDMNativeAd *)nativeAd {
@@ -63,6 +46,26 @@
     return _nativeAd;
 }
 
+- (BDMExternalAdapterRequestController *)requestController {
+    if (!_requestController) {
+        _requestController = [[BDMExternalAdapterRequestController alloc] initWithType:BDMInternalPlacementTypeNative
+                                                                              delegate:self];
+    }
+    return _requestController;
+}
+
+#pragma mark - BDMExternalAdapterRequestControllerDelegate
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didPrepareRequest:(BDMRequest *)request {
+    BDMNativeAdRequest *adRequest = (BDMNativeAdRequest *)request;
+    [self.nativeAd makeRequest:adRequest];
+}
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didFailPrepareRequest:(NSError *)error {
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+    [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
+}
+
 #pragma mark - BDMNativeAdDelegate
 
 - (void)nativeAd:(nonnull BDMNativeAd *)nativeAd readyToPresentAd:(nonnull BDMAuctionInfo *)auctionInfo {
@@ -71,6 +74,7 @@
 }
 
 - (void)nativeAd:(nonnull BDMNativeAd *)nativeAd failedWithError:(nonnull NSError *)error {
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
     [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
 }
 

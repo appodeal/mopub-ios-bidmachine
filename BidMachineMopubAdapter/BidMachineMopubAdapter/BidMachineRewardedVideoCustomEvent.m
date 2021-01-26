@@ -10,10 +10,11 @@
 #import "BidMachineAdapterConfiguration.h"
 
 
-@interface BidMachineRewardedVideoCustomEvent() <BDMRewardedDelegate, BDMAdEventProducerDelegate>
+@interface BidMachineRewardedVideoCustomEvent() <BDMRewardedDelegate, BDMAdEventProducerDelegate, BDMExternalAdapterRequestControllerDelegate>
 
 @property (nonatomic, strong) BDMRewarded *rewarded;
 @property (nonatomic, strong) NSString *networkId;
+@property (nonatomic, strong) BDMExternalAdapterRequestController *requestController;
 
 @end
 
@@ -45,27 +46,10 @@
     NSMutableDictionary *extraInfo = self.localExtras.mutableCopy ?: [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     
-    BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
-    BOOL isPrebid = [BDMRequestStorage.shared isPrebidRequestsForType:BDMInternalPlacementTypeRewardedVideo];
-    
-    if (isPrebid && config.price) {
-        BDMRequest *auctionRequest = [BDMRequestStorage.shared requestForPrice:config.price type:BDMInternalPlacementTypeRewardedVideo];
-        if ([auctionRequest isKindOfClass:BDMRewardedRequest.self]) {
-            [self.rewarded populateWithRequest:(BDMRewardedRequest *)auctionRequest];
-        } else {
-            NSError *error = [STKError errorWithDescription:@"Bidmachine can't fint prebid request"];
-            MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
-            [self.delegate fullscreenAdAdapter:self didFailToLoadAdWithError:error];
-        }
-    } else {
-       __weak typeof(self) weakSelf = self;
-        [BidMachineAdapterConfiguration initializeBidMachineSDKWithConfig:config completion:^(NSError *error) {
-            BDMRewardedRequest *request = [BDMRewardedRequest new];
-            [request setPriceFloors:config.priceFloor];
-            [request setNetworkConfigurations:config.sdkConfiguration.networkConfigurations];
-            [weakSelf.rewarded populateWithRequest:request];
-        }];
-    }
+    [self.requestController prepareRequestWithConfiguration:({
+        BDMExternalAdapterConfiguration *config = [BDMExternalAdapterConfiguration configurationWithJSON:extraInfo];
+        config;
+    })];
 }
 
 - (void)presentAdFromViewController:(UIViewController *)viewController  {
@@ -81,6 +65,26 @@
         _rewarded.producerDelegate = self;
     }
     return _rewarded;
+}
+
+- (BDMExternalAdapterRequestController *)requestController {
+    if (!_requestController) {
+        _requestController = [[BDMExternalAdapterRequestController alloc] initWithType:BDMInternalPlacementTypeRewardedVideo
+                                                                              delegate:self];
+    }
+    return _requestController;
+}
+
+#pragma mark - BDMExternalAdapterRequestControllerDelegate
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didPrepareRequest:(BDMRequest *)request {
+    BDMRewardedRequest *adRequest = (BDMRewardedRequest *)request;
+    [self.rewarded populateWithRequest:adRequest];
+}
+
+- (void)controller:(BDMExternalAdapterRequestController *)controller didFailPrepareRequest:(NSError *)error {
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], self.networkId);
+    [self.delegate fullscreenAdAdapter:self didFailToLoadAdWithError:error];
 }
 
 #pragma mark - BDMRewardedDelegatge

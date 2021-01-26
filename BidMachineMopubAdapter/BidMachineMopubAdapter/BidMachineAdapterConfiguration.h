@@ -36,9 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BidMachineAdapterConfiguration : MPBaseAdapterConfiguration
 
-+ (void)initializeBidMachineSDKWithConfig:(BDMExternalAdapterConfiguration *)config
-                               completion:(void(^)(NSError * nullable))completion;
-
 @end
 
 NS_ASSUME_NONNULL_END
