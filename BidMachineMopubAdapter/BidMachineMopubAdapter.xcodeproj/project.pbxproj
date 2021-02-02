@@ -14,7 +14,6 @@
 		3715A71C25BAD41E0029CA68 /* BidMachineBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715A71525BAD41E0029CA68 /* BidMachineBannerCustomEvent.m */; };
 		3715A71D25BAD41E0029CA68 /* BidMachineNativeAdCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715A71625BAD41E0029CA68 /* BidMachineNativeAdCustomEvent.m */; };
 		3715A71E25BAD41E0029CA68 /* BidMachineNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715A71725BAD41E0029CA68 /* BidMachineNativeAdRenderer.m */; };
-		3715A76E25BAE0530029CA68 /* BidMachineMopubKeywordsTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715A76D25BAE0530029CA68 /* BidMachineMopubKeywordsTransformer.m */; };
 		458E5C695C1F0E6BADF19E6F /* libPods-BidMachineMopubAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D67DD57F5AA12D6A0B716C5 /* libPods-BidMachineMopubAdapter.a */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +44,6 @@
 		3715A71525BAD41E0029CA68 /* BidMachineBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineBannerCustomEvent.m; sourceTree = "<group>"; };
 		3715A71625BAD41E0029CA68 /* BidMachineNativeAdCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdCustomEvent.m; sourceTree = "<group>"; };
 		3715A71725BAD41E0029CA68 /* BidMachineNativeAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineNativeAdRenderer.m; sourceTree = "<group>"; };
-		3715A76D25BAE0530029CA68 /* BidMachineMopubKeywordsTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineMopubKeywordsTransformer.m; sourceTree = "<group>"; };
-		3715A7A625BB0E000029CA68 /* BidMachineMopubKeywordsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineMopubKeywordsTransformer.h; sourceTree = "<group>"; };
 		3715A7A825BB0E350029CA68 /* BidMachineNativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineNativeAdRenderer.h; sourceTree = "<group>"; };
 		3715A7AA25BB0E630029CA68 /* BidMachineAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineAdapterConfiguration.h; sourceTree = "<group>"; };
 		7278B713AE4739A1638FE814 /* Pods-BidMachineMopubAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineMopubAdapter.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineMopubAdapter/Pods-BidMachineMopubAdapter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,8 +95,6 @@
 			children = (
 				3715A7AA25BB0E630029CA68 /* BidMachineAdapterConfiguration.h */,
 				3715A70E25BAD41D0029CA68 /* BidMachineAdapterConfiguration.m */,
-				3715A7A625BB0E000029CA68 /* BidMachineMopubKeywordsTransformer.h */,
-				3715A76D25BAE0530029CA68 /* BidMachineMopubKeywordsTransformer.m */,
 				3715A72125BAD4550029CA68 /* Banner */,
 				3715A72225BAD45F0029CA68 /* Interstitial */,
 				3715A72425BAD4730029CA68 /* Rewarded */,
@@ -240,7 +235,6 @@
 			files = (
 				3715A71D25BAD41E0029CA68 /* BidMachineNativeAdCustomEvent.m in Sources */,
 				3715A71A25BAD41E0029CA68 /* BidMachineRewardedVideoCustomEvent.m in Sources */,
-				3715A76E25BAE0530029CA68 /* BidMachineMopubKeywordsTransformer.m in Sources */,
 				3715A71825BAD41E0029CA68 /* BidMachineNativeAdAdapter.m in Sources */,
 				3715A71C25BAD41E0029CA68 /* BidMachineBannerCustomEvent.m in Sources */,
 				3715A71B25BAD41E0029CA68 /* BidMachineInterstitialCustomEvent.m in Sources */,

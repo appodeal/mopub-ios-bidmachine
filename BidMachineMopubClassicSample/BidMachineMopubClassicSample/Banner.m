@@ -7,7 +7,6 @@
 //
 
 #import "Banner.h"
-#import <mopub-ios-sdk/MoPub.h>
 
 #define UNIT_ID         "1832ce06de91424f8f81f9f5c77f7efd"
 

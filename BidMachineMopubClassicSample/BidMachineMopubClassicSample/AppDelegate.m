@@ -8,9 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import <mopub-ios-sdk/MoPub.h>
-#import <BidMachine/BidMachine.h>
-#import <BidMachine/BDMExternalAdapterConfiguration.h>
 
 #define NATIVE_APP_ID         "7c3f8de23b9d4b7ab45a53ed2c3cb0c8"
 #define FULLSCREEN_APP_ID     "1832ce06de91424f8f81f9f5c77f7efd"

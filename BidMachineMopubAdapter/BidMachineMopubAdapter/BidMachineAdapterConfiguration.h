@@ -18,21 +18,10 @@
 
 @import BidMachine;
 @import StackFoundation;
-@import BidMachine.HeaderBidding;
+@import BidMachine.ExternalAdapterUtils;
 
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface BidMachineMopubFetcher : NSObject <BDMFetcherPresetProtocol>
-
-@property (nonatomic, strong) NSString *format;
-@property (nonatomic, assign) NSNumberFormatterRoundingMode roundingMode;
-@property (nonatomic, assign) BDMInternalPlacementType type;
-@property (nonatomic, assign) BDMFetcherRange range;
-
-- (void)registerPresset;
-
-@end
 
 @interface BidMachineAdapterConfiguration : MPBaseAdapterConfiguration
 

@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <mopub-ios-sdk/MoPub.h>
+
+@import BidMachine;
+@import BidMachine.ExternalAdapterUtils;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

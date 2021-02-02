@@ -14,7 +14,8 @@
     #import "MPNativeAdAdapter.h"
 #endif
 
-#import <BidMachine/BidMachine.h>
+@import BidMachine;
+
 
 @interface BidMachineNativeAdAdapter : NSObject <MPNativeAdAdapter>
 

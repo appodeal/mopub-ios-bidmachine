@@ -1,5 +1,5 @@
 platform :ios, '10.0'
-workspace 'BMIntegrationSample.xcworkspace'
+workspace 'BidMachineIntegrationSample.xcworkspace'
 
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
 

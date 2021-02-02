@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "BidMachineAdapterConfiguration.h"
 
 #import <mopub-ios-sdk/MoPub.h>
 #import <BidMachine/BidMachine.h>
@@ -38,9 +37,9 @@
 - (void)configureBidMachinePricefloorRounding {
     // Formats described in https://unicode.org/reports/tr35/tr35-10.html#Number_Format_Patterns
     
-    NSArray <BidMachineMopubFetcher *> *pressetFetchers = @[
+    NSArray <BDMDefaultFetcherPresset *> *pressetFetchers = @[
         ({
-            BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
             fetcher.format = @"0.01";
             fetcher.roundingMode = kCFNumberFormatterRoundUp;
             fetcher.type = BDMInternalPlacementTypeInterstitial;
@@ -48,7 +47,7 @@
             fetcher;
         }),
         ({
-            BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
             fetcher.format = @"0.01";
             fetcher.roundingMode = kCFNumberFormatterRoundUp;
             fetcher.type = BDMInternalPlacementTypeBanner;
@@ -56,7 +55,7 @@
             fetcher;
         }),
         ({
-            BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
             fetcher.format = @"0.01";
             fetcher.roundingMode = kCFNumberFormatterRoundUp;
             fetcher.type = BDMInternalPlacementTypeRewardedVideo;
@@ -64,7 +63,7 @@
             fetcher;
         }),
         ({
-            BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
             fetcher.format = @"0.01";
             fetcher.roundingMode = kCFNumberFormatterRoundUp;
             fetcher.type = BDMInternalPlacementTypeNative;
@@ -90,7 +89,7 @@
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:@FULLSCREEN_APP_ID];
     sdkConfig.loggingLevel = MPBLogLevelDebug;
     // Note that BidMachineAdapter should be added as additional network as BidMachineAdapterConfiguration
-    sdkConfig.additionalNetworks = @[ BidMachineAdapterConfiguration.class ];
+    sdkConfig.additionalNetworks = @[ NSClassFromString(@"BidMachineAdapterConfiguration") ];
 
     [MoPub.sharedInstance initializeSdkWithConfiguration:sdkConfig
                                               completion:^{

@@ -7,8 +7,6 @@
 //
 
 #import "Interstitial.h"
-#import <mopub-ios-sdk/MoPub.h>
-
 
 #define UNIT_ID         "ec95ba59890d4fda90a4acf0071ed8b5"
 

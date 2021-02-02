@@ -7,7 +7,6 @@
 //
 
 #import "Rewarded.h"
-#import <mopub-ios-sdk/MoPub.h>
 
 #define UNIT_ID         "b94009cbb6b7441eb097142f1cb5e642"
 

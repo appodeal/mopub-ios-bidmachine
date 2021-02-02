@@ -28,9 +28,6 @@
 
 /* Begin PBXFileReference section */
 		3715A74A25BADDD60029CA68 /* BidMachineMopubClassicSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BidMachineMopubClassicSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3715A7A525BB0DF30029CA68 /* BidMachineMopubKeywordsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BidMachineMopubKeywordsTransformer.h; path = ../../BidMachineMopubAdapter/BidMachineMopubAdapter/BidMachineMopubKeywordsTransformer.h; sourceTree = "<group>"; };
-		3715A7A725BB0E310029CA68 /* BidMachineNativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BidMachineNativeAdRenderer.h; path = ../../BidMachineMopubAdapter/BidMachineMopubAdapter/BidMachineNativeAdRenderer.h; sourceTree = "<group>"; };
-		3715A7A925BB0E600029CA68 /* BidMachineAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BidMachineAdapterConfiguration.h; path = ../../BidMachineMopubAdapter/BidMachineMopubAdapter/BidMachineAdapterConfiguration.h; sourceTree = "<group>"; };
 		3715A7AB25BB0EA80029CA68 /* BMMEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMEmpty.swift; sourceTree = "<group>"; };
 		3715A7B525BB12A80029CA68 /* libBidMachineMopubAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBidMachineMopubAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6528D633238D2B0400CA4B30 /* NativeAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeAdView.h; sourceTree = "<group>"; };
@@ -124,9 +121,6 @@
 		65693B042390F7F2007B0D33 /* ApplicationSupport */ = {
 			isa = PBXGroup;
 			children = (
-				3715A7A725BB0E310029CA68 /* BidMachineNativeAdRenderer.h */,
-				3715A7A925BB0E600029CA68 /* BidMachineAdapterConfiguration.h */,
-				3715A7A525BB0DF30029CA68 /* BidMachineMopubKeywordsTransformer.h */,
 				D96190F9222957C50057C11A /* Main.storyboard */,
 				D96190FC222957C60057C11A /* Assets.xcassets */,
 				D96190FE222957C60057C11A /* LaunchScreen.storyboard */,

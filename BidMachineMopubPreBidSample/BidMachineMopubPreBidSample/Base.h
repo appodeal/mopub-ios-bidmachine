@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <mopub-ios-sdk/MoPub.h>
+
+@import BidMachine.ExternalAdapterUtils;
 
 NS_ASSUME_NONNULL_BEGIN
 

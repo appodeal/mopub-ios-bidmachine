@@ -7,10 +7,6 @@
 //
 
 #import "Banner.h"
-#import "BidMachineMopubKeywordsTransformer.h"
-
-#import <mopub-ios-sdk/MoPub.h>
-#import <BidMachine/BidMachine.h>
 
 #define UNIT_ID         "1832ce06de91424f8f81f9f5c77f7efd"
 
@@ -79,10 +75,10 @@
     // After whith call fetcher will has strong ref on request
     // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
     // If you want to use your own rounding, then use the method (For Example:)
-    // BidMachineMopubFetcher *customFetcher;
+    // BDMDefaultFetcherPresset *customFetcher;
     // if (info.price > 0.5) {
     //      customFetcher = ({
-    //          BidMachineMopubFetcher *fetcher = BidMachineMopubFetcher.new;
+    //          BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
     //          fetcher.format = @"0.01";
     //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
     //          fetcher;
@@ -94,8 +90,8 @@
     // and not use customFetcher and fetcher pressets
     NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
     // Extras can be transformer into keywords for line item matching
-    // by use BidMachineKeywordsTransformer
-    BidMachineMopubKeywordsTransformer *transformer = [BidMachineMopubKeywordsTransformer new];
+    // by use BDMExternalAdapterKeywordsTransformer
+    BDMExternalAdapterKeywordsTransformer *transformer = [BDMExternalAdapterKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded
     [self loadMoPubAdWithKeywords:keywords extras:extras];

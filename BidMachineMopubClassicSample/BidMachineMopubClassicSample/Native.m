@@ -9,8 +9,6 @@
 #import "Native.h"
 #import "NativeAdView.h"
 #import "NativeAdRenderer.h"
-#import "BidMachineNativeAdRenderer.h"
-#import <mopub-ios-sdk/MoPub.h>
 
 #define UNIT_ID         "7c3f8de23b9d4b7ab45a53ed2c3cb0c8"
 
@@ -49,7 +47,8 @@
 }
 
 - (MPNativeAdRendererConfiguration *)rendererConfiguration {
-    return [BidMachineNativeAdRenderer rendererConfigurationWithRendererSettings:self.rendererSettings];
+    Class<MPNativeAdRenderer> cls = NSClassFromString(@"BidMachineNativeAdRenderer");
+    return [cls rendererConfigurationWithRendererSettings:self.rendererSettings];
 }
 
 - (MPNativeAdRequest *)request {

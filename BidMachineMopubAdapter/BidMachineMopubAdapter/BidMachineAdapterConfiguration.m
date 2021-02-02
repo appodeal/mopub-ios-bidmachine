@@ -8,14 +8,6 @@
 
 #import "BidMachineAdapterConfiguration.h"
 
-@implementation BidMachineMopubFetcher
-
-- (void)registerPresset {
-    [BDMFetcher.shared registerPresset:self];
-}
-
-@end
-
 @implementation BidMachineAdapterConfiguration
 
 #pragma mark - MPAdapterConfiguration
