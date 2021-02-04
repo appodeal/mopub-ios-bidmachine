@@ -74,28 +74,13 @@
 
 - (void)request:(BDMRequest *)request completeWithInfo:(BDMAuctionInfo *)info {
     // After request complete loading application can lost strong ref on it
-    // BidMachineFetcher will capture request by itself
+    // BDMRequestStorage will capture request by itself
     self.request = nil;
-    // Get extras from fetcher
-    // After whith call fetcher will has strong ref on request
-    // If you have installed pressets ([AppDelegate configureBidMachinePricefloorRounding]) or are using server settings then use this method
-    // If you want to use your own rounding, then use the method (For Example:)
-    // BDMDefaultFetcherPresset *customFetcher;
-    // if (info.price > 0.5) {
-    //      customFetcher = ({
-    //          BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
-    //          fetcher.format = @"0.01";
-    //          fetcher.roundingMode = kCFNumberFormatterRoundUp;
-    //          fetcher;
-    //      });
-    // }
-    // NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request fetcher:customFetcher];
-    //
-    // In the future, only server rounding will be used, so it is predominantly better to use it
-    // and not use customFetcher and fetcher pressets
-    NSDictionary *extras = [BDMFetcher.shared fetchParamsFromRequest:request];
+    // Save current request and use it in mopub auction
+    [BDMRequestStorage.shared saveRequest:request];
+    // Get server rounding price and other fields
+    NSDictionary *extras = request.info.customParams;
     // Extras can be transformer into keywords for line item matching
-    // by use BDMExternalAdapterKeywordsTransformer
     BDMExternalAdapterKeywordsTransformer *transformer = [BDMExternalAdapterKeywordsTransformer new];
     NSString *keywords = [transformer transformedValue:extras];
     // Here we define which MoPub ad should be loaded

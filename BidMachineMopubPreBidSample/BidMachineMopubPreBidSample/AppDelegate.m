@@ -24,55 +24,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-     [self configureBidMachinePricefloorRounding];
      __weak typeof(self) weakSelf = self;
      [self startBidMachine:^{
          [weakSelf startMoPub];
      }];
     
     return YES;
-}
-
-/// Setup bm_pf format and rounding mode (EXAMPLE)
-- (void)configureBidMachinePricefloorRounding {
-    // Formats described in https://unicode.org/reports/tr35/tr35-10.html#Number_Format_Patterns
-    
-    NSArray <BDMDefaultFetcherPresset *> *pressetFetchers = @[
-        ({
-            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
-            fetcher.format = @"0.01";
-            fetcher.roundingMode = kCFNumberFormatterRoundUp;
-            fetcher.type = BDMInternalPlacementTypeInterstitial;
-            fetcher.range = BDMFetcherRangeMake(0.00, 0.50); // [0.00] - (0.50)
-            fetcher;
-        }),
-        ({
-            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
-            fetcher.format = @"0.01";
-            fetcher.roundingMode = kCFNumberFormatterRoundUp;
-            fetcher.type = BDMInternalPlacementTypeBanner;
-            fetcher.range = BDMFetcherRangeMake(0.00, 0.50); // [0.00] - (0.50)
-            fetcher;
-        }),
-        ({
-            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
-            fetcher.format = @"0.01";
-            fetcher.roundingMode = kCFNumberFormatterRoundUp;
-            fetcher.type = BDMInternalPlacementTypeRewardedVideo;
-            fetcher.range = BDMFetcherRangeMake(0.00, 0.50); // [0.00] - (0.50)
-            fetcher;
-        }),
-        ({
-            BDMDefaultFetcherPresset *fetcher = BDMDefaultFetcherPresset.new;
-            fetcher.format = @"0.01";
-            fetcher.roundingMode = kCFNumberFormatterRoundUp;
-            fetcher.type = BDMInternalPlacementTypeNative;
-            fetcher.range = BDMFetcherRangeMake(0.00, 0.50); // [0.00] - (0.50)
-            fetcher;
-        }),
-    ];
-    
-    [pressetFetchers makeObjectsPerformSelector:@selector(registerPresset)];
 }
 
 /// Start BidMachine session, should be called before MoPub initialisation
