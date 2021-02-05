@@ -569,17 +569,6 @@ config.testMode = YES;
 [BDMSdk.sharedSdk startSessionWithSellerID:SELLER_ID configuration:config completion:nil];
 ```
 
-#### Initialize MOPUB sdd
-
-To initialize BidMachine set your's seller id in MPMoPubConfiguration:
-
-```objc
-MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:app_id];
-sdkConfig.loggingLevel = MPBLogLevelDebug;
-sdkConfig.additionalNetworks = @[ BidMachineAdapterConfiguration.class ];
-[MoPub.sharedInstance initializeSdkWithConfiguration:sdkConfig completion:nil];
-```
-
 #### Initialization
 
 Yours implementation of initialization should look like this:
